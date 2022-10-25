@@ -6,11 +6,19 @@ import Warenkorb from "./pages/Warenkorb";
 import History from "./pages/History";
 import data from "./components/Data";
 import { useState } from "react";
+import { search } from "fast-fuzzy";
 
 function App() {
   const { dataItems } = data;
   const [filteredData, setFilteredData] = useState([]);
 
+  function inputValue(value) {
+    let filtered = search(value, dataItems, {
+      keySelector: (obj) => obj.title,
+    });
+    setFilteredData(filtered);
+    /* console.log(filteredData.map((obj) => obj.title)); */
+  }
   return (
     <>
       <AppHeader />
