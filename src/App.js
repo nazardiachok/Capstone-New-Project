@@ -6,12 +6,12 @@ import { Routes, Route } from "react-router-dom";
 function App() {
   return (
     <>
-      <Header></Header>
+      <Header />
       <Routes>
         <Route path="/home" element={<HomePage />}></Route>
       </Routes>
 
-      <Navigation></Navigation>
+      <Navigation />
     </>
   );
 }
