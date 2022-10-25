@@ -1,4 +1,4 @@
-import Navigation from "./components/Navigation";
+import FooterNavigation from "./components/Navigation";
 import AppHeader from "./components/Header";
 import HomePage from "./pages/homePage";
 import { Routes, Route } from "react-router-dom";
@@ -19,7 +19,7 @@ function App() {
       keySelector: (obj) => obj.title,
     });
     setFilteredData(filtered);
-    /* console.log(filteredData.map((obj) => obj.category)); */
+
     let filterResult =
       select === ""
         ? filtered
@@ -27,13 +27,6 @@ function App() {
             return obj.category === select;
           });
     setOutput(filterResult);
-    /* console.log(
-      select === ""
-        ? filtered
-        : filteredData.filter((obj) => {
-            return obj.category === select;
-          })
-    ); */
   }
 
   function selectValue(event) {
@@ -57,7 +50,7 @@ function App() {
         <Route path="/history" element={<History />}></Route>
       </Routes>
 
-      <Navigation />
+      <FooterNavigation />
     </>
   );
 }

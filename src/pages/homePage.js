@@ -3,19 +3,17 @@ export default function HomePage({ inputValue, selectValue, output }) {
   return (
     <>
       <SectionInput>
-        <div>
-          <input
-            type="text"
-            onChange={(event) => inputValue(event.target.value)}
-          />
-          <form action="">
-            <select onChange={(event) => selectValue(event.target.value)}>
-              <option value="">Category</option>
-              <option value="Herrenschuh">Herrenschuh</option>
-              <option value="Damenschuh">Damenschuh</option>
-            </select>
-          </form>
-        </div>
+        <input
+          type="text"
+          onChange={(event) => inputValue(event.target.value)}
+        />
+        <form action="">
+          <select onChange={(event) => selectValue(event.target.value)}>
+            <option value="">Category</option>
+            <option value="Herrenschuh">Herrenschuh</option>
+            <option value="Damenschuh">Damenschuh</option>
+          </select>
+        </form>
       </SectionInput>
       <SectionOutput>
         <ul>
