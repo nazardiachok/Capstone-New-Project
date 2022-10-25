@@ -1,12 +1,12 @@
 import styled from "styled-components";
 export default function Warenkorb() {
   return (
-    <WKorb>
+    <WarenorbStyle>
       <h1>Warenkorb</h1>
-    </WKorb>
+    </WarenorbStyle>
   );
 }
-const WKorb = styled.div`
+const WarenorbStyle = styled.div`
   display: flex;
   justify-content: center;
 `;
