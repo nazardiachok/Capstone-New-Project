@@ -4,8 +4,11 @@ import HomePage from "./pages/homePage";
 import { Routes, Route } from "react-router-dom";
 import Warenkorb from "./pages/Warenkorb";
 import History from "./pages/History";
+import data from "./components/Data";
 
 function App() {
+  const { dataItems } = data;
+
   return (
     <>
       <AppHeader />
