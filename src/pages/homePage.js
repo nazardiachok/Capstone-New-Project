@@ -5,6 +5,7 @@ export default function HomePage({ inputValue, selectValue, output }) {
       <SectionInput>
         <input
           type="text"
+          placeholder="Nike React..."
           onChange={(event) => inputValue(event.target.value)}
         />
         <form action="">
@@ -22,6 +23,7 @@ export default function HomePage({ inputValue, selectValue, output }) {
               <img src={obj.image} alt="schuh"></img>
               <div>
                 <figcaption>{obj.title} </figcaption>
+                <p>{obj.category}</p>
                 <p> Preis: {obj.price} €</p>
                 {/* <button onClick={() => showDetails(obj)}>details</button> */}
               </div>
