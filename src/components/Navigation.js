@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 function Navigation() {
   return (
-    <NavUl>
+    <Nav>
       <ul>
         <li>
           <StyledNavlink to="/warenkorb">Warenkorb</StyledNavlink>
@@ -17,7 +17,7 @@ function Navigation() {
           <StyledNavlink to="/history">History</StyledNavlink>
         </li>
       </ul>
-    </NavUl>
+    </Nav>
   );
 }
 
@@ -35,7 +35,7 @@ const StyledNavlink = styled(NavLink)`
   }
 `;
 
-const NavUl = styled.nav`
+const Nav = styled.nav`
   position: fixed;
   bottom: 0;
   left: 0;
