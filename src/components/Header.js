@@ -1,12 +1,12 @@
 import styled from "styled-components";
-function Header() {
+function AppHeader() {
   return (
-    <Head className="header">
+    <Header>
       <h4>Shop App</h4>
-    </Head>
+    </Header>
   );
 }
-const Head = styled.header`
+const Header = styled.header`
   position: fixed;
   top: 0;
   left: 0;
@@ -20,4 +20,4 @@ const Head = styled.header`
   margin-bottom: 200px;
   max-height: 40px;
 `;
-export default Header;
+export default AppHeader;
