@@ -3,6 +3,7 @@ import AppHeader from "./components/Header";
 import HomePage from "./pages/homePage";
 import { Routes, Route } from "react-router-dom";
 import Warenkorb from "./pages/Warenkorb";
+import History from "./pages/History";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/home" element={<HomePage />}></Route>
         <Route path="/warenkorb" element={<Warenkorb />}></Route>
+        <Route path="/history" element={<History />}></Route>
       </Routes>
 
       <Navigation />
