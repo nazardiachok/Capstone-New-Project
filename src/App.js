@@ -17,7 +17,7 @@ function App() {
       keySelector: (obj) => obj.title,
     });
     setFilteredData(filtered);
-    /* console.log(filteredData.map((obj) => obj.title)); */
+    console.log(filteredData.map((obj) => obj.title));
   }
   return (
     <>
@@ -26,7 +26,9 @@ function App() {
         <Route
           path="/home"
           element={
-            <HomePage inputValue={inputValue} selectValue={selectValue} />
+            <HomePage
+              inputValue={inputValue} /* selectValue={selectValue}  */
+            />
           }
         ></Route>
         <Route path="/warenkorb" element={<Warenkorb />}></Route>
