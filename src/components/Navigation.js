@@ -7,13 +7,16 @@ function Navigation() {
     <Nav>
       <ul>
         <li>
-          {/* <StyledNavlink to="/warenkorb">Warenkorb</StyledNavlink> */}
+          <StyledNavlink to="/warenkorb">Warenkorb</StyledNavlink>
         </li>
 
         <li>
           <StyledNavlink to="/home">Home</StyledNavlink>
         </li>
-        <li>{/*  <StyledNavlink to="/history">History</StyledNavlink> */}</li>
+        <li>
+          {" "}
+          <StyledNavlink to="/history">History</StyledNavlink>
+        </li>
       </ul>
     </Nav>
   );
