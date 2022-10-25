@@ -12,6 +12,7 @@ function App() {
   const { dataItems } = data;
   const [filteredData, setFilteredData] = useState([]);
   const [select, setSelect] = useState("");
+  const [output, setOutput] = useState([]);
 
   function inputValue(value) {
     let filtered = search(value, dataItems, {
@@ -19,14 +20,20 @@ function App() {
     });
     setFilteredData(filtered);
     /* console.log(filteredData.map((obj) => obj.category)); */
-
-    console.log(
+    let filterResult =
+      select === ""
+        ? filtered
+        : filteredData.filter((obj) => {
+            return obj.category === select;
+          });
+    setOutput(filterResult);
+    /* console.log(
       select === ""
         ? filtered
         : filteredData.filter((obj) => {
             return obj.category === select;
           })
-    );
+    ); */
   }
 
   function selectValue(event) {
@@ -39,7 +46,11 @@ function App() {
         <Route
           path="/home"
           element={
-            <HomePage inputValue={inputValue} selectValue={selectValue} />
+            <HomePage
+              inputValue={inputValue}
+              selectValue={selectValue}
+              output={output}
+            />
           }
         ></Route>
         <Route path="/warenkorb" element={<Warenkorb />}></Route>

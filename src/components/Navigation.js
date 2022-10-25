@@ -14,7 +14,6 @@ function Navigation() {
           <StyledNavlink to="/home">Home</StyledNavlink>
         </li>
         <li>
-          {" "}
           <StyledNavlink to="/history">History</StyledNavlink>
         </li>
       </ul>
