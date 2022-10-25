@@ -13,7 +13,7 @@ const data = {
     },
     {
       id: 2,
-      title: "Air Jordan 1 Mid",
+      title: "Nike Air Jordan 1 Mid",
       category: "Damenschuh",
       MadeIn: "China",
       price: 129,
