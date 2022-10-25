@@ -12,7 +12,7 @@ export default function HomePage({ inputValue, selectValue }) {
             <select onChange={(event) => selectValue(event.target.value)}>
               <option value="">Category</option>
               <option value="Herrenschuh">Herrenschuh</option>
-              <option value="Dammenschuh">Dammenschuh</option>
+              <option value="Damenschuh">Damenschuh</option>
             </select>
           </form>
         </div>

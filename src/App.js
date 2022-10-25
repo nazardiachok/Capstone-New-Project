@@ -18,8 +18,17 @@ function App() {
       keySelector: (obj) => obj.title,
     });
     setFilteredData(filtered);
-    console.log(filteredData.map((obj) => obj.title));
+    /* console.log(filteredData.map((obj) => obj.category)); */
+
+    console.log(
+      select === ""
+        ? filtered
+        : filteredData.filter((obj) => {
+            return obj.category === select;
+          })
+    );
   }
+
   function selectValue(event) {
     setSelect(event);
   }
