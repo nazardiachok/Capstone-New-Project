@@ -46,7 +46,7 @@ const data = {
     },
     {
       id: 5,
-      title: "Nike Air Zoom Alphafly NEXT% 2",
+      title: "Nike Air Zoom Alphafly NEXT",
       category: "Herrenschuh",
       MadeIn: "China",
       price: 299,
