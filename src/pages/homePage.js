@@ -60,7 +60,7 @@ const SectionInput = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: -10;
+  z-index: -1;
 `;
 const SectionOutput = styled.section`
   margin-top: 50px;
@@ -69,7 +69,7 @@ const SectionOutput = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: -10;
+
   ul {
     display: flex;
     flex-direction: column;
