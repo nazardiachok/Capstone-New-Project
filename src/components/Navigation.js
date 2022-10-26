@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 
 import styled from "styled-components";
 
-function Navigation() {
+function FooterNavigation() {
   return (
     <Nav>
       <ul>
@@ -53,4 +53,4 @@ const Nav = styled.nav`
     }
   }
 `;
-export default Navigation;
+export default FooterNavigation;

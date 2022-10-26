@@ -1,4 +1,4 @@
-import Navigation from "./components/Navigation";
+import FooterNavigation from "./components/Navigation";
 import AppHeader from "./components/Header";
 import HomePage from "./pages/homePage";
 import { Routes, Route } from "react-router-dom";
@@ -11,13 +11,26 @@ import { search } from "fast-fuzzy";
 function App() {
   const { dataItems } = data;
   const [filteredData, setFilteredData] = useState([]);
+  const [select, setSelect] = useState("");
+  const [output, setOutput] = useState([]);
 
   function inputValue(value) {
     let filtered = search(value, dataItems, {
       keySelector: (obj) => obj.title,
     });
     setFilteredData(filtered);
-    console.log(filteredData.map((obj) => obj.title));
+
+    let filterResult =
+      select === ""
+        ? filtered
+        : filteredData.filter((obj) => {
+            return obj.category === select;
+          });
+    setOutput(filterResult);
+  }
+
+  function selectValue(event) {
+    setSelect(event);
   }
   return (
     <>
@@ -27,7 +40,9 @@ function App() {
           path="/home"
           element={
             <HomePage
-              inputValue={inputValue} /* selectValue={selectValue}  */
+              inputValue={inputValue}
+              selectValue={selectValue}
+              output={output}
             />
           }
         ></Route>
@@ -35,7 +50,7 @@ function App() {
         <Route path="/history" element={<History />}></Route>
       </Routes>
 
-      <Navigation />
+      <FooterNavigation />
     </>
   );
 }
