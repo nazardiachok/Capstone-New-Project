@@ -40,13 +40,6 @@ export default function HomePage({ inputValue, selectValue, output }) {
               </div>
             </figure>
           ))}
-          <button
-            onClick={() => {
-              navigate(`/details/$}`);
-            }}
-          >
-            details
-          </button>
         </ul>
         {/* ) : (
           <h1>Starte deine suche</h1>

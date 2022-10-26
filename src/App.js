@@ -46,9 +46,8 @@ function App() {
               output={output}
             />
           }
-        >
-          <Route path="details/:id" element={<Details />}></Route>
-        </Route>
+        ></Route>
+        <Route path="/details/:id" element={<Details />}></Route>
         <Route path="/warenkorb" element={<Warenkorb />}></Route>
         <Route path="/history" element={<History />}></Route>
       </Routes>
