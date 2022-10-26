@@ -7,6 +7,7 @@ import History from "./pages/History";
 import data from "./components/Data";
 import { useState } from "react";
 import { search } from "fast-fuzzy";
+import Details from "./pages/Details";
 
 function App() {
   const { dataItems } = data;
@@ -45,7 +46,9 @@ function App() {
               output={output}
             />
           }
-        ></Route>
+        >
+          <Route path="details/:id" element={<Details />}></Route>
+        </Route>
         <Route path="/warenkorb" element={<Warenkorb />}></Route>
         <Route path="/history" element={<History />}></Route>
       </Routes>

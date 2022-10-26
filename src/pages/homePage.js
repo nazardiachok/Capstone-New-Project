@@ -1,10 +1,8 @@
 import styled from "styled-components";
-export default function HomePage({
-  inputValue,
-  selectValue,
-  output,
-  showDetails,
-}) {
+import { useNavigate } from "react-router-dom";
+export default function HomePage({ inputValue, selectValue, output }) {
+  const navigate = useNavigate();
+  console.log(navigate);
   return (
     <>
       <SectionInput>
@@ -32,10 +30,23 @@ export default function HomePage({
                 <figcaption>{obj.title} </figcaption>
                 <p>{obj.category}</p>
                 <p> Preis: {obj.price} €</p>
-                <button onClick={() => showDetails()}>details</button>
+                <button
+                  onClick={() => {
+                    navigate(`/details/${obj.id}`);
+                  }}
+                >
+                  details
+                </button>
               </div>
             </figure>
           ))}
+          <button
+            onClick={() => {
+              navigate(`/details/$}`);
+            }}
+          >
+            details
+          </button>
         </ul>
         {/* ) : (
           <h1>Starte deine suche</h1>
