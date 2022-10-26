@@ -1,5 +1,10 @@
 import styled from "styled-components";
-export default function HomePage({ inputValue, selectValue, output }) {
+export default function HomePage({
+  inputValue,
+  selectValue,
+  output,
+  showDetails,
+}) {
   return (
     <>
       <SectionInput>
@@ -17,18 +22,24 @@ export default function HomePage({ inputValue, selectValue, output }) {
         </form>
       </SectionInput>
       <SectionOutput>
+        {/*  {output ? ( */}
+
         <ul>
-          {output?.map((obj) => (
+          {output.map((obj) => (
             <figure key={obj.id}>
               <img src={obj.image} alt="schuh"></img>
               <div>
                 <figcaption>{obj.title} </figcaption>
                 <p>{obj.category}</p>
                 <p> Preis: {obj.price} €</p>
+                <button onClick={() => showDetails()}>details</button>
               </div>
             </figure>
           ))}
         </ul>
+        {/* ) : (
+          <h1>Starte deine suche</h1>
+        )} */}
       </SectionOutput>
     </>
   );
@@ -51,11 +62,14 @@ const SectionOutput = styled.section`
   ul {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 30px;
     margin: 0 auto;
     padding-left: 0px;
   }
   figure {
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 0px;
     display: flex;
     border: 1px solid black;
     min-width: 350px;
@@ -71,7 +85,13 @@ const SectionOutput = styled.section`
     padding: 4px;
   }
   img {
-    height: 100px;
+    height: 110px;
     width: 110px;
+  }
+  button {
+    height: 20px;
+    position: relative;
+    top: -40px;
+    right: -150px;
   }
 `;
