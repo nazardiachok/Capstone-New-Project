@@ -10,7 +10,7 @@ export default function HomePage({ inputValue, selectValue, output }) {
         />
         <form action="">
           <select onChange={(event) => selectValue(event.target.value)}>
-            <option value="">Category</option>
+            <option value="">All</option>
             <option value="Herrenschuh">Herrenschuh</option>
             <option value="Damenschuh">Damenschuh</option>
           </select>
@@ -25,7 +25,6 @@ export default function HomePage({ inputValue, selectValue, output }) {
                 <figcaption>{obj.title} </figcaption>
                 <p>{obj.category}</p>
                 <p> Preis: {obj.price} €</p>
-                {/* <button onClick={() => showDetails(obj)}>details</button> */}
               </div>
             </figure>
           ))}
