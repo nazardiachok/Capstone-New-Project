@@ -30,13 +30,22 @@ export default function HomePage({ inputValue, selectValue, output }) {
                 <figcaption>{obj.title} </figcaption>
                 <p>{obj.category}</p>
                 <p> Preis: {obj.price} €</p>
-                <button
+
+                <DetailsButton
                   onClick={() => {
                     navigate(`/${obj.id}`);
                   }}
                 >
                   details
-                </button>
+                </DetailsButton>
+
+                <AddCardButton
+                  onClick={() => {
+                    navigate(`/${obj.id}`);
+                  }}
+                >
+                  Add to Card
+                </AddCardButton>
               </div>
             </figure>
           ))}
@@ -84,7 +93,6 @@ const SectionOutput = styled.section`
   figcaption {
     padding: 4px;
     display: flex;
-    justify-content: center;
   }
   p {
     padding: 4px;
@@ -94,10 +102,17 @@ const SectionOutput = styled.section`
     width: 110px;
     margin: 0;
   }
-  button {
-    height: 20px;
-    position: relative;
-    top: -40px;
-    right: -150px;
-  }
+`;
+const AddCardButton = styled.button`
+  height: 40px;
+  width: 55px;
+  position: relative;
+  top: -95px;
+  right: -95px;
+`;
+const DetailsButton = styled.button`
+  height: 20px;
+  position: relative;
+  top: -40px;
+  right: -150px;
 `;
