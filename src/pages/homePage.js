@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 export default function HomePage({ inputValue, selectValue, output }) {
   const navigate = useNavigate();
-  console.log(navigate);
+
   return (
     <>
       <SectionInput>
@@ -32,7 +32,7 @@ export default function HomePage({ inputValue, selectValue, output }) {
                 <p> Preis: {obj.price} €</p>
                 <button
                   onClick={() => {
-                    navigate(`/details/${obj.id}`);
+                    navigate(`/${obj.id}`);
                   }}
                 >
                   details
