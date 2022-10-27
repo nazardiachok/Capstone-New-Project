@@ -20,7 +20,7 @@ const data = {
       image:
         "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/48f2834b-bc0a-4fd6-8513-33d3ff0e7489/air-jordan-1-mid-damenschuh-XrWJMF.png",
       details:
-        "Die revolutionäre Air-Technologie kam im Jahr 1978 zum ersten Mal in Schuhen von Nike zum Einsatz. 1987 feierte dann der Air Max 1 sein Debüt – mit sichtbarer Air-Technologie in der Ferse. Plötzlich war der Tragekomfort der Air-Dämpfung nicht mehr nur spürbar, sondern auch zu sehen. Seitdem sind Air Max-Schuhe der nächsten Generation mit ihren auffälligen Farbkombinationen und der zuverlässigen, leichten Dämpfung sowohl bei Athlet:innen als auch bei Sammler:innen sehr beliebt.",
+        "   Die revolutionäre Air-Technologie kam im Jahr 1978 zum ersten Mal in Schuhen von Nike zum Einsatz. 1987 feierte dann der Air Max 1 sein Debüt – mit sichtbarer Air-Technologie in der Ferse. Plötzlich war der Tragekomfort der Air-Dämpfung nicht mehr nur spürbar, sondern auch zu sehen. Seitdem sind Air Max-Schuhe der nächsten Generation mit ihren auffälligen Farbkombinationen und der zuverlässigen, leichten Dämpfung sowohl bei Athlet:innen als auch bei Sammler:innen sehr beliebt.",
     },
     {
       id: 3,

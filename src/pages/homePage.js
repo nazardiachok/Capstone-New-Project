@@ -76,7 +76,8 @@ const SectionOutput = styled.section`
     padding-bottom: 0px;
     display: flex;
     border: 1px solid black;
-    min-width: 350px;
+    min-width: 340px;
+    height: 120px;
     margin: 0 auto;
     cursor: pointer;
   }
@@ -91,6 +92,7 @@ const SectionOutput = styled.section`
   img {
     height: 110px;
     width: 110px;
+    margin: 0;
   }
   button {
     height: 20px;

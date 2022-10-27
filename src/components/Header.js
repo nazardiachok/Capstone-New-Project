@@ -15,7 +15,7 @@ const Header = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 0;
+  z-index: 1;
   background-color: aliceblue;
   margin-bottom: 200px;
   max-height: 40px;
