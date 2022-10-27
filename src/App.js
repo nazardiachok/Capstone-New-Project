@@ -8,6 +8,9 @@ import data from "./components/Data";
 import { useState } from "react";
 import { search } from "fast-fuzzy";
 import Details from "./pages/Details";
+import { createContext } from "react";
+
+const UserContext = createContext();
 
 function App() {
   const { dataItems } = data;
@@ -34,7 +37,7 @@ function App() {
     setSelect(event);
   }
   return (
-    <>
+    <UserContext.Provider value={{ output }}>
       <AppHeader />
       <Routes>
         <Route
@@ -53,7 +56,7 @@ function App() {
       </Routes>
 
       <FooterNavigation />
-    </>
+    </UserContext.Provider>
   );
 }
 
