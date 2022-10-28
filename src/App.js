@@ -41,6 +41,11 @@ function App() {
     console.log(warenKorb);
     navigate("/warenkorb");
   }
+  function deleteCard(obj) {
+    setWarenkorb(warenKorb.filter((ware) => ware.id !== obj.id));
+    console.log(warenKorb);
+  }
+
   return (
     <>
       <AppHeader />
@@ -59,7 +64,7 @@ function App() {
         <Route path="/:id" element={<Details output={output} />}></Route>
         <Route
           path="/warenkorb"
-          element={<Warenkorb warenKorb={warenKorb} />}
+          element={<Warenkorb warenKorb={warenKorb} deleteCard={deleteCard} />}
         ></Route>
         <Route path="/history" element={<History />}></Route>
       </Routes>

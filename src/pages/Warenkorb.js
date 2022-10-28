@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export default function Warenkorb({ warenKorb }) {
+export default function Warenkorb({ warenKorb, deleteCard }) {
   return (
     <WarenorbStyle>
       <div>
@@ -19,7 +19,7 @@ export default function Warenkorb({ warenKorb }) {
                     <button>-</button>
                     <span>1</span>
                     <button>+</button>
-                    <button>x</button>
+                    <button onClick={() => deleteCard(obj)}>x</button>
                   </div>
                 </section>
               </figure>
