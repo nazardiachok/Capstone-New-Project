@@ -1,6 +1,11 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-export default function HomePage({ inputValue, selectValue, output }) {
+export default function HomePage({
+  inputValue,
+  selectValue,
+  output,
+  addToShoppingCard,
+}) {
   const navigate = useNavigate();
 
   return (
@@ -39,11 +44,7 @@ export default function HomePage({ inputValue, selectValue, output }) {
                   details
                 </DetailsButton>
 
-                <AddCardButton
-                  onClick={() => {
-                    navigate(`/${obj.id}`);
-                  }}
-                >
+                <AddCardButton onClick={() => addToShoppingCard(obj)}>
                   Add to Card
                 </AddCardButton>
               </div>

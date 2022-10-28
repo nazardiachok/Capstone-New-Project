@@ -14,6 +14,7 @@ function App() {
   const [filteredData, setFilteredData] = useState([]);
   const [select, setSelect] = useState("");
   const [output, setOutput] = useState([]);
+  const [warenKorb, setWarenkorb] = useState([]);
 
   function inputValue(value) {
     let filtered = search(value, dataItems, {
@@ -33,6 +34,10 @@ function App() {
   function selectValue(event) {
     setSelect(event);
   }
+  function addToShoppingCard(objArray) {
+    setWarenkorb([...warenKorb, objArray]);
+    console.log(warenKorb);
+  }
   return (
     <>
       <AppHeader />
@@ -44,11 +49,15 @@ function App() {
               inputValue={inputValue}
               selectValue={selectValue}
               output={output}
+              addToShoppingCard={addToShoppingCard}
             />
           }
         ></Route>
         <Route path="/:id" element={<Details output={output} />}></Route>
-        <Route path="/warenkorb" element={<Warenkorb />}></Route>
+        <Route
+          path="/warenkorb"
+          element={<Warenkorb warenKorb={warenKorb} />}
+        ></Route>
         <Route path="/history" element={<History />}></Route>
       </Routes>
 
