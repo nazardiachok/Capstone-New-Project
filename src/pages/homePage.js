@@ -86,6 +86,7 @@ export const SectionOutput = styled.section`
     padding-bottom: 0px;
     display: flex;
     border: 1px solid black;
+    border-radius: 10px;
     min-width: 340px;
     height: 120px;
     margin: 0 auto;
@@ -102,6 +103,7 @@ export const SectionOutput = styled.section`
     height: 110px;
     width: 110px;
     margin: 0;
+    border-radius: 5px;
   }
 `;
 const AddCardButton = styled.button`
