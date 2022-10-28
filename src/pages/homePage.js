@@ -65,7 +65,7 @@ const SectionInput = styled.section`
   align-items: center;
   z-index: -1;
 `;
-const SectionOutput = styled.section`
+export const SectionOutput = styled.section`
   margin-top: 50px;
   margin-bottom: 70px;
   position: relative;

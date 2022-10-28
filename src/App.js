@@ -8,8 +8,10 @@ import data from "./components/Data";
 import { useState } from "react";
 import { search } from "fast-fuzzy";
 import Details from "./pages/Details";
+import { useNavigate } from "react-router-dom";
 
 function App() {
+  const navigate = useNavigate();
   const { dataItems } = data;
   const [filteredData, setFilteredData] = useState([]);
   const [select, setSelect] = useState("");
@@ -37,6 +39,7 @@ function App() {
   function addToShoppingCard(objArray) {
     setWarenkorb([...warenKorb, objArray]);
     console.log(warenKorb);
+    navigate("/warenkorb");
   }
   return (
     <>
