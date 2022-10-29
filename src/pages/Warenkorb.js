@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
-export default function Warenkorb({ deleteCard, localStorage }) {
+export default function Warenkorb({
+  deleteCard,
+  localStorage,
+  count,
+  setCount,
+}) {
   return (
     <WarenorbStyle>
       <div>
@@ -16,9 +21,9 @@ export default function Warenkorb({ deleteCard, localStorage }) {
                   <p>{obj.category}</p>
                   <p> Preis: {obj.price} €</p>
                   <div>
-                    <button>-</button>
-                    <span>1</span>
-                    <button>+</button>
+                    <button onClick={() => setCount(count - 1)}>-</button>
+                    <span>{`${count >= 1 ? count : 1}`}</span>
+                    <button onClick={() => setCount(count + 1)}>+</button>
                     <button onClick={() => deleteCard(obj)}>x</button>
                   </div>
                 </section>

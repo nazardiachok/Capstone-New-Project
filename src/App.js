@@ -18,6 +18,7 @@ function App() {
   const [select, setSelect] = useState("");
   const [output, setOutput] = useState([]);
   const [localStorage, setLocalStorage] = useLocalStorage("Saved data: ", []);
+  const [count, setCount] = useState(1);
 
   function inputValue(value) {
     let filtered = search(value, dataItems, {
@@ -65,7 +66,12 @@ function App() {
         <Route
           path="/warenkorb"
           element={
-            <Warenkorb localStorage={localStorage} deleteCard={deleteCard} />
+            <Warenkorb
+              localStorage={localStorage}
+              deleteCard={deleteCard}
+              setCount={setCount}
+              count={count}
+            />
           }
         ></Route>
         <Route path="/history" element={<History />}></Route>
