@@ -9,6 +9,7 @@ import { useState } from "react";
 import { search } from "fast-fuzzy";
 import Details from "./pages/Details";
 import { useNavigate } from "react-router-dom";
+import useLocalStorage from "./components/hooks/useLocalStorage";
 
 function App() {
   const navigate = useNavigate();
@@ -16,7 +17,7 @@ function App() {
   const [filteredData, setFilteredData] = useState([]);
   const [select, setSelect] = useState("");
   const [output, setOutput] = useState([]);
-  const [warenKorb, setWarenkorb] = useState([]);
+  const [localStorage, setLocalStorage] = useLocalStorage("Saved data: ", []);
 
   function inputValue(value) {
     let filtered = search(value, dataItems, {
@@ -37,13 +38,12 @@ function App() {
     setSelect(event);
   }
   function addToShoppingCard(objArray) {
-    setWarenkorb([...warenKorb, objArray]);
-    console.log(warenKorb);
+    setLocalStorage([...localStorage, objArray]);
     navigate("/warenkorb");
   }
   function deleteCard(obj) {
-    setWarenkorb(warenKorb.filter((ware) => ware.id !== obj.id));
-    console.log(warenKorb);
+    setLocalStorage(localStorage.filter((ware) => ware.id !== obj.id));
+    console.log(localStorage);
   }
 
   return (
@@ -64,7 +64,9 @@ function App() {
         <Route path="/:id" element={<Details output={output} />}></Route>
         <Route
           path="/warenkorb"
-          element={<Warenkorb warenKorb={warenKorb} deleteCard={deleteCard} />}
+          element={
+            <Warenkorb localStorage={localStorage} deleteCard={deleteCard} />
+          }
         ></Route>
         <Route path="/history" element={<History />}></Route>
       </Routes>

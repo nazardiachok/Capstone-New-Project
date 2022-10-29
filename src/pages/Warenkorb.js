@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export default function Warenkorb({ warenKorb, deleteCard }) {
+export default function Warenkorb({ deleteCard, localStorage }) {
   return (
     <WarenorbStyle>
       <div>
@@ -8,7 +8,7 @@ export default function Warenkorb({ warenKorb, deleteCard }) {
 
         <SectionWarenkorb>
           <ul>
-            {warenKorb.map((obj) => (
+            {localStorage.map((obj) => (
               <figure key={obj.id}>
                 <img src={obj.image} alt="schuh"></img>
                 <section>
