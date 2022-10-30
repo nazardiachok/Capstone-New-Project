@@ -44,6 +44,7 @@ function App() {
   }
   function deleteCard(obj) {
     setLocalStorage(localStorage.filter((ware) => ware.id !== obj.id));
+    setCount(1);
     console.log(localStorage);
   }
 
