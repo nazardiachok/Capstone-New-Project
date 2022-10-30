@@ -12,6 +12,13 @@ export default function Warenkorb({
         <h1>Warenkorb </h1>
 
         <SectionWarenkorb>
+          <>
+            {localStorage.length === 0 && (
+              <h2>
+                Es befinden sich zur Zeit keine Artikel in Ihrem Warenkorb!
+              </h2>
+            )}
+          </>
           <ul>
             {localStorage.map((obj) => (
               <figure key={obj.id}>

@@ -25,8 +25,7 @@ export default function HomePage({
         </form>
       </SectionInput>
       <SectionOutput>
-        {/*  {output ? ( */}
-
+        {output.length === 0 && <h3>Starte Deine Suche!</h3>}
         <ul>
           {output.map((obj) => (
             <figure key={obj.id}>
@@ -51,9 +50,6 @@ export default function HomePage({
             </figure>
           ))}
         </ul>
-        {/* ) : (
-          <h1>Starte deine suche</h1>
-        )} */}
       </SectionOutput>
     </>
   );
@@ -64,6 +60,14 @@ const SectionInput = styled.section`
   justify-content: center;
   align-items: center;
   z-index: -1;
+  input {
+    border-radius: 10px;
+    margin: 0 10px;
+  }
+  select {
+    border-radius: 10px;
+    height: 20px;
+  }
 `;
 export const SectionOutput = styled.section`
   margin-top: 50px;
@@ -104,6 +108,12 @@ export const SectionOutput = styled.section`
     width: 110px;
     margin: 0;
     border-radius: 5px;
+  }
+  h3 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 50px auto;
   }
 `;
 const AddCardButton = styled.button`
