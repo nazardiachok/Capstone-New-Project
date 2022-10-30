@@ -18,7 +18,6 @@ function App() {
   const [select, setSelect] = useState("");
   const [output, setOutput] = useState([]);
   const [localStorage, setLocalStorage] = useLocalStorage("Saved data: ", []);
-  const [count, setCount] = useState(1);
 
   function inputValue(value) {
     let filtered = search(value, dataItems, {
@@ -38,14 +37,18 @@ function App() {
   function selectValue(event) {
     setSelect(event);
   }
-  function addToShoppingCard(objArray) {
-    setLocalStorage([...localStorage, objArray]);
-    navigate("/warenkorb");
+  function addToShoppingCard(card) {
+    const objectExists = output.find((object) => object.id === card.id);
+    if (!objectExists) {
+      setLocalStorage([...localStorage, { ...card, amount: 1 }]);
+    }
+
+    /* navigate("/warenkorb"); */
   }
   function deleteCard(obj) {
     setLocalStorage(localStorage.filter((ware) => ware.id !== obj.id));
-    setCount(1);
-    console.log(localStorage);
+
+    /*  console.log(localStorage); */
   }
 
   return (
@@ -67,12 +70,7 @@ function App() {
         <Route
           path="/warenkorb"
           element={
-            <Warenkorb
-              localStorage={localStorage}
-              deleteCard={deleteCard}
-              setCount={setCount}
-              count={count}
-            />
+            <Warenkorb localStorage={localStorage} deleteCard={deleteCard} />
           }
         ></Route>
         <Route path="/history" element={<History />}></Route>
