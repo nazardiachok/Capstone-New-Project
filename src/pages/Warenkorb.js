@@ -14,9 +14,9 @@ export default function Warenkorb({
         <SectionWarenkorb>
           <>
             {localStorage.length === 0 && (
-              <h2>
+              <h3>
                 Es befinden sich zur Zeit keine Artikel in Ihrem Warenkorb!
-              </h2>
+              </h3>
             )}
           </>
           <ul>
@@ -28,9 +28,9 @@ export default function Warenkorb({
                   <p>{obj.category}</p>
                   <p> Preis: {obj.price} €</p>
                   <div>
-                    <button onClick={() => setCount(count - 1)}>-</button>
-                    <span>{`${count >= 1 ? count : 1}`}</span>
-                    <button onClick={() => setCount(count + 1)}>+</button>
+                    <button>-</button>
+                    <span></span>
+                    <button>+</button>
                     <button onClick={() => deleteCard(obj)}>x</button>
                   </div>
                 </section>

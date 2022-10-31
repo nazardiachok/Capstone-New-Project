@@ -8,9 +8,9 @@ export default function Details({ output }) {
   const { id } = useParams();
   const details = output.filter((obj) => obj.id === +id);
 
-  console.log(output);
+  /* console.log(output);
   console.log(details);
-  console.log(id);
+  console.log(id); */
 
   return (
     <StyledDetails>

@@ -37,9 +37,21 @@ function App() {
   function selectValue(event) {
     setSelect(event);
   }
+
   function addToShoppingCard(card) {
-    const objectExists = output.find((object) => object.id === card.id);
-    if (!objectExists) {
+    const objectExists = localStorage.find((object) => object.id === card.id);
+    console.log(objectExists);
+    console.log(card);
+
+    if (objectExists) {
+      setLocalStorage(
+        localStorage.map((obj) =>
+          obj.id === card.id
+            ? { ...objectExists, amount: objectExists.amount + 1 }
+            : obj
+        )
+      );
+    } else {
       setLocalStorage([...localStorage, { ...card, amount: 1 }]);
     }
 
@@ -47,8 +59,6 @@ function App() {
   }
   function deleteCard(obj) {
     setLocalStorage(localStorage.filter((ware) => ware.id !== obj.id));
-
-    /*  console.log(localStorage); */
   }
 
   return (
