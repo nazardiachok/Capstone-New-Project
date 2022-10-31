@@ -3,7 +3,7 @@ import styled from "styled-components";
 export default function Warenkorb({
   deleteCard,
   localStorage,
-  changeAmount,
+  decreaseAmount,
   addToShoppingCard,
 }) {
   return (
@@ -28,7 +28,7 @@ export default function Warenkorb({
                   <p>{obj.category}</p>
                   <p> Preis: {obj.price} €</p>
                   <div>
-                    <button>-</button>
+                    <button onClick={() => decreaseAmount(obj)}>-</button>
                     <span>{obj.amount}</span>
                     <button onClick={() => addToShoppingCard(obj)}>+</button>
                     <button onClick={() => deleteCard(obj)}>x</button>

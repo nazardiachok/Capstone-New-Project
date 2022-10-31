@@ -52,8 +52,22 @@ function App() {
     } else {
       setLocalStorage([...localStorage, { ...card, amount: 1 }]);
     }
+    navigate("/warenkorb");
+  }
 
-    /* navigate("/warenkorb"); */
+  function decreaseAmount(obj) {
+    console.log(obj);
+    console.log(obj.amount);
+
+    if (obj.amount === 0) {
+      deleteCard(obj);
+    } else {
+      setLocalStorage(
+        localStorage.map((item) =>
+          obj.id === item.id ? { ...obj, amount: obj.amount - 1 } : item
+        )
+      );
+    } /* warum nicht functioniert mit delete hier???? */
   }
 
   function deleteCard(obj) {
@@ -83,8 +97,7 @@ function App() {
               localStorage={localStorage}
               deleteCard={deleteCard}
               addToShoppingCard={addToShoppingCard}
-              /*               changeAmount={changeAmount}
-               */
+              decreaseAmount={decreaseAmount}
             />
           }
         ></Route>
