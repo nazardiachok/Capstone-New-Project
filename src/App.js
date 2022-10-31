@@ -40,8 +40,6 @@ function App() {
 
   function addToShoppingCard(card) {
     const objectExists = localStorage.find((object) => object.id === card.id);
-    console.log(objectExists);
-    console.log(card);
 
     if (objectExists) {
       setLocalStorage(
@@ -49,7 +47,7 @@ function App() {
           obj.id === card.id
             ? { ...objectExists, amount: objectExists.amount + 1 }
             : obj
-        )
+        ) /* wenn es existiert-dann ändere amount mit .map, wenn nein-gib obj unverändert zurück  */
       );
     } else {
       setLocalStorage([...localStorage, { ...card, amount: 1 }]);
@@ -57,6 +55,7 @@ function App() {
 
     /* navigate("/warenkorb"); */
   }
+
   function deleteCard(obj) {
     setLocalStorage(localStorage.filter((ware) => ware.id !== obj.id));
   }
@@ -80,7 +79,13 @@ function App() {
         <Route
           path="/warenkorb"
           element={
-            <Warenkorb localStorage={localStorage} deleteCard={deleteCard} />
+            <Warenkorb
+              localStorage={localStorage}
+              deleteCard={deleteCard}
+              addToShoppingCard={addToShoppingCard}
+              /*               changeAmount={changeAmount}
+               */
+            />
           }
         ></Route>
         <Route path="/history" element={<History />}></Route>
