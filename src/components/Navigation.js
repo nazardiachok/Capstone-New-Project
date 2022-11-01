@@ -2,12 +2,13 @@ import { NavLink } from "react-router-dom";
 
 import styled from "styled-components";
 
-function FooterNavigation() {
+function FooterNavigation({ localStorage }) {
   return (
     <Nav>
       <ul>
         <li>
           <StyledNavlink to="/warenkorb">Warenkorb</StyledNavlink>
+          <b>{localStorage.length}</b>
         </li>
 
         <li>

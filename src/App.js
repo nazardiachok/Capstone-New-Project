@@ -104,7 +104,7 @@ function App() {
         <Route path="/history" element={<History />}></Route>
       </Routes>
 
-      <FooterNavigation />
+      <FooterNavigation localStorage={localStorage} />
     </>
   );
 }
