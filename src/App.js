@@ -8,12 +8,16 @@ import data from "./components/Data";
 import { useState } from "react";
 import { search } from "fast-fuzzy";
 import Details from "./pages/Details";
+import { useNavigate } from "react-router-dom";
+import useLocalStorage from "./components/hooks/useLocalStorage";
 
 function App() {
+  const navigate = useNavigate();
   const { dataItems } = data;
   const [filteredData, setFilteredData] = useState([]);
   const [select, setSelect] = useState("");
   const [output, setOutput] = useState([]);
+  const [localStorage, setLocalStorage] = useLocalStorage("Saved data: ", []);
 
   function inputValue(value) {
     let filtered = search(value, dataItems, {
@@ -33,6 +37,43 @@ function App() {
   function selectValue(event) {
     setSelect(event);
   }
+
+  function addToShoppingCard(card) {
+    const objectExists = localStorage.find((object) => object.id === card.id);
+
+    if (objectExists) {
+      setLocalStorage(
+        localStorage.map((obj) =>
+          obj.id === card.id
+            ? { ...objectExists, amount: objectExists.amount + 1 }
+            : obj
+        ) /* wenn es existiert-dann ändere amount mit .map, wenn nein-gib obj unverändert zurück  */
+      );
+    } else {
+      setLocalStorage([...localStorage, { ...card, amount: 1 }]);
+    }
+    navigate("/warenkorb");
+  }
+
+  function decreaseAmount(obj) {
+    console.log(obj);
+    console.log(obj.amount);
+
+    if (obj.amount === 1) {
+      deleteCard(obj);
+    } else {
+      setLocalStorage(
+        localStorage.map((item) =>
+          obj.id === item.id ? { ...obj, amount: obj.amount - 1 } : item
+        )
+      );
+    }
+  }
+
+  function deleteCard(obj) {
+    setLocalStorage(localStorage.filter((ware) => ware.id !== obj.id));
+  }
+
   return (
     <>
       <AppHeader />
@@ -44,11 +85,22 @@ function App() {
               inputValue={inputValue}
               selectValue={selectValue}
               output={output}
+              addToShoppingCard={addToShoppingCard}
             />
           }
         ></Route>
         <Route path="/:id" element={<Details output={output} />}></Route>
-        <Route path="/warenkorb" element={<Warenkorb />}></Route>
+        <Route
+          path="/warenkorb"
+          element={
+            <Warenkorb
+              localStorage={localStorage}
+              deleteCard={deleteCard}
+              addToShoppingCard={addToShoppingCard}
+              decreaseAmount={decreaseAmount}
+            />
+          }
+        ></Route>
         <Route path="/history" element={<History />}></Route>
       </Routes>
 

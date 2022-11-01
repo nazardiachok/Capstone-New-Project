@@ -1,6 +1,11 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-export default function HomePage({ inputValue, selectValue, output }) {
+export default function HomePage({
+  inputValue,
+  selectValue,
+  output,
+  addToShoppingCard,
+}) {
   const navigate = useNavigate();
 
   return (
@@ -20,8 +25,7 @@ export default function HomePage({ inputValue, selectValue, output }) {
         </form>
       </SectionInput>
       <SectionOutput>
-        {/*  {output ? ( */}
-
+        {output.length === 0 && <h3>Starte Deine Suche!</h3>}
         <ul>
           {output.map((obj) => (
             <figure key={obj.id}>
@@ -30,20 +34,22 @@ export default function HomePage({ inputValue, selectValue, output }) {
                 <figcaption>{obj.title} </figcaption>
                 <p>{obj.category}</p>
                 <p> Preis: {obj.price} €</p>
-                <button
+
+                <DetailsButton
                   onClick={() => {
                     navigate(`/${obj.id}`);
                   }}
                 >
                   details
-                </button>
+                </DetailsButton>
+
+                <AddCardButton onClick={() => addToShoppingCard(obj)}>
+                  Add to Card
+                </AddCardButton>
               </div>
             </figure>
           ))}
         </ul>
-        {/* ) : (
-          <h1>Starte deine suche</h1>
-        )} */}
       </SectionOutput>
     </>
   );
@@ -54,8 +60,16 @@ const SectionInput = styled.section`
   justify-content: center;
   align-items: center;
   z-index: -1;
+  input {
+    border-radius: 10px;
+    margin: 0 10px;
+  }
+  select {
+    border-radius: 10px;
+    height: 20px;
+  }
 `;
-const SectionOutput = styled.section`
+export const SectionOutput = styled.section`
   margin-top: 50px;
   margin-bottom: 70px;
   position: relative;
@@ -76,6 +90,7 @@ const SectionOutput = styled.section`
     padding-bottom: 0px;
     display: flex;
     border: 1px solid black;
+    border-radius: 10px;
     min-width: 340px;
     height: 120px;
     margin: 0 auto;
@@ -84,7 +99,6 @@ const SectionOutput = styled.section`
   figcaption {
     padding: 4px;
     display: flex;
-    justify-content: center;
   }
   p {
     padding: 4px;
@@ -93,11 +107,25 @@ const SectionOutput = styled.section`
     height: 110px;
     width: 110px;
     margin: 0;
+    border-radius: 5px;
   }
-  button {
-    height: 20px;
-    position: relative;
-    top: -40px;
-    right: -150px;
+  h3 {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 50px auto;
   }
+`;
+const AddCardButton = styled.button`
+  height: 40px;
+  width: 55px;
+  position: relative;
+  top: -95px;
+  right: -95px;
+`;
+const DetailsButton = styled.button`
+  height: 20px;
+  position: relative;
+  top: -40px;
+  right: -150px;
 `;
