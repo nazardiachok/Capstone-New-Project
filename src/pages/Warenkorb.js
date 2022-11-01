@@ -38,6 +38,20 @@ export default function Warenkorb({
             ))}
           </ul>
         </SectionWarenkorb>
+        {localStorage.length > 0 && (
+          <Gesamtpreis>
+            <h4>
+              Gesamtpreis:{" "}
+              {localStorage.reduce(
+                (prevPrice, currentItem) =>
+                  prevPrice + currentItem.price * currentItem.amount,
+                0
+              )}
+              €
+            </h4>
+            <button>Bestellen</button>
+          </Gesamtpreis>
+        )}
       </div>
     </WarenorbStyle>
   );
@@ -100,5 +114,14 @@ export const SectionWarenkorb = styled.section`
     margin-right: 10px;
     margin-top: 5px;
     margin-bottom: 5px;
+  }
+`;
+const Gesamtpreis = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 30px 0 50px 0;
+  button {
+    height: 30px;
   }
 `;

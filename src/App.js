@@ -52,7 +52,7 @@ function App() {
     } else {
       setLocalStorage([...localStorage, { ...card, amount: 1 }]);
     }
-    navigate("/warenkorb");
+    /* navigate("/warenkorb"); */
   }
 
   function decreaseAmount(obj) {
