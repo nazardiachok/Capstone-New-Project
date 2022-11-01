@@ -59,7 +59,7 @@ function App() {
     console.log(obj);
     console.log(obj.amount);
 
-    if (obj.amount === 0) {
+    if (obj.amount === 1) {
       deleteCard(obj);
     } else {
       setLocalStorage(
@@ -67,7 +67,7 @@ function App() {
           obj.id === item.id ? { ...obj, amount: obj.amount - 1 } : item
         )
       );
-    } /* warum nicht functioniert mit delete hier???? */
+    }
   }
 
   function deleteCard(obj) {

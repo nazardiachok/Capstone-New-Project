@@ -45,6 +45,7 @@ const Nav = styled.nav`
   background-color: aliceblue;
   height: 40px;
   ul {
+    padding: 0;
     display: flex;
     justify-content: space-around;
 
