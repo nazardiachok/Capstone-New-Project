@@ -10,6 +10,7 @@ import { search } from "fast-fuzzy";
 import Details from "./pages/Details";
 import { useNavigate } from "react-router-dom";
 import useLocalStorage from "./components/hooks/useLocalStorage";
+import PersonalData from "./pages/PersonalData";
 
 function App() {
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ function App() {
   const [select, setSelect] = useState("");
   const [output, setOutput] = useState([]);
   const [localStorage, setLocalStorage] = useLocalStorage("Saved data: ", []);
+  const [inputData, setInputData] = useState([]);
 
   function inputValue(value) {
     let filtered = search(value, dataItems, {
@@ -102,6 +104,13 @@ function App() {
           }
         ></Route>
         <Route path="/history" element={<History />}></Route>
+
+        <Route
+          path="/personalData"
+          element={
+            <PersonalData setInputData={setInputData} inputData={inputData} />
+          }
+        ></Route>
       </Routes>
 
       <FooterNavigation localStorage={localStorage} />

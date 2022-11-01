@@ -1,11 +1,13 @@
 import styled from "styled-components";
-
+import { useNavigate } from "react-router-dom";
 export default function Warenkorb({
   deleteCard,
   localStorage,
   decreaseAmount,
   addToShoppingCard,
+  goToPersonalData,
 }) {
+  const navigate = useNavigate();
   return (
     <WarenorbStyle>
       <div>
@@ -51,7 +53,7 @@ export default function Warenkorb({
               </span>{" "}
               €
             </h3>
-            <button>Bestellen </button>
+            <button onClick={() => navigate("/personalData")}>Weiter </button>
           </Gesamtpreis>
         )}
       </div>
