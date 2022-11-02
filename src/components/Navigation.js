@@ -12,7 +12,7 @@ function FooterNavigation({ shoppingCard }) {
         </li>
 
         <li>
-          <StyledNavlink to="/home">Home</StyledNavlink>
+          <StyledNavlink to="/">Home</StyledNavlink>
         </li>
         <li>
           <StyledNavlink to="/history">History</StyledNavlink>

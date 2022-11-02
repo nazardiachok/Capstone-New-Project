@@ -86,7 +86,7 @@ function App() {
       <AppHeader />
       <Routes>
         <Route
-          path="/home"
+          path="/"
           element={
             <HomePage
               inputValue={inputValue}
