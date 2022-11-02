@@ -56,13 +56,9 @@ function App() {
     } else {
       setLocalStorage([...localStorage, { ...card, amount: 1 }]);
     }
-    /* navigate("/warenkorb"); */
   }
 
   function decreaseAmount(obj) {
-    /* console.log(obj);
-    console.log(obj.amount); */
-
     if (obj.amount === 1) {
       deleteCard(obj);
     } else {
@@ -78,7 +74,6 @@ function App() {
     setLocalStorage(localStorage.filter((ware) => ware.id !== obj.id));
   }
   function saveTheData(name, email, address) {
-    /* console.log(name, email, address); */
     setInputData({ name: name, email: email, address: address });
     console.log(inputData);
     navigate("/bestellung");

@@ -7,14 +7,13 @@ export default function PersonalData({ saveTheData, inputData }) {
     const form = event.target;
     const { name, email, address } = form.elements;
     saveTheData(name.value, email.value, address.value);
-    /* console.log(name.value, email.value, address.value); */
   }
   return (
     <>
       <Section>
         <form onSubmit={savedInput}>
           <fieldset>
-            <legend>Gebe deine Persönliche Daten ein: </legend>
+            <legend>Gib deine Persönlichen Daten ein: </legend>
             <label>Name: </label>
             <input type="text" name="name" id="name"></input>
             <label>Email: </label>

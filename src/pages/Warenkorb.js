@@ -16,7 +16,7 @@ export default function Warenkorb({
   );
   setTotalPrice(totalPrice);
   return (
-    <WarenorbStyle>
+    <WarenkorbStyle>
       <div>
         <h1>Warenkorb </h1>
 
@@ -56,10 +56,10 @@ export default function Warenkorb({
           </Gesamtpreis>
         )}
       </div>
-    </WarenorbStyle>
+    </WarenkorbStyle>
   );
 }
-const WarenorbStyle = styled.main`
+const WarenkorbStyle = styled.main`
   display: flex;
   justify-content: center;
   margin: 30px auto;

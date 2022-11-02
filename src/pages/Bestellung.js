@@ -1,6 +1,5 @@
 import styled from "styled-components";
 export default function Bestellung({ localStorage, inputData, totalPrice }) {
-  console.log(localStorage);
   return (
     <>
       <Section>
