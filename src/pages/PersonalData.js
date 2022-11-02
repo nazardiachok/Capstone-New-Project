@@ -1,13 +1,15 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-export default function PersonalData({ setInputData, inputData }) {
+
+export default function PersonalData({ saveTheData, inputData }) {
   const navigate = useNavigate;
+
   function savedInput(event) {
     event.preventDefault();
-    const formData = new FormData(event.target);
-    const { name, email, adress } = Object.fromEntries(formData);
-    setInputData(name, email, adress);
-    console.log(inputData.map((data) => data));
+    const form = event.target;
+    const { name, email, address } = form.elements;
+    saveTheData(name.value, email.value, address.value);
+    /* console.log(name.value, email.value, address.value); */
     navigate("/bestellung");
   }
   return (
@@ -17,11 +19,11 @@ export default function PersonalData({ setInputData, inputData }) {
           <fieldset>
             <legend>Gebe deine Persönliche Daten ein: </legend>
             <label>Name: </label>
-            <input type="text" id="name"></input>
+            <input type="text" name="name" id="name"></input>
             <label>Email: </label>
-            <input type="email" id="email"></input>
+            <input type="email" name="email" id="email"></input>
             <label>Adresse: </label>
-            <input type="text" id="adress"></input>
+            <input type="text" name="address" id="address"></input>
             <button type="submit">Submit</button>
           </fieldset>
         </form>

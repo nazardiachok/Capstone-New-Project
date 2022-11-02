@@ -19,7 +19,7 @@ function App() {
   const [select, setSelect] = useState("");
   const [output, setOutput] = useState([]);
   const [localStorage, setLocalStorage] = useLocalStorage("Saved data: ", []);
-  const [inputData, setInputData] = useState([]);
+  const [inputData, setInputData] = useState({});
 
   function inputValue(value) {
     let filtered = search(value, dataItems, {
@@ -75,6 +75,12 @@ function App() {
   function deleteCard(obj) {
     setLocalStorage(localStorage.filter((ware) => ware.id !== obj.id));
   }
+  function saveTheData(name, email, address) {
+    /* console.log(name, email, address); */
+    setInputData({ ...inputData, name: name, email: email, address: address });
+    console.log(inputData);
+    navigate("/bestellung");
+  }
 
   return (
     <>
@@ -108,7 +114,7 @@ function App() {
         <Route
           path="/personalData"
           element={
-            <PersonalData setInputData={setInputData} inputData={inputData} />
+            <PersonalData saveTheData={saveTheData} inputData={inputData} />
           }
         ></Route>
       </Routes>
