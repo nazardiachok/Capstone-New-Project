@@ -11,6 +11,7 @@ import Details from "./pages/Details";
 import { useNavigate } from "react-router-dom";
 import useLocalStorage from "./components/hooks/useLocalStorage";
 import PersonalData from "./pages/PersonalData";
+import Bestellung from "./pages/Bestellung";
 
 function App() {
   const navigate = useNavigate();
@@ -58,8 +59,8 @@ function App() {
   }
 
   function decreaseAmount(obj) {
-    console.log(obj);
-    console.log(obj.amount);
+    /* console.log(obj);
+    console.log(obj.amount); */
 
     if (obj.amount === 1) {
       deleteCard(obj);
@@ -77,7 +78,7 @@ function App() {
   }
   function saveTheData(name, email, address) {
     /* console.log(name, email, address); */
-    setInputData({ ...inputData, name: name, email: email, address: address });
+    setInputData({ name: name, email: email, address: address });
     console.log(inputData);
     navigate("/bestellung");
   }
@@ -115,6 +116,12 @@ function App() {
           path="/personalData"
           element={
             <PersonalData saveTheData={saveTheData} inputData={inputData} />
+          }
+        ></Route>
+        <Route
+          path="/bestellung"
+          element={
+            <Bestellung inputData={inputData} localStorage={localStorage} />
           }
         ></Route>
       </Routes>

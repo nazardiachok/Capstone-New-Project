@@ -2,15 +2,12 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 export default function PersonalData({ saveTheData, inputData }) {
-  const navigate = useNavigate;
-
   function savedInput(event) {
     event.preventDefault();
     const form = event.target;
     const { name, email, address } = form.elements;
     saveTheData(name.value, email.value, address.value);
     /* console.log(name.value, email.value, address.value); */
-    navigate("/bestellung");
   }
   return (
     <>
