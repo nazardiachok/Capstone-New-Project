@@ -1,13 +1,20 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+
 export default function Warenkorb({
   deleteCard,
   localStorage,
   decreaseAmount,
   addToShoppingCard,
-  goToPersonalData,
+  setTotalPrice,
 }) {
   const navigate = useNavigate();
+  const totalPrice = localStorage.reduce(
+    (prevPrice, currentItem) =>
+      prevPrice + currentItem.price * currentItem.amount,
+    0
+  );
+  setTotalPrice(totalPrice);
   return (
     <WarenorbStyle>
       <div>
@@ -43,15 +50,7 @@ export default function Warenkorb({
         {localStorage.length > 0 && (
           <Gesamtpreis>
             <h3>
-              Gesamtpreis:{" "}
-              <span>
-                {localStorage.reduce(
-                  (prevPrice, currentItem) =>
-                    prevPrice + currentItem.price * currentItem.amount,
-                  0
-                )}
-              </span>{" "}
-              €
+              Gesamtpreis: <span>{totalPrice}</span> €
             </h3>
             <button onClick={() => navigate("/personalData")}>Weiter </button>
           </Gesamtpreis>

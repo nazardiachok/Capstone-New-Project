@@ -21,6 +21,7 @@ function App() {
   const [output, setOutput] = useState([]);
   const [localStorage, setLocalStorage] = useLocalStorage("Saved data: ", []);
   const [inputData, setInputData] = useState({});
+  const [totalPrice, setTotalPrice] = useState(0);
 
   function inputValue(value) {
     let filtered = search(value, dataItems, {
@@ -107,6 +108,7 @@ function App() {
               deleteCard={deleteCard}
               addToShoppingCard={addToShoppingCard}
               decreaseAmount={decreaseAmount}
+              setTotalPrice={setTotalPrice}
             />
           }
         ></Route>
@@ -121,7 +123,11 @@ function App() {
         <Route
           path="/bestellung"
           element={
-            <Bestellung inputData={inputData} localStorage={localStorage} />
+            <Bestellung
+              inputData={inputData}
+              localStorage={localStorage}
+              totalPrice={totalPrice}
+            />
           }
         ></Route>
       </Routes>
