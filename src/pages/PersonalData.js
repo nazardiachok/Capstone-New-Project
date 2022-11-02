@@ -13,11 +13,11 @@ export default function PersonalData({ saveTheData }) {
         <fieldset>
           <legend>Gib deine Persönlichen Daten ein: </legend>
           <label>Name: </label>
-          <input type="text" name="name" id="name"></input>
+          <input type="text" name="name" id="name" required></input>
           <label>Email: </label>
-          <input type="email" name="email" id="email"></input>
+          <input type="email" name="email" id="email" required></input>
           <label>Adresse: </label>
-          <input type="text" name="address" id="address"></input>
+          <input type="text" name="address" id="address" required></input>
           <button type="submit">Submit</button>
         </fieldset>
       </form>

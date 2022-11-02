@@ -31,7 +31,7 @@ export default function ShoppingCard({
           <ul>
             {shoppingCard.map((obj) => (
               <figure key={obj.id}>
-                <img src={obj.image} alt="schuh"></img>
+                <img src={obj.image} alt="schuhe"></img>
                 <section>
                   <figcaption>{obj.title} </figcaption>
                   <p>{obj.category}</p>
