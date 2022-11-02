@@ -1,28 +1,37 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
-export default function Warenkorb({
+export default function ShoppingCard({
   deleteCard,
-  localStorage,
+  shoppingCard,
   decreaseAmount,
   addToShoppingCard,
+  setTotalPrice,
 }) {
+  const navigate = useNavigate();
+  const totalPrice = shoppingCard.reduce(
+    (prevPrice, currentItem) =>
+      prevPrice + currentItem.price * currentItem.amount,
+    0
+  );
+  setTotalPrice(totalPrice);
   return (
-    <WarenorbStyle>
+    <WarenkorbStyle>
       <div>
         <h1>Warenkorb </h1>
 
         <SectionWarenkorb>
           <>
-            {localStorage.length === 0 && (
+            {shoppingCard.length === 0 && (
               <h3>
                 Es befinden sich zur Zeit keine Artikel in Ihrem Warenkorb!
               </h3>
             )}
           </>
           <ul>
-            {localStorage.map((obj) => (
+            {shoppingCard.map((obj) => (
               <figure key={obj.id}>
-                <img src={obj.image} alt="schuh"></img>
+                <img src={obj.image} alt="schuhe"></img>
                 <section>
                   <figcaption>{obj.title} </figcaption>
                   <p>{obj.category}</p>
@@ -38,11 +47,19 @@ export default function Warenkorb({
             ))}
           </ul>
         </SectionWarenkorb>
+        {shoppingCard.length > 0 && (
+          <Gesamtpreis>
+            <h3>
+              Gesamtpreis: <span>{totalPrice}</span> €
+            </h3>
+            <button onClick={() => navigate("/personalData")}>Weiter </button>
+          </Gesamtpreis>
+        )}
       </div>
-    </WarenorbStyle>
+    </WarenkorbStyle>
   );
 }
-const WarenorbStyle = styled.main`
+const WarenkorbStyle = styled.main`
   display: flex;
   justify-content: center;
   margin: 30px auto;
@@ -100,5 +117,17 @@ export const SectionWarenkorb = styled.section`
     margin-right: 10px;
     margin-top: 5px;
     margin-bottom: 5px;
+  }
+`;
+const Gesamtpreis = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 30px 0 50px 0;
+  button {
+    height: 30px;
+  }
+  span {
+    color: red;
   }
 `;

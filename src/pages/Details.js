@@ -32,7 +32,7 @@ export default function Details({ output }) {
         <p>{details[0].details}</p>
       </figure>
 
-      <button onClick={() => navigate("/home")}>zurück</button>
+      <button onClick={() => navigate("/")}>zurück</button>
     </StyledDetails>
   );
 }

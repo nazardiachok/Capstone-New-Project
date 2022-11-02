@@ -2,7 +2,6 @@ import FooterNavigation from "./components/Navigation";
 import AppHeader from "./components/Header";
 import HomePage from "./pages/homePage";
 import { Routes, Route } from "react-router-dom";
-import Warenkorb from "./pages/Warenkorb";
 import History from "./pages/History";
 import data from "./components/Data";
 import { useState } from "react";
@@ -10,14 +9,21 @@ import { search } from "fast-fuzzy";
 import Details from "./pages/Details";
 import { useNavigate } from "react-router-dom";
 import useLocalStorage from "./components/hooks/useLocalStorage";
+import PersonalData from "./pages/PersonalData";
+import OrderDetails from "./pages/OrderDetails";
+import ShoppingCard from "./pages/ShoppingCard";
 
 function App() {
   const navigate = useNavigate();
   const { dataItems } = data;
   const [filteredData, setFilteredData] = useState([]);
+
   const [select, setSelect] = useState("");
   const [output, setOutput] = useState([]);
-  const [localStorage, setLocalStorage] = useLocalStorage("Saved data: ", []);
+
+  const [shoppingCard, setShoppingCard] = useLocalStorage("Saved data: ", []);
+  const [inputData, setInputData] = useState({});
+  const [totalPrice, setTotalPrice] = useState(0);
 
   function inputValue(value) {
     let filtered = search(value, dataItems, {
@@ -39,31 +45,27 @@ function App() {
   }
 
   function addToShoppingCard(card) {
-    const objectExists = localStorage.find((object) => object.id === card.id);
+    const objectExists = shoppingCard.find((object) => object.id === card.id);
 
     if (objectExists) {
-      setLocalStorage(
-        localStorage.map((obj) =>
+      setShoppingCard(
+        shoppingCard.map((obj) =>
           obj.id === card.id
             ? { ...objectExists, amount: objectExists.amount + 1 }
             : obj
         ) /* wenn es existiert-dann ändere amount mit .map, wenn nein-gib obj unverändert zurück  */
       );
     } else {
-      setLocalStorage([...localStorage, { ...card, amount: 1 }]);
+      setShoppingCard([...shoppingCard, { ...card, amount: 1 }]);
     }
-    navigate("/warenkorb");
   }
 
   function decreaseAmount(obj) {
-    console.log(obj);
-    console.log(obj.amount);
-
     if (obj.amount === 1) {
       deleteCard(obj);
     } else {
-      setLocalStorage(
-        localStorage.map((item) =>
+      setShoppingCard(
+        shoppingCard.map((item) =>
           obj.id === item.id ? { ...obj, amount: obj.amount - 1 } : item
         )
       );
@@ -71,7 +73,12 @@ function App() {
   }
 
   function deleteCard(obj) {
-    setLocalStorage(localStorage.filter((ware) => ware.id !== obj.id));
+    setShoppingCard(shoppingCard.filter((ware) => ware.id !== obj.id));
+  }
+  function saveTheData(name, email, address) {
+    setInputData({ name: name, email: email, address: address });
+
+    navigate("/bestellung");
   }
 
   return (
@@ -79,7 +86,7 @@ function App() {
       <AppHeader />
       <Routes>
         <Route
-          path="/home"
+          path="/"
           element={
             <HomePage
               inputValue={inputValue}
@@ -93,18 +100,36 @@ function App() {
         <Route
           path="/warenkorb"
           element={
-            <Warenkorb
-              localStorage={localStorage}
+            <ShoppingCard
+              shoppingCard={shoppingCard}
               deleteCard={deleteCard}
               addToShoppingCard={addToShoppingCard}
               decreaseAmount={decreaseAmount}
+              setTotalPrice={setTotalPrice}
             />
           }
         ></Route>
         <Route path="/history" element={<History />}></Route>
+
+        <Route
+          path="/personalData"
+          element={
+            <PersonalData saveTheData={saveTheData} inputData={inputData} />
+          }
+        ></Route>
+        <Route
+          path="/bestellung"
+          element={
+            <OrderDetails
+              inputData={inputData}
+              shoppingCard={shoppingCard}
+              totalPrice={totalPrice}
+            />
+          }
+        ></Route>
       </Routes>
 
-      <FooterNavigation />
+      <FooterNavigation shoppingCard={shoppingCard} />
     </>
   );
 }

@@ -2,16 +2,17 @@ import { NavLink } from "react-router-dom";
 
 import styled from "styled-components";
 
-function FooterNavigation() {
+function FooterNavigation({ shoppingCard }) {
   return (
     <Nav>
       <ul>
         <li>
           <StyledNavlink to="/warenkorb">Warenkorb</StyledNavlink>
+          <b>{shoppingCard.length}</b>
         </li>
 
         <li>
-          <StyledNavlink to="/home">Home</StyledNavlink>
+          <StyledNavlink to="/">Home</StyledNavlink>
         </li>
         <li>
           <StyledNavlink to="/history">History</StyledNavlink>
