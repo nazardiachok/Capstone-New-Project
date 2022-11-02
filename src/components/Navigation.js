@@ -2,13 +2,13 @@ import { NavLink } from "react-router-dom";
 
 import styled from "styled-components";
 
-function FooterNavigation({ localStorage }) {
+function FooterNavigation({ shoppingCard }) {
   return (
     <Nav>
       <ul>
         <li>
           <StyledNavlink to="/warenkorb">Warenkorb</StyledNavlink>
-          <b>{localStorage.length}</b>
+          <b>{shoppingCard.length}</b>
         </li>
 
         <li>

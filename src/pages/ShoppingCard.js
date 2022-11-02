@@ -1,15 +1,15 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
-export default function Warenkorb({
+export default function ShoppingCard({
   deleteCard,
-  localStorage,
+  shoppingCard,
   decreaseAmount,
   addToShoppingCard,
   setTotalPrice,
 }) {
   const navigate = useNavigate();
-  const totalPrice = localStorage.reduce(
+  const totalPrice = shoppingCard.reduce(
     (prevPrice, currentItem) =>
       prevPrice + currentItem.price * currentItem.amount,
     0
@@ -22,14 +22,14 @@ export default function Warenkorb({
 
         <SectionWarenkorb>
           <>
-            {localStorage.length === 0 && (
+            {shoppingCard.length === 0 && (
               <h3>
                 Es befinden sich zur Zeit keine Artikel in Ihrem Warenkorb!
               </h3>
             )}
           </>
           <ul>
-            {localStorage.map((obj) => (
+            {shoppingCard.map((obj) => (
               <figure key={obj.id}>
                 <img src={obj.image} alt="schuh"></img>
                 <section>
@@ -47,7 +47,7 @@ export default function Warenkorb({
             ))}
           </ul>
         </SectionWarenkorb>
-        {localStorage.length > 0 && (
+        {shoppingCard.length > 0 && (
           <Gesamtpreis>
             <h3>
               Gesamtpreis: <span>{totalPrice}</span> €

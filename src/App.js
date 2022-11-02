@@ -2,7 +2,6 @@ import FooterNavigation from "./components/Navigation";
 import AppHeader from "./components/Header";
 import HomePage from "./pages/homePage";
 import { Routes, Route } from "react-router-dom";
-import Warenkorb from "./pages/Warenkorb";
 import History from "./pages/History";
 import data from "./components/Data";
 import { useState } from "react";
@@ -11,15 +10,18 @@ import Details from "./pages/Details";
 import { useNavigate } from "react-router-dom";
 import useLocalStorage from "./components/hooks/useLocalStorage";
 import PersonalData from "./pages/PersonalData";
-import Bestellung from "./pages/Bestellung";
+import OrderDetails from "./pages/OrderDetails";
+import ShoppingCard from "./pages/ShoppingCard";
 
 function App() {
   const navigate = useNavigate();
   const { dataItems } = data;
   const [filteredData, setFilteredData] = useState([]);
+
   const [select, setSelect] = useState("");
   const [output, setOutput] = useState([]);
-  const [localStorage, setLocalStorage] = useLocalStorage("Saved data: ", []);
+
+  const [shoppingCard, setShoppingCard] = useLocalStorage("Saved data: ", []);
   const [inputData, setInputData] = useState({});
   const [totalPrice, setTotalPrice] = useState(0);
 
@@ -43,18 +45,18 @@ function App() {
   }
 
   function addToShoppingCard(card) {
-    const objectExists = localStorage.find((object) => object.id === card.id);
+    const objectExists = shoppingCard.find((object) => object.id === card.id);
 
     if (objectExists) {
-      setLocalStorage(
-        localStorage.map((obj) =>
+      setShoppingCard(
+        shoppingCard.map((obj) =>
           obj.id === card.id
             ? { ...objectExists, amount: objectExists.amount + 1 }
             : obj
         ) /* wenn es existiert-dann ändere amount mit .map, wenn nein-gib obj unverändert zurück  */
       );
     } else {
-      setLocalStorage([...localStorage, { ...card, amount: 1 }]);
+      setShoppingCard([...shoppingCard, { ...card, amount: 1 }]);
     }
   }
 
@@ -62,8 +64,8 @@ function App() {
     if (obj.amount === 1) {
       deleteCard(obj);
     } else {
-      setLocalStorage(
-        localStorage.map((item) =>
+      setShoppingCard(
+        shoppingCard.map((item) =>
           obj.id === item.id ? { ...obj, amount: obj.amount - 1 } : item
         )
       );
@@ -71,11 +73,11 @@ function App() {
   }
 
   function deleteCard(obj) {
-    setLocalStorage(localStorage.filter((ware) => ware.id !== obj.id));
+    setShoppingCard(shoppingCard.filter((ware) => ware.id !== obj.id));
   }
   function saveTheData(name, email, address) {
     setInputData({ name: name, email: email, address: address });
-    console.log(inputData);
+
     navigate("/bestellung");
   }
 
@@ -98,8 +100,8 @@ function App() {
         <Route
           path="/warenkorb"
           element={
-            <Warenkorb
-              localStorage={localStorage}
+            <ShoppingCard
+              shoppingCard={shoppingCard}
               deleteCard={deleteCard}
               addToShoppingCard={addToShoppingCard}
               decreaseAmount={decreaseAmount}
@@ -118,16 +120,16 @@ function App() {
         <Route
           path="/bestellung"
           element={
-            <Bestellung
+            <OrderDetails
               inputData={inputData}
-              localStorage={localStorage}
+              shoppingCard={shoppingCard}
               totalPrice={totalPrice}
             />
           }
         ></Route>
       </Routes>
 
-      <FooterNavigation localStorage={localStorage} />
+      <FooterNavigation shoppingCard={shoppingCard} />
     </>
   );
 }

@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
 
-export default function PersonalData({ saveTheData, inputData }) {
+export default function PersonalData({ saveTheData }) {
   function savedInput(event) {
     event.preventDefault();
     const form = event.target;
@@ -9,22 +8,20 @@ export default function PersonalData({ saveTheData, inputData }) {
     saveTheData(name.value, email.value, address.value);
   }
   return (
-    <>
-      <Section>
-        <form onSubmit={savedInput}>
-          <fieldset>
-            <legend>Gib deine Persönlichen Daten ein: </legend>
-            <label>Name: </label>
-            <input type="text" name="name" id="name"></input>
-            <label>Email: </label>
-            <input type="email" name="email" id="email"></input>
-            <label>Adresse: </label>
-            <input type="text" name="address" id="address"></input>
-            <button type="submit">Submit</button>
-          </fieldset>
-        </form>
-      </Section>
-    </>
+    <Section>
+      <form onSubmit={savedInput}>
+        <fieldset>
+          <legend>Gib deine Persönlichen Daten ein: </legend>
+          <label>Name: </label>
+          <input type="text" name="name" id="name"></input>
+          <label>Email: </label>
+          <input type="email" name="email" id="email"></input>
+          <label>Adresse: </label>
+          <input type="text" name="address" id="address"></input>
+          <button type="submit">Submit</button>
+        </fieldset>
+      </form>
+    </Section>
   );
 }
 
