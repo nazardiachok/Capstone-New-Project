@@ -1,13 +1,16 @@
 import styled from "styled-components";
-export default function History({ historyItems }) {
+export default function History({ historyItems, orderTime }) {
   return (
     <Section>
       <h1>History Page</h1>
       <h4>Deine Artikel:</h4>
       {historyItems.map((element) => (
         <Artikel>
-          <ul key={element.id}>
-            <li>
+          <ul>
+            <p>
+              Bestelldatum: {orderTime[0]} {orderTime[1]}
+            </p>
+            <li key={element.id}>
               {" "}
               <h5> Artikel: {element.title}</h5>{" "}
               <h5>
