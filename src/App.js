@@ -16,6 +16,7 @@ import ShoppingCard from "./pages/ShoppingCard";
 function App() {
   const navigate = useNavigate();
   const { dataItems } = data;
+  const [orderTime, setOrderTime] = useLocalStorage("Saved time", []);
   const [filteredData, setFilteredData] = useState([]);
 
   const [select, setSelect] = useState("");
@@ -84,7 +85,17 @@ function App() {
   function moveToHistory(input) {
     setHistoryItems([...historyItems, ...shoppingCard]);
 
-    console.log(historyItems);
+    const current = new Date();
+    const date = `${current.getDate()}/${
+      current.getMonth() + 1
+    }/${current.getFullYear()}`;
+
+    const today = new Date();
+    const time =
+      today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    setOrderTime([time, date]);
+    console.log(orderTime[0]);
+
     navigate("/history");
   }
 
@@ -118,7 +129,9 @@ function App() {
         ></Route>
         <Route
           path="/history"
-          element={<History historyItems={historyItems} />}
+          element={
+            <History historyItems={historyItems} orderTime={orderTime} />
+          }
         ></Route>
 
         <Route
