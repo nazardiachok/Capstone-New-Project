@@ -46,9 +46,10 @@ const Section = styled.section`
     display: flex;
     justify-content: space-around;
     text-align: start;
+    height: 0px;
   }
   h5 {
-    margin: 5px;
+    margin: 10px;
   }
 `;
 const Artikel = styled.div`

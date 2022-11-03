@@ -24,6 +24,7 @@ function App() {
   const [shoppingCard, setShoppingCard] = useLocalStorage("Saved data: ", []);
   const [inputData, setInputData] = useState({});
   const [totalPrice, setTotalPrice] = useState(0);
+  const [historyItems, setHistoryItems] = useLocalStorage("History items", []);
 
   function inputValue(value) {
     let filtered = search(value, dataItems, {
@@ -80,7 +81,12 @@ function App() {
 
     navigate("/bestellung");
   }
-  function moveToHistory(input) {}
+  function moveToHistory(input) {
+    setHistoryItems([...historyItems, ...shoppingCard]);
+
+    console.log(historyItems);
+    navigate("/history");
+  }
 
   return (
     <>
@@ -110,7 +116,10 @@ function App() {
             />
           }
         ></Route>
-        <Route path="/history" element={<History />}></Route>
+        <Route
+          path="/history"
+          element={<History historyItems={historyItems} />}
+        ></Route>
 
         <Route
           path="/personalData"
