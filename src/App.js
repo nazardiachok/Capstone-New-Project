@@ -80,6 +80,7 @@ function App() {
 
     navigate("/bestellung");
   }
+  function moveToHistory(input) {}
 
   return (
     <>
@@ -124,6 +125,7 @@ function App() {
               inputData={inputData}
               shoppingCard={shoppingCard}
               totalPrice={totalPrice}
+              moveToHistory={moveToHistory}
             />
           }
         ></Route>
