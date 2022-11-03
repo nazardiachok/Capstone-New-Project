@@ -1,5 +1,10 @@
 import styled from "styled-components";
-export default function OrderDetails({ shoppingCard, inputData, totalPrice }) {
+export default function OrderDetails({
+  shoppingCard,
+  inputData,
+  totalPrice,
+  moveToHistory,
+}) {
   return (
     <>
       <Section>
@@ -24,6 +29,7 @@ export default function OrderDetails({ shoppingCard, inputData, totalPrice }) {
             ))}
           </Artikel>
           <h4>Total Price: {totalPrice} €</h4>
+          <button onClick={() => moveToHistory(inputData)}>Bestellen</button>
         </main>
       </Section>
     </>
