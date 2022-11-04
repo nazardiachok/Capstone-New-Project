@@ -25,9 +25,9 @@ export default function PersonalData({ saveTheData }) {
           <input
             type="email"
             name="email"
-            id="email@111.com"
+            id="email"
             pattern=".*[^\s]{1,}.*"
-            placeholder="email"
+            placeholder="email@111.com"
             required
           ></input>
           <label>Adresse: </label>
