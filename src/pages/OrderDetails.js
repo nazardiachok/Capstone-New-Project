@@ -29,6 +29,10 @@ export default function OrderDetails({
             ))}
           </Artikel>
           <h4>Total Price: {totalPrice} €</h4>
+          <span>
+            Wenn Du keine Bestellung innerhalb von den nächsten 6 Stunden
+            machst, werden deine Daten im Warenkorb nicht gespeichert!!!
+          </span>
           <button onClick={() => moveToHistory(inputData)}>Bestellen</button>
         </main>
       </Section>
@@ -50,6 +54,12 @@ const Section = styled.section`
   }
   h5 {
     margin: 10px;
+  }
+  span {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    color: red;
   }
 `;
 const Artikel = styled.div`

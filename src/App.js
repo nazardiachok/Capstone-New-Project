@@ -4,7 +4,7 @@ import HomePage from "./pages/homePage";
 import { Routes, Route } from "react-router-dom";
 import History from "./pages/History";
 import data from "./components/Data";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { search } from "fast-fuzzy";
 import Details from "./pages/Details";
 import { useNavigate } from "react-router-dom";
@@ -16,7 +16,7 @@ import ShoppingCard from "./pages/ShoppingCard";
 function App() {
   const navigate = useNavigate();
   const { dataItems } = data;
-  const [orderTime, setOrderTime] = useLocalStorage("Saved time", []);
+
   const [filteredData, setFilteredData] = useState([]);
 
   const [select, setSelect] = useState("");
@@ -48,6 +48,10 @@ function App() {
 
   function addToShoppingCard(card) {
     const objectExists = shoppingCard.find((object) => object.id === card.id);
+    const current = new Date();
+    const date = `${current.getDate()}/${
+      current.getMonth() + 1
+    }/${current.getFullYear()}`;
 
     if (objectExists) {
       setShoppingCard(
@@ -58,8 +62,11 @@ function App() {
         ) /* wenn es existiert-dann ändere amount mit .map, wenn nein-gib obj unverändert zurück  */
       );
     } else {
-      setShoppingCard([...shoppingCard, { ...card, amount: 1 }]);
+      setShoppingCard([...shoppingCard, { ...card, amount: 1, date: date }]);
     }
+    setTimeout(() => {
+      setShoppingCard([]);
+    }, 1000 * 60 * 60 * 6.5);
   }
 
   function decreaseAmount(obj) {
@@ -84,19 +91,11 @@ function App() {
   }
   function moveToHistory(input) {
     setHistoryItems([...historyItems, ...shoppingCard]);
-
-    const current = new Date();
-    const date = `${current.getDate()}/${
-      current.getMonth() + 1
-    }/${current.getFullYear()}`;
-
-    const today = new Date();
-    const time =
-      today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    setOrderTime([time, date]);
-    console.log(orderTime[0]);
-
+    setShoppingCard([]);
     navigate("/history");
+  }
+  function clearHistory() {
+    setHistoryItems([]);
   }
 
   return (
@@ -130,7 +129,7 @@ function App() {
         <Route
           path="/history"
           element={
-            <History historyItems={historyItems} orderTime={orderTime} />
+            <History historyItems={historyItems} clearHistory={clearHistory} />
           }
         ></Route>
 
