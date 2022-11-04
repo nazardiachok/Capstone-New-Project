@@ -18,6 +18,7 @@ export default function PersonalData({ saveTheData }) {
             name="name"
             id="name"
             pattern=".*[^\s]{1,}.*"
+            placeholder="Nazar Diachok"
             required
           ></input>
           <label>Email: </label>
@@ -26,10 +27,12 @@ export default function PersonalData({ saveTheData }) {
             name="email"
             id="email"
             pattern=".*[^\s]{1,}.*"
+            placeholder="email"
             required
           ></input>
           <label>Adresse: </label>
           <input
+            placeholder="Schwarze Strasse 1, Hamburg 20537"
             type="text"
             name="address"
             id="address"
