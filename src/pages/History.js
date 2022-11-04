@@ -41,6 +41,7 @@ const Section = styled.section`
   text-align: center;
   ul {
     padding: 0;
+    margin: 10px;
   }
   li {
     display: flex;
@@ -51,8 +52,8 @@ const Section = styled.section`
     }
   }
   h5 {
-    margin: 0px 5px;
-    padding: 0px;
+    margin: 0px 10px;
+    padding: 0 10px;
   }
   button {
     width: 60px;

@@ -4,7 +4,7 @@ import HomePage from "./pages/homePage";
 import { Routes, Route } from "react-router-dom";
 import History from "./pages/History";
 import data from "./components/Data";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { search } from "fast-fuzzy";
 import Details from "./pages/Details";
 import { useNavigate } from "react-router-dom";

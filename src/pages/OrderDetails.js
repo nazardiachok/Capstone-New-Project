@@ -78,6 +78,7 @@ const Section = styled.section`
   }
   span {
     color: #993366;
+    font-size: 15px;
   }
 `;
 const Artikel = styled.div`
