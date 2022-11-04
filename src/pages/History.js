@@ -3,17 +3,25 @@ export default function History({ historyItems, clearHistory }) {
   return (
     <Section>
       <h1>History Page</h1>
-      <h4>Deine Artikel:</h4>
+      <h3>Lieber Kunde, danke für Dein Vertrauen!!</h3>
+      <h4>Die von Dir früher bestellte Artikel:</h4>
       {historyItems.map((element) => (
         <Artikel>
           <ul>
             <p></p>
             <li key={element.id}>
               {" "}
-              <h5> Artikel: {element.title}</h5>{" "}
-              <h5>Bestelldatum: {element.date}</h5>
               <h5>
-                {element.amount} x {element.price} €
+                {" "}
+                Artikel: <span>{element.title}</span>
+              </h5>{" "}
+              <h5>
+                {" "}
+                Bestelldatum: <span>{element.date}</span>{" "}
+              </h5>
+              <h5>
+                Menge: <span>{element.amount}</span> x Preis:{" "}
+                <span>{element.price}</span> €
               </h5>
             </li>
           </ul>
@@ -28,9 +36,12 @@ export default function History({ historyItems, clearHistory }) {
 const Section = styled.section`
   display: flex;
   justify-content: center;
-  margin: 100px auto;
+  margin: 40px auto;
   flex-direction: column;
   text-align: center;
+  ul {
+    padding: 0;
+  }
   li {
     display: flex;
     justify-content: space-around;
@@ -40,7 +51,7 @@ const Section = styled.section`
     }
   }
   h5 {
-    margin: 0px;
+    margin: 0px 5px;
     padding: 0px;
   }
   button {
@@ -57,5 +68,9 @@ const Artikel = styled.div`
     font-size: 15px;
     text-align: center;
     font-weight: bold;
+  }
+  span {
+    color: #e67300;
+    font-size: 15px;
   }
 `;

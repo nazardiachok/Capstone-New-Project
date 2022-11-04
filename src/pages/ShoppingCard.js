@@ -118,6 +118,10 @@ export const SectionWarenkorb = styled.section`
     margin-top: 5px;
     margin-bottom: 5px;
   }
+  h3 {
+    text-align: center;
+    color: red;
+  }
 `;
 const Gesamtpreis = styled.div`
   display: flex;
