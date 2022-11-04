@@ -48,13 +48,13 @@ function App() {
 
   function addToShoppingCard(card) {
     const objectExists = shoppingCard.find((object) => object.id === card.id);
+
     const current = new Date();
     const date = `${current.getDate()}/${
       current.getMonth() + 1
     }/${current.getFullYear()}`;
 
-    const today = new Date();
-    let time = today.getHours() + ":" + today.getMinutes();
+    let time = current.getHours() + ":" + current.getMinutes();
 
     if (objectExists) {
       setShoppingCard(

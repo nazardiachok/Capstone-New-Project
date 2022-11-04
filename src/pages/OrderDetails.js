@@ -20,7 +20,7 @@ export default function OrderDetails({
             Adresse: <span> {inputData.address}</span>
           </h5>
           <Artikel>
-            <h4>Deine ausgewählte Artikel:</h4>
+            <h5>Deine ausgewählte Artikel:</h5>
             {shoppingCard.map((element) => (
               <ul key={element.id}>
                 <li>
@@ -37,9 +37,9 @@ export default function OrderDetails({
               </ul>
             ))}
           </Artikel>
-          <h4>
+          <h5>
             Total Price: <br /> <span> {totalPrice} </span> €
-          </h4>
+          </h5>
           <p>
             Wenn Du keine Bestellung innerhalb von den nächsten 6 Stunden
             machst, werden deine Daten im Warenkorb nicht gespeichert!!!
@@ -61,10 +61,11 @@ const Section = styled.section`
     display: flex;
     justify-content: space-around;
     text-align: start;
-    height: 0px;
   }
   h5 {
     margin: 10px;
+    display: flex;
+    justify-content: center;
   }
   h4 {
     display: flex;

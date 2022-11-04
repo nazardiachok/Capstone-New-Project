@@ -13,7 +13,6 @@ export default function History({ historyItems, clearHistory }) {
       {historyItems.map((element) => (
         <Artikel>
           <ul>
-            <p></p>
             <li key={element.id}>
               {" "}
               <h5>
