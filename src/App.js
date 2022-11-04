@@ -53,6 +53,9 @@ function App() {
       current.getMonth() + 1
     }/${current.getFullYear()}`;
 
+    const today = new Date();
+    let time = today.getHours() + ":" + today.getMinutes();
+
     if (objectExists) {
       setShoppingCard(
         shoppingCard.map((obj) =>
@@ -62,7 +65,10 @@ function App() {
         ) /* wenn es existiert-dann ändere amount mit .map, wenn nein-gib obj unverändert zurück  */
       );
     } else {
-      setShoppingCard([...shoppingCard, { ...card, amount: 1, date: date }]);
+      setShoppingCard([
+        ...shoppingCard,
+        { ...card, amount: 1, date: date, time: time },
+      ]);
     }
     setTimeout(() => {
       setShoppingCard([]);

@@ -17,7 +17,10 @@ export default function History({ historyItems, clearHistory }) {
               </h5>{" "}
               <h5>
                 {" "}
-                Bestelldatum: <span>{element.date}</span>{" "}
+                Bestelldatum:{" "}
+                <span>
+                  {element.date}, {element.time}
+                </span>{" "}
               </h5>
               <h5>
                 Menge: <span>{element.amount}</span> x Preis:{" "}
