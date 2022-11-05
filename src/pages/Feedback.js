@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-export default function Feedback({ feedbackSubmit }) {
+export default function Feedback({ feedbackSubmit, elementForFeedback }) {
   function submitFeedback(event) {
     event.preventDefault();
     const form = event.target;
     const { name, feedback } = form.elements;
-    feedbackSubmit(name.value, feedback.value);
+    feedbackSubmit(name.value, feedback.value, elementForFeedback);
   }
   return (
     <Section>

@@ -31,6 +31,7 @@ function App() {
     "Feedback Data: ",
     []
   );
+  const [elementForFeedback, setElementforFeedback] = useState([]);
 
   function inputValue(value) {
     let filtered = search(value, dataItems, {
@@ -109,12 +110,15 @@ function App() {
   function clearHistory() {
     setHistoryItems([]);
   }
-  function feedbackSubmit(user, feedback) {
+  function feedbackSubmit(user, feedback, elementForFeedback) {
     setFeetbackData({ user: user, feedback: feedback });
     console.log(user, feedback);
+    console.log(elementForFeedback);
   }
-  function goToFeedbackForm() {
+  function goToFeedbackForm(elem) {
+    setElementforFeedback(elem);
     navigate("/feedback");
+    /* console.log(elem); */
   }
 
   return (
@@ -175,7 +179,12 @@ function App() {
         ></Route>
         <Route
           path="/feedback"
-          element={<Feedback feedbackSubmit={feedbackSubmit} />}
+          element={
+            <Feedback
+              feedbackSubmit={feedbackSubmit}
+              elementForFeedback={elementForFeedback}
+            />
+          }
         ></Route>
       </Routes>
 
