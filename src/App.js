@@ -17,6 +17,8 @@ import Feedback from "./pages/Feedback";
 function App() {
   const navigate = useNavigate();
   const { dataItems } = data;
+  const [changedDataItems, setChangedDataItems] = useState(dataItems);
+  console.log(changedDataItems);
 
   const [filteredData, setFilteredData] = useState([]);
 
@@ -34,12 +36,11 @@ function App() {
   const [elementForFeedback, setElementforFeedback] = useState([]);
 
   function inputValue(value) {
-    let filtered = search(value, dataItems, {
+    let filtered = search(value, changedDataItems, {
       keySelector: (obj) => obj.title,
     });
     setFilteredData(filtered);
 
-    console.log(dataItems);
     let filterResult =
       select === ""
         ? filtered
