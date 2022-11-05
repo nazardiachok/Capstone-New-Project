@@ -1,5 +1,9 @@
 import styled from "styled-components";
-export default function History({ historyItems, clearHistory, feedback }) {
+export default function History({
+  historyItems,
+  clearHistory,
+  goToFeedbackForm,
+}) {
   return (
     <Section>
       <h1>History Page</h1>
@@ -20,7 +24,9 @@ export default function History({ historyItems, clearHistory, feedback }) {
                   {" "}
                   Artikel: <span>{element.title}</span>
                 </h5>{" "}
-                <button onClick={() => feedback(element)}>Bewerten</button>
+                <button onClick={() => goToFeedbackForm(element)}>
+                  Bewerten
+                </button>
               </div>
               <h5>
                 {" "}

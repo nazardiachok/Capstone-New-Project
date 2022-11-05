@@ -87,7 +87,7 @@ const Section = styled.section`
   }
   span {
     color: #993366;
-    font-size: 13px;
+    font-size: 14px;
   }
 `;
 const Artikel = styled.div`
