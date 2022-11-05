@@ -16,6 +16,7 @@ import ShoppingCard from "./pages/ShoppingCard";
 function App() {
   const navigate = useNavigate();
   const { dataItems } = data;
+
   const [filteredData, setFilteredData] = useState([]);
 
   const [select, setSelect] = useState("");
@@ -24,6 +25,7 @@ function App() {
   const [shoppingCard, setShoppingCard] = useLocalStorage("Saved data: ", []);
   const [inputData, setInputData] = useState({});
   const [totalPrice, setTotalPrice] = useState(0);
+  const [historyItems, setHistoryItems] = useLocalStorage("History items", []);
 
   function inputValue(value) {
     let filtered = search(value, dataItems, {
@@ -47,6 +49,13 @@ function App() {
   function addToShoppingCard(card) {
     const objectExists = shoppingCard.find((object) => object.id === card.id);
 
+    const current = new Date();
+    const date = `${current.getDate()}/${
+      current.getMonth() + 1
+    }/${current.getFullYear()}`;
+
+    let time = current.getHours() + ":" + current.getMinutes();
+
     if (objectExists) {
       setShoppingCard(
         shoppingCard.map((obj) =>
@@ -56,8 +65,14 @@ function App() {
         ) /* wenn es existiert-dann ändere amount mit .map, wenn nein-gib obj unverändert zurück  */
       );
     } else {
-      setShoppingCard([...shoppingCard, { ...card, amount: 1 }]);
+      setShoppingCard([
+        ...shoppingCard,
+        { ...card, amount: 1, date: date, time: time },
+      ]);
     }
+    setTimeout(() => {
+      setShoppingCard([]);
+    }, 1000 * 60 * 60 * 6.5);
   }
 
   function decreaseAmount(obj) {
@@ -79,6 +94,14 @@ function App() {
     setInputData({ name: name, email: email, address: address });
 
     navigate("/bestellung");
+  }
+  function moveToHistory(input) {
+    setHistoryItems([...historyItems, ...shoppingCard]);
+    setShoppingCard([]);
+    navigate("/history");
+  }
+  function clearHistory() {
+    setHistoryItems([]);
   }
 
   return (
@@ -109,7 +132,12 @@ function App() {
             />
           }
         ></Route>
-        <Route path="/history" element={<History />}></Route>
+        <Route
+          path="/history"
+          element={
+            <History historyItems={historyItems} clearHistory={clearHistory} />
+          }
+        ></Route>
 
         <Route
           path="/personalData"
@@ -124,6 +152,7 @@ function App() {
               inputData={inputData}
               shoppingCard={shoppingCard}
               totalPrice={totalPrice}
+              moveToHistory={moveToHistory}
             />
           }
         ></Route>

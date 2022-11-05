@@ -1,29 +1,50 @@
 import styled from "styled-components";
-export default function OrderDetails({ shoppingCard, inputData, totalPrice }) {
+export default function OrderDetails({
+  shoppingCard,
+  inputData,
+  totalPrice,
+  moveToHistory,
+}) {
   return (
     <>
       <Section>
-        <h4>Prüfe deine daten und bestätige den Kauf</h4>
+        <h4>Prüfe Deine Daten und bestätige bitte den Kauf:</h4>
         <main>
-          <h4>Dein persönliches Data: </h4>
-          <h5>Name: {inputData.name}</h5>
-          <h5>Email: {inputData.email}</h5>
-          <h5>Adresse: {inputData.address}</h5>
+          <h5>
+            Name: <span>{inputData.name} </span>
+          </h5>
+          <h5>
+            Email: <span>{inputData.email} </span>
+          </h5>
+          <h5>
+            Adresse: <span> {inputData.address}</span>
+          </h5>
           <Artikel>
-            <p>Deine bestellte Artikel:</p>
+            <h5>Deine ausgewählte Artikel:</h5>
             {shoppingCard.map((element) => (
               <ul key={element.id}>
                 <li>
                   {" "}
-                  <h5> Artikel: {element.title}</h5>{" "}
                   <h5>
-                    {element.amount} x {element.price} €
+                    {" "}
+                    Artikel: <span>{element.title} </span>
+                  </h5>{" "}
+                  <h5>
+                    <span>{element.amount} </span> x{" "}
+                    <span>{element.price} </span> €
                   </h5>
                 </li>
               </ul>
             ))}
           </Artikel>
-          <h4>Total Price: {totalPrice} €</h4>
+          <h5>
+            Total Price: <br /> <span> {totalPrice} </span> €
+          </h5>
+          <p>
+            Wenn Du keine Bestellung innerhalb von den nächsten 6 Stunden
+            machst, werden deine Daten im Warenkorb nicht gespeichert!!!
+          </p>
+          <button onClick={() => moveToHistory(inputData)}>Bestellen</button>
         </main>
       </Section>
     </>
@@ -33,7 +54,7 @@ export default function OrderDetails({ shoppingCard, inputData, totalPrice }) {
 const Section = styled.section`
   display: flex;
   justify-content: center;
-  margin: 100px auto;
+  margin: 40px auto;
   flex-direction: column;
   text-align: center;
   li {
@@ -42,7 +63,23 @@ const Section = styled.section`
     text-align: start;
   }
   h5 {
-    margin: 5px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+  }
+  h4 {
+    display: flex;
+    justify-content: center;
+    margin: 50px;
+  }
+  p {
+    color: red;
+    margin: 40px;
+    font-size: 17px;
+  }
+  span {
+    color: #993366;
+    font-size: 15px;
   }
 `;
 const Artikel = styled.div`
