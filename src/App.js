@@ -18,7 +18,6 @@ function App() {
   const navigate = useNavigate();
   const { dataItems } = data;
   const [changedDataItems, setChangedDataItems] = useState(dataItems);
-  console.log(changedDataItems);
 
   const [filteredData, setFilteredData] = useState([]);
 
@@ -61,7 +60,6 @@ function App() {
     const date = `${current.getDate()}/${
       current.getMonth() + 1
     }/${current.getFullYear()}`;
-
     let time = current.getHours() + ":" + current.getMinutes();
 
     if (objectExists) {
@@ -112,9 +110,24 @@ function App() {
     setHistoryItems([]);
   }
   function feedbackSubmit(user, feedback, elementForFeedback) {
-    setFeetbackData({ user: user, feedback: feedback });
-    console.log(user, feedback);
-    console.log(elementForFeedback);
+    /* setFeetbackData({ user: user, feedback: feedback }); */
+    /* console.log(user, feedback); */
+    /*     console.log(elementForFeedback);
+     */ const objectExists = changedDataItems.find(
+      (object) => object.id === elementForFeedback.id
+    );
+    if (objectExists) {
+      setChangedDataItems(
+        changedDataItems.map((element) =>
+          element.id === elementForFeedback.id
+            ? { ...elementForFeedback, user: user, feedback: feedback }
+            : element
+        )
+      );
+      console.log(objectExists);
+    } else {
+      return null;
+    }
   }
   function goToFeedbackForm(elem) {
     setElementforFeedback(elem);
