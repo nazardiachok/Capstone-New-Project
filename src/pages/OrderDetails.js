@@ -8,26 +8,29 @@ export default function OrderDetails({
   return (
     <>
       <Section>
-        <h4>Prüfe Deine Daten und bestätige bitte den Kauf:</h4>
+        <h3>Prüfe Deine Daten und bestätige bitte den Kauf:</h3>
         <main>
-          <h5>
-            Name: <span>{inputData.name} </span>
-          </h5>
-          <h5>
-            Email: <span>{inputData.email} </span>
-          </h5>
-          <h5>
-            Adresse: <span> {inputData.address}</span>
-          </h5>
+          {" "}
+          <div>
+            <h4>
+              Name: <span>{inputData.name} </span>
+            </h4>
+            <h4>
+              Email: <span>{inputData.email} </span>
+            </h4>
+            <h4>
+              Adresse: <span> {inputData.address}</span>
+            </h4>
+          </div>
           <Artikel>
-            <h5>Deine ausgewählte Artikel:</h5>
+            <h4>Deine ausgewählte Artikel:</h4>
             {shoppingCard.map((element) => (
               <ul key={element.id}>
                 <li>
                   {" "}
                   <h5>
                     {" "}
-                    Artikel: <span>{element.title} </span>
+                    Artikel: <span> {element.title} </span>
                   </h5>{" "}
                   <h5>
                     <span>{element.amount} </span> x{" "}
@@ -37,9 +40,9 @@ export default function OrderDetails({
               </ul>
             ))}
           </Artikel>
-          <h5>
+          <div>
             Total Price: <br /> <span> {totalPrice} </span> €
-          </h5>
+          </div>
           <p>
             Wenn Du keine Bestellung innerhalb von den nächsten 6 Stunden
             machst, werden deine Daten im Warenkorb nicht gespeichert!!!
@@ -57,20 +60,25 @@ const Section = styled.section`
   margin: 40px auto;
   flex-direction: column;
   text-align: center;
+  ul {
+    padding: 0;
+  }
   li {
     display: flex;
     justify-content: space-around;
     text-align: start;
+    gap: 40px;
   }
   h5 {
+    margin: 10px 0 0 40px;
+    width: 250px;
+    display: flex;
+    justify-content: flex-start;
+  }
+  h4 {
     margin: 10px;
     display: flex;
     justify-content: center;
-  }
-  h4 {
-    display: flex;
-    justify-content: center;
-    margin: 50px;
   }
   p {
     color: red;
@@ -79,7 +87,7 @@ const Section = styled.section`
   }
   span {
     color: #993366;
-    font-size: 15px;
+    font-size: 13px;
   }
 `;
 const Artikel = styled.div`

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-export default function History({ historyItems, clearHistory }) {
+export default function History({ historyItems, clearHistory, feedback }) {
   return (
     <Section>
       <h1>History Page</h1>
@@ -15,10 +15,13 @@ export default function History({ historyItems, clearHistory }) {
           <ul>
             <li key={element.id}>
               {" "}
-              <h5>
-                {" "}
-                Artikel: <span>{element.title}</span>
-              </h5>{" "}
+              <div>
+                <h5>
+                  {" "}
+                  Artikel: <span>{element.title}</span>
+                </h5>{" "}
+                <button onClick={() => feedback(element)}>Bewerten</button>
+              </div>
               <h5>
                 {" "}
                 Bestelldatum:{" "}
@@ -35,7 +38,7 @@ export default function History({ historyItems, clearHistory }) {
         </Artikel>
       ))}
       {historyItems.length >= 1 && (
-        <button onClick={() => clearHistory()}>Clear</button>
+        <Button onClick={() => clearHistory()}>Clear</Button>
       )}
     </Section>
   );
@@ -59,12 +62,9 @@ const Section = styled.section`
     }
   }
   h5 {
-    margin: 0px 10px;
-    padding: 0 10px;
-  }
-  button {
-    width: 60px;
-    margin: 50px auto;
+    margin: 5px;
+    padding: 0px;
+    width: 130px;
   }
 `;
 const Artikel = styled.div`
@@ -81,4 +81,11 @@ const Artikel = styled.div`
     color: #e67300;
     font-size: 15px;
   }
+  button {
+    margin-left: 5px;
+  }
+`;
+const Button = styled.button`
+  width: 60px;
+  margin: 30px auto;
 `;
