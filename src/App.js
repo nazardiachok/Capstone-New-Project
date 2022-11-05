@@ -12,6 +12,7 @@ import useLocalStorage from "./components/hooks/useLocalStorage";
 import PersonalData from "./pages/PersonalData";
 import OrderDetails from "./pages/OrderDetails";
 import ShoppingCard from "./pages/ShoppingCard";
+import Feedback from "./pages/Feedback";
 
 function App() {
   const navigate = useNavigate();
@@ -25,7 +26,11 @@ function App() {
   const [shoppingCard, setShoppingCard] = useLocalStorage("Saved data: ", []);
   const [inputData, setInputData] = useState({});
   const [totalPrice, setTotalPrice] = useState(0);
-  const [historyItems, setHistoryItems] = useLocalStorage("History items", []);
+  const [historyItems, setHistoryItems] = useLocalStorage("History items", {});
+  const [feedbackData, setFeetbackData] = useLocalStorage(
+    "Feedback Data: ",
+    []
+  );
 
   function inputValue(value) {
     let filtered = search(value, dataItems, {
@@ -33,6 +38,7 @@ function App() {
     });
     setFilteredData(filtered);
 
+    console.log(dataItems);
     let filterResult =
       select === ""
         ? filtered
@@ -103,6 +109,13 @@ function App() {
   function clearHistory() {
     setHistoryItems([]);
   }
+  function feedbackSubmit(user, feedback) {
+    setFeetbackData({ user: user, feedback: feedback });
+    console.log(user, feedback);
+  }
+  function goToFeedbackForm() {
+    navigate("/feedback");
+  }
 
   return (
     <>
@@ -135,7 +148,11 @@ function App() {
         <Route
           path="/history"
           element={
-            <History historyItems={historyItems} clearHistory={clearHistory} />
+            <History
+              historyItems={historyItems}
+              clearHistory={clearHistory}
+              goToFeedbackForm={goToFeedbackForm}
+            />
           }
         ></Route>
 
@@ -155,6 +172,10 @@ function App() {
               moveToHistory={moveToHistory}
             />
           }
+        ></Route>
+        <Route
+          path="/feedback"
+          element={<Feedback feedbackSubmit={feedbackSubmit} />}
         ></Route>
       </Routes>
 
