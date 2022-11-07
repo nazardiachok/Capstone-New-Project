@@ -131,7 +131,7 @@ function App() {
     }
 
     let isExecuted = window.confirm(
-      "Danke für Ihren Feedback! Nach submitten von Feedback werden Sie zu Homepage weitergeleitet!"
+      "Danke für Ihre Bewertung! Nach Bestätigung wird die Seite neu laden und Sie werden zu Startseite weitergeleitet! Falls sich Ihre Meinung zu den Artikel ändern sollte, können Sie den Artikel über History neu bewerten!"
     );
     if (isExecuted) {
       navigate("/");
@@ -146,9 +146,29 @@ function App() {
   function goToFeedbackForm(elem) {
     setElementforFeedback(elem);
     navigate("/feedback");
-    /* console.log(elem); */
   }
+  function deleteFeedback(obj) {
+    console.log(obj);
 
+    if (allDataItems.find((item) => item.id === obj.id)) {
+      setAllDataItems(
+        allDataItems.map((elem) =>
+          elem.id === obj.id ? { ...obj, user: "", feedback: "" } : elem
+        )
+      );
+    } else {
+      return null;
+    }
+    let isExecuted = window.confirm(
+      "Nach dem löschen wird die Seite neu laden und Sie werden zu Startseite weitergeleitet!"
+    );
+    if (isExecuted) {
+      navigate("/");
+      window.location.reload();
+    } else {
+      return null;
+    }
+  }
   return (
     <>
       <AppHeader />
@@ -164,7 +184,10 @@ function App() {
             />
           }
         ></Route>
-        <Route path="/:id" element={<Details output={output} />}></Route>
+        <Route
+          path="/:id"
+          element={<Details output={output} deleteFeedback={deleteFeedback} />}
+        ></Route>
         <Route
           path="/warenkorb"
           element={

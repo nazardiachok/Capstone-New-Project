@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-export default function Details({ output }) {
+export default function Details({ output, deleteFeedback }) {
   const navigate = useNavigate();
 
   const { id } = useParams();
@@ -28,11 +28,17 @@ export default function Details({ output }) {
           <b>Detallierte Beschreibung: </b>
         </p>
         <p>{details[0].details}</p>
-        <p>
-          <b>Feedback:</b>
-        </p>
-        <p>{details[0].user}</p>
-        <p>{details[0].feedback}</p>
+
+        {details[0].feedback !== "" && (
+          <div>
+            <p>
+              <b>Feedback:</b>
+            </p>
+            <p>{details[0].user}</p>
+            <p>{details[0].feedback}</p>
+            <button onClick={() => deleteFeedback(details[0])}>delete</button>
+          </div>
+        )}
       </figure>
 
       <button onClick={() => navigate("/")}>zurück</button>
