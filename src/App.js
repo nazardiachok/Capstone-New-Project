@@ -17,7 +17,10 @@ import Feedback from "./pages/Feedback";
 function App() {
   const navigate = useNavigate();
   const { dataItems } = data;
-  const [changedDataItems, setChangedDataItems] = useState(dataItems);
+  const [allDataItems, setAllDataItems] = useLocalStorage(
+    "Data Items",
+    dataItems
+  );
 
   const [filteredData, setFilteredData] = useState([]);
 
@@ -27,15 +30,12 @@ function App() {
   const [shoppingCard, setShoppingCard] = useLocalStorage("Saved data: ", []);
   const [inputData, setInputData] = useState({});
   const [totalPrice, setTotalPrice] = useState(0);
-  const [historyItems, setHistoryItems] = useLocalStorage("History items", {});
-  const [feedbackData, setFeetbackData] = useLocalStorage(
-    "Feedback Data: ",
-    []
-  );
+  const [historyItems, setHistoryItems] = useLocalStorage("History items", []);
+
   const [elementForFeedback, setElementforFeedback] = useState([]);
 
   function inputValue(value) {
-    let filtered = search(value, changedDataItems, {
+    let filtered = search(value, allDataItems, {
       keySelector: (obj) => obj.title,
     });
     setFilteredData(filtered);
@@ -110,17 +110,19 @@ function App() {
     setHistoryItems([]);
   }
   function feedbackSubmit(user, feedback, elementForFeedback) {
-    /* setFeetbackData({ user: user, feedback: feedback }); */
-    /* console.log(user, feedback); */
-    /*     console.log(elementForFeedback);
-     */ const objectExists = changedDataItems.find(
+    console.log(user, feedback);
+    const objectExists = allDataItems.find(
       (object) => object.id === elementForFeedback.id
     );
     if (objectExists) {
-      setChangedDataItems(
-        changedDataItems.map((element) =>
+      setAllDataItems(
+        allDataItems.map((element) =>
           element.id === elementForFeedback.id
-            ? { ...elementForFeedback, user: user, feedback: feedback }
+            ? {
+                ...elementForFeedback,
+                user: user,
+                feedback: feedback,
+              }
             : element
         )
       );
@@ -128,6 +130,8 @@ function App() {
     } else {
       return null;
     }
+    window.location.reload();
+    /* feedback erst nach zweitem click geht startet. brauchte reload */
   }
   function goToFeedbackForm(elem) {
     setElementforFeedback(elem);

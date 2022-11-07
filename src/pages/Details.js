@@ -8,9 +8,7 @@ export default function Details({ output }) {
   const { id } = useParams();
   const details = output.filter((obj) => obj.id === +id);
 
-  /* console.log(output);
-  console.log(details);
-  console.log(id); */
+  console.log(details[0].user, details[0].feedback);
 
   return (
     <StyledDetails>
@@ -18,18 +16,23 @@ export default function Details({ output }) {
         <img src={details[0].image} alt="schuh"></img>
         <figcaption>{details[0].title} </figcaption>
         <p>
-          <strong>{details[0].category}</strong>
+          <b>{details[0].category}</b>
         </p>
         <p>
-          <strong>Made in:</strong> {details[0].MadeIn}
+          <b>Made in:</b> {details[0].MadeIn}
         </p>
         <p>
-          <strong>Preis:</strong> {details[0].price} €
+          <b>Preis:</b> {details[0].price} €
         </p>
         <p>
-          <strong>Detallierte Beschreibung: </strong>
+          <b>Detallierte Beschreibung: </b>
         </p>
         <p>{details[0].details}</p>
+        <p>
+          <b>Feedback:</b>
+        </p>
+        <p>{details[0].user}</p>
+        <p>{details[0].feedback}</p>
       </figure>
 
       <button onClick={() => navigate("/")}>zurück</button>
