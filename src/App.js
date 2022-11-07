@@ -110,7 +110,7 @@ function App() {
     setHistoryItems([]);
   }
   function feedbackSubmit(user, feedback, elementForFeedback) {
-    console.log(user, feedback);
+    /*  console.log(user, feedback); */
     const objectExists = allDataItems.find(
       (object) => object.id === elementForFeedback.id
     );
@@ -126,12 +126,22 @@ function App() {
             : element
         )
       );
-      console.log(objectExists);
     } else {
       return null;
     }
-    window.location.reload();
-    /* feedback erst nach zweitem click geht startet. brauchte reload */
+
+    let isExecuted = window.confirm(
+      "Danke für Ihren Feedback! Nach submitten von Feedback werden Sie zu Homepage weitergeleitet!"
+    );
+    if (isExecuted) {
+      navigate("/");
+      window.location.reload();
+    } else {
+      return null;
+    }
+    console.log(isExecuted);
+
+    /* 1.feedback erst nach zweitem click wird überschrieben. brauchte reload. kann nicht direct zum details navigieren,weil nach reload- id verschwindet */
   }
   function goToFeedbackForm(elem) {
     setElementforFeedback(elem);

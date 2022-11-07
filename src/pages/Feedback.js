@@ -6,12 +6,21 @@ export default function Feedback({ feedbackSubmit, elementForFeedback }) {
     const form = event.target;
     const { name, feedback } = form.elements;
     feedbackSubmit(name.value, feedback.value, elementForFeedback);
+    console.log(name.value, feedback.value);
+    console.log(elementForFeedback);
   }
   return (
     <Section>
+      <p>
+        <b> Deine Bewertung zum folgenden Artikel: </b>
+        {elementForFeedback.title}, <b> gekauft am </b> 
+        {elementForFeedback.date}. <b> Gesamtmenge: </b>{" "}
+        {elementForFeedback.amount} <b> Paar, je </b> {elementForFeedback.price}
+         <b> € </b>
+      </p>
       <form onSubmit={submitFeedback}>
         <fieldset>
-          <legend>feedback</legend>
+          <legend>Deine Bewertung</legend>
           <label>Name</label>
           <input
             type="text"
@@ -35,9 +44,11 @@ export default function Feedback({ feedbackSubmit, elementForFeedback }) {
   );
 }
 const Section = styled.section`
+  max-width: 400px;
   display: flex;
   justify-content: center;
   margin: 100px auto;
+  flex-direction: column;
 
   fieldset {
     display: flex;
@@ -47,5 +58,10 @@ const Section = styled.section`
     button {
       margin-top: 40px;
     }
+  }
+  p {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 18px;
   }
 `;

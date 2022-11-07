@@ -7,7 +7,7 @@ export default function Details({ output }) {
 
   const { id } = useParams();
   const details = output.filter((obj) => obj.id === +id);
-
+  console.log(details[0]);
   console.log(details[0].user, details[0].feedback);
 
   return (
