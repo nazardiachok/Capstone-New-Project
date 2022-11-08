@@ -13,10 +13,11 @@ export default function Feedback({ feedbackSubmit, elementForFeedback }) {
     <Section>
       <p>
         <b> Deine Bewertung zum folgenden Artikel: </b>
-        {elementForFeedback.title}, <b> gekauft am </b> 
-        {elementForFeedback.date}. <b> Gesamtmenge: </b>{" "}
-        {elementForFeedback.amount} <b> Paar. </b> <b> Preis: </b>{" "}
-        {elementForFeedback.price} <b> € je Paar. </b>
+        <span>{elementForFeedback.title}</span>, <b> gekauft am </b> 
+        <span>{elementForFeedback.date}</span>. <b> Gesamtmenge: </b>{" "}
+        <span>{elementForFeedback.amount}</span>
+        <b> Paar. </b> <b> Preis: </b> <span>{elementForFeedback.price}</span> 
+        <b> € je Paar. </b>
       </p>
       <form onSubmit={submitFeedback}>
         <fieldset>
@@ -49,7 +50,9 @@ const Section = styled.section`
   justify-content: center;
   margin: 100px auto;
   flex-direction: column;
-
+  span {
+    color: red;
+  }
   fieldset {
     display: flex;
     flex-direction: column;

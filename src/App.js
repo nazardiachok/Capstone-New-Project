@@ -109,7 +109,6 @@ function App() {
     setHistoryItems([]);
   }
   function feedbackSubmit(user, feedback, elementForFeedback) {
-    /*  console.log(user, feedback); */
     const objectExists = allDataItems.find(
       (object) => object.id === elementForFeedback.id
     );
@@ -130,7 +129,7 @@ function App() {
     }
 
     let isExecuted = window.confirm(
-      "Danke für Ihre Bewertung! Nach Bestätigung wird die Seite neu laden und Sie werden zu Artikel Details weitergeleitet! Falls sich Ihre Meinung zu den Artikel ändern sollte, können Sie den Artikel über History neu bewerten!"
+      "Danke für Ihre Bewertung! Nach Bestätigung wird die Seite neu laden und Sie werden zu  dem Artikel Details weitergeleitet! Falls sich Ihre Meinung zu den Artikel ändern sollte, können Sie den Artikel über History neu bewerten!"
     );
     if (isExecuted) {
       navigate(`/${elementForFeedback.id}`);
@@ -139,18 +138,21 @@ function App() {
       return null;
     }
     console.log(isExecuted);
-
-    /* 1.feedback erst nach zweitem click wird überschrieben. brauchte reload. kann nicht direct zum details navigieren,weil nach reload- id verschwindet */
   }
   function goToFeedbackForm(elem) {
     setElementforFeedback(elem);
     navigate("/feedback");
   }
+  function editFeedback(elem) {
+    setElementforFeedback(elem);
+    navigate("/feedback");
+  }
   function deleteFeedback(obj) {
     let isExecuted = window.confirm(
-      "Nach dem löschen wird die Seite neu laden und Sie werden zu Startseite weitergeleitet!"
+      "Sind Sie sicher dass Sie die Bewertung löschen möchten?"
     );
     if (isExecuted) {
+      /* menn du yes clickst-führe delete aus, sonst lasse unverändert */
       if (allDataItems.find((item) => item.id === obj.id)) {
         setAllDataItems(
           allDataItems.map((elem) =>
@@ -185,6 +187,7 @@ function App() {
             <Details
               allDataItems={allDataItems}
               deleteFeedback={deleteFeedback}
+              editFeedback={editFeedback}
             />
           }
         ></Route>

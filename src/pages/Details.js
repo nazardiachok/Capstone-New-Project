@@ -3,7 +3,11 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useState } from "react";
 
-export default function Details({ deleteFeedback, allDataItems }) {
+export default function Details({
+  deleteFeedback,
+  allDataItems,
+  editFeedback,
+}) {
   const navigate = useNavigate();
 
   const { id } = useParams();
@@ -42,6 +46,9 @@ export default function Details({ deleteFeedback, allDataItems }) {
               <p>Datum: {details[0].date}</p>
               <DeleteButton onClick={() => deleteFeedback(details[0])}>
                 Bewertung löschen
+              </DeleteButton>
+              <DeleteButton onClick={() => editFeedback(details[0])}>
+                Bewertung bearbeiten
               </DeleteButton>
             </Section>
           </>

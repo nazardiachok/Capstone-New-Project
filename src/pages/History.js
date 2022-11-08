@@ -6,7 +6,7 @@ export default function History({
 }) {
   return (
     <Section>
-      <h1>History Page</h1>
+      <h1>Kaufübersicht</h1>
 
       {historyItems.length >= 1 && (
         <div>
@@ -26,6 +26,7 @@ export default function History({
                 </h5>{" "}
                 <button onClick={() => goToFeedbackForm(element)}>
                   Bewerten
+                  {/* {toggleHistory ? "Neu bewerten" : "Bewerten"} */}
                 </button>
               </div>
               <h5>
