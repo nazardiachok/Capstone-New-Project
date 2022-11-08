@@ -1,14 +1,16 @@
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { useState } from "react";
 
-export default function Details({ output, deleteFeedback }) {
+export default function Details({ deleteFeedback, allDataItems }) {
   const navigate = useNavigate();
 
   const { id } = useParams();
-  const details = output.filter((obj) => obj.id === +id);
-  console.log(details[0]);
-  console.log(details[0].user, details[0].feedback);
+
+  const details = allDataItems.filter((obj) => obj.id === +id);
+
+  const [toggleFeedback, setToggleFeedback] = useState(false);
 
   return (
     <StyledDetails>
@@ -29,19 +31,28 @@ export default function Details({ output, deleteFeedback }) {
         </p>
         <p>{details[0].details}</p>
 
-        {details[0].feedback !== "" && (
-          <div>
-            <p>
-              <b>Feedback:</b>
-            </p>
-            <p>{details[0].user}</p>
-            <p>{details[0].feedback}</p>
-            <button onClick={() => deleteFeedback(details[0])}>delete</button>
-          </div>
+        {details[0].feedback ? (
+          <>
+            <FeedbackButton onClick={() => setToggleFeedback(!toggleFeedback)}>
+              {!toggleFeedback ? "Bewertung ansehen" : "Bewertung verstecken"}
+            </FeedbackButton>
+            <Section toggleFeedback={toggleFeedback}>
+              <p>Username: {details[0].user}</p>
+              <p>Bewertung: {details[0].feedback}</p>
+              <p>Datum: {details[0].date}</p>
+              <DeleteButton onClick={() => deleteFeedback(details[0])}>
+                Bewertung löschen
+              </DeleteButton>
+            </Section>
+          </>
+        ) : (
+          <div>Es gibt keine Bewertungen zur Zeit!</div>
         )}
       </figure>
 
-      <button onClick={() => navigate("/")}>zurück</button>
+      <BackButton toggleFeedback={toggleFeedback} onClick={() => navigate("/")}>
+        Zurück
+      </BackButton>
     </StyledDetails>
   );
 }
@@ -72,9 +83,41 @@ const StyledDetails = styled.main`
   }
   p {
     font-size: 20px;
+    margin-left: 10px;
   }
-  button {
-    width: 60px;
-    margin: auto;
+
+  div {
+    margin: 10px;
+  }
+`;
+const Section = styled.section`
+  display: ${({ toggleFeedback }) => (toggleFeedback ? "block" : "none")};
+`;
+const BackButton = styled.button`
+  min-width: 60px;
+  margin: auto;
+  background-color: #ff6666;
+`;
+const FeedbackButton = styled.button`
+  min-width: 60px;
+  margin: auto;
+  margin-left: 10px;
+  border-radius: 10px;
+  &:hover {
+    background-color: aliceblue;
+    cursor: pointer;
+  }
+  /* background-color: ${({ toggleFeedback }) =>
+    toggleFeedback ? "green" : "red"}; */
+`;
+const DeleteButton = styled.button`
+  min-width: 60px;
+  margin: auto;
+  margin-left: 10px;
+  border-radius: 10px;
+  border: none;
+  &:hover {
+    cursor: pointer;
+    background-color: #ff6666;
   }
 `;

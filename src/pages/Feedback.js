@@ -34,7 +34,7 @@ export default function Feedback({ feedbackSubmit, elementForFeedback }) {
             name="feedback"
             id="feedback"
             rows="9"
-            maxLength="150"
+            maxLength="250"
             required
           ></textarea>
           <button type="submit">Submit</button>
