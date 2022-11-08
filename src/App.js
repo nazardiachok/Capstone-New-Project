@@ -21,17 +21,13 @@ function App() {
     "Data Items",
     dataItems
   );
-
   const [filteredData, setFilteredData] = useState([]);
-
   const [select, setSelect] = useState("");
   const [output, setOutput] = useState([]);
-
   const [shoppingCard, setShoppingCard] = useLocalStorage("Saved data: ", []);
   const [inputData, setInputData] = useState({});
   const [totalPrice, setTotalPrice] = useState(0);
   const [historyItems, setHistoryItems] = useLocalStorage("History items", []);
-
   const [elementForFeedback, setElementforFeedback] = useState([]);
 
   function inputValue(value) {
@@ -104,6 +100,9 @@ function App() {
   function moveToHistory(input) {
     setHistoryItems([...historyItems, ...shoppingCard]);
     setShoppingCard([]);
+    window.confirm(
+      `Sehr geehrte/r ${inputData.name}! Danke für Ihren Kauf! Wir leiten Sie zu dem Kaufübersicht weiter.`
+    );
     navigate("/history");
   }
   function clearHistory() {

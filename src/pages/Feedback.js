@@ -15,13 +15,13 @@ export default function Feedback({ feedbackSubmit, elementForFeedback }) {
         <b> Deine Bewertung zum folgenden Artikel: </b>
         {elementForFeedback.title}, <b> gekauft am </b> 
         {elementForFeedback.date}. <b> Gesamtmenge: </b>{" "}
-        {elementForFeedback.amount} <b> Paar, je </b> {elementForFeedback.price}
-         <b> € </b>
+        {elementForFeedback.amount} <b> Paar. </b> <b> Preis: </b>{" "}
+        {elementForFeedback.price} <b> € je Paar. </b>
       </p>
       <form onSubmit={submitFeedback}>
         <fieldset>
           <legend>Deine Bewertung</legend>
-          <label>Name</label>
+          <label>Username</label>
           <input
             type="text"
             name="name"
