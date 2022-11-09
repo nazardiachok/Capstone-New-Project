@@ -8,14 +8,16 @@ export default function Details({
   allDataItems,
   editFeedback,
 }) {
+  const [toggleFeedback, setToggleFeedback] = useState(false);
   const navigate = useNavigate();
 
   const { id } = useParams();
 
+  if (id > 12) {
+    navigate("/");
+    return;
+  }
   const details = allDataItems.filter((obj) => obj.id === +id);
-
-  const [toggleFeedback, setToggleFeedback] = useState(false);
-
   return (
     <StyledDetails>
       <figure>
@@ -44,10 +46,10 @@ export default function Details({
               <p>Username: {details[0].user}</p>
               <p>Bewertung: {details[0].feedback}</p>
               <p>Datum: {details[0].date}</p>
-              <DeleteButton onClick={() => deleteFeedback(details)}>
+              <DeleteButton onClick={() => deleteFeedback(details[0])}>
                 Bewertung löschen
               </DeleteButton>
-              <DeleteButton onClick={() => editFeedback(details)}>
+              <DeleteButton onClick={() => editFeedback(details[0])}>
                 Bewertung bearbeiten
               </DeleteButton>
             </Section>

@@ -6,6 +6,7 @@ const data = {
       category: "Herrenschue",
       MadeIn: "China",
       price: 119,
+      bookmarked: false,
       image:
         "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,b_rgb:f5f5f5/b7d9211c-26e7-431a-ac24-b0540fb3c00f/air-force-1-07-herrenschuh-GjGXSP.png",
       details:
@@ -17,6 +18,7 @@ const data = {
       category: "Damenschuh",
       MadeIn: "China",
       price: 129,
+      bookmarked: false,
       image:
         "https://static.nike.com/a/images/c_limit,w_592,f_auto/t_product_v1/48f2834b-bc0a-4fd6-8513-33d3ff0e7489/air-jordan-1-mid-damenschuh-XrWJMF.png",
       details:
@@ -28,6 +30,7 @@ const data = {
       category: "Herrenschue",
       MadeIn: "China",
       price: 117,
+      bookmarked: false,
       image:
         "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/ed4fb193-247d-4e4e-aaf7-12ff56bdffd8/air-force-1-07-lv8-herrenschuh-kLnMBL.png",
       details:
@@ -39,6 +42,7 @@ const data = {
       category: "Herrenschuh",
       MadeIn: "China",
       price: 134,
+      bookmarked: false,
       image:
         "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/a6bce3ef-bc25-4e3d-b45b-db8223745a49/air-force-1-react-herrenschuh-G09PQp.png",
       details:
@@ -50,6 +54,7 @@ const data = {
       category: "Herrenschuh",
       MadeIn: "China",
       price: 299,
+      bookmarked: false,
       image:
         "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/928f082e-4b98-4fb5-9eb2-13929291857e/air-zoom-alphafly-next-2-herren-strassenlaufschuh-fur-wettkampfe-fvDSdT.png",
       details:
@@ -61,6 +66,7 @@ const data = {
       category: "Damenschuh",
       MadeIn: "Vietnam",
       price: 119,
+      bookmarked: false,
       image:
         "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/b73a2874-5e78-4ece-ae2d-44855da7210c/air-force-1-07-lx-schuhe-fur-Wn761w.png",
       details:
@@ -72,6 +78,7 @@ const data = {
       category: "Herrenschuh",
       MadeIn: "Vietnam",
       price: 107,
+      bookmarked: false,
       image:
         "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/db03a7f6-5d72-4a93-82b9-b0c7fb56bc0c/react-infinity-run-flyknit-3-strassenlaufschuh-fur-V2tvkX.png",
       details:
@@ -83,6 +90,7 @@ const data = {
       category: "Damenschuh",
       MadeIn: "Vietnam",
       price: 159,
+      bookmarked: false,
       image:
         "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/23148737-cf6e-4453-b7f2-9cc75a0365fe/custom-huarache-run-by-you.png",
       details:
@@ -94,6 +102,7 @@ const data = {
       category: "Herrenschuh",
       MadeIn: "Vietnam",
       price: 99,
+      bookmarked: false,
       image:
         "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/017adbe2-656c-497f-a913-d28687a52a8d/zion-2-herren-basketballschuh-khWbrw.png",
       details:
@@ -105,6 +114,7 @@ const data = {
       category: "Damenschuh",
       MadeIn: "China",
       price: 129,
+      bookmarked: false,
       image:
         "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/7b8812d8-ae29-4dad-87c8-d4691cc77ce2/jordan-1-mid-alt-se-schuh-fur-jungere-PvNJKb.png",
       details:
@@ -116,6 +126,7 @@ const data = {
       category: "Damenschuh",
       MadeIn: "Vietnam",
       price: 149,
+      bookmarked: false,
       image:
         "https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,b_rgb:f5f5f5/618fdea5-d1d8-4afa-b219-d929a9ec29f1/air-force-1-pltaform-damenschuh-T8k2JB.png",
       details:
@@ -127,6 +138,7 @@ const data = {
       category: "Damenschuh",
       MadeIn: "Vietnam",
       price: 169,
+      bookmarked: false,
       image:
         "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/a7c9d0b9-3a90-4ab5-a874-3a5f36ddfd44/kd15-basketballschuh-dltSlN.png",
       details:
@@ -138,6 +150,7 @@ const data = {
       category: "Damenschuh",
       MadeIn: "Vietnam",
       price: 134,
+      bookmarked: false,
       image:
         "https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/202de7ea-40c2-4785-864f-6efb74f08787/air-zoom-pegasus-39-shield-wetterfester-strassenlaufschuh-fur-2TjRx0.png",
       details:
