@@ -100,19 +100,17 @@ function App() {
   function moveToHistory(input) {
     setHistoryItems([...historyItems, ...shoppingCard]);
     setShoppingCard([]);
-    window.confirm(
-      `Sehr geehrte/r ${inputData.name}! Danke für Ihren Kauf! Wir leiten Sie zu dem Kaufübersicht weiter.`
-    );
+
     navigate("/history");
   }
   function clearHistory() {
     setHistoryItems([]);
   }
   function feedbackSubmit(user, feedback, elementForFeedback) {
-    const objectExists = allDataItems.find(
+    const foundObject = allDataItems.find(
       (object) => object.id === elementForFeedback.id
     );
-    if (objectExists) {
+    if (foundObject) {
       setAllDataItems(
         allDataItems.map((element) =>
           element.id === elementForFeedback.id
@@ -133,11 +131,9 @@ function App() {
     );
     if (isExecuted) {
       navigate(`/${elementForFeedback.id}`);
-      window.location.reload();
     } else {
       return null;
     }
-    console.log(isExecuted);
   }
   function goToFeedbackForm(elem) {
     setElementforFeedback(elem);

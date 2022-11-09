@@ -44,10 +44,10 @@ export default function Details({
               <p>Username: {details[0].user}</p>
               <p>Bewertung: {details[0].feedback}</p>
               <p>Datum: {details[0].date}</p>
-              <DeleteButton onClick={() => deleteFeedback(details[0])}>
+              <DeleteButton onClick={() => deleteFeedback(details)}>
                 Bewertung löschen
               </DeleteButton>
-              <DeleteButton onClick={() => editFeedback(details[0])}>
+              <DeleteButton onClick={() => editFeedback(details)}>
                 Bewertung bearbeiten
               </DeleteButton>
             </Section>

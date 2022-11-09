@@ -6,8 +6,6 @@ export default function Feedback({ feedbackSubmit, elementForFeedback }) {
     const form = event.target;
     const { name, feedback } = form.elements;
     feedbackSubmit(name.value, feedback.value, elementForFeedback);
-    console.log(name.value, feedback.value);
-    console.log(elementForFeedback);
   }
   return (
     <Section>
@@ -22,7 +20,7 @@ export default function Feedback({ feedbackSubmit, elementForFeedback }) {
       <form onSubmit={submitFeedback}>
         <fieldset>
           <legend>Deine Bewertung</legend>
-          <label>Username</label>
+          <label htmlFor="name">Username</label>
           <input
             type="text"
             name="name"
@@ -30,7 +28,7 @@ export default function Feedback({ feedbackSubmit, elementForFeedback }) {
             placeholder="username"
             required
           ></input>
-          <label>Bewertung</label>
+          <label htmlFor="feedback">Bewertung</label>
           <textarea
             name="feedback"
             id="feedback"
