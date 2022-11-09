@@ -1,38 +1,67 @@
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { useState } from "react";
 
-export default function Details({ output }) {
+export default function Details({
+  deleteFeedback,
+  allDataItems,
+  editFeedback,
+}) {
+  const [toggleFeedback, setToggleFeedback] = useState(false);
   const navigate = useNavigate();
 
   const { id } = useParams();
-  const details = output.filter((obj) => obj.id === +id);
 
-  /* console.log(output);
-  console.log(details);
-  console.log(id); */
-
+  if (id > 13) {
+    navigate("/");
+    return;
+  }
+  const details = allDataItems.filter((obj) => obj.id === +id);
   return (
     <StyledDetails>
       <figure>
         <img src={details[0].image} alt="schuh"></img>
         <figcaption>{details[0].title} </figcaption>
         <p>
-          <strong>{details[0].category}</strong>
+          <b>{details[0].category}</b>
         </p>
         <p>
-          <strong>Made in:</strong> {details[0].MadeIn}
+          <b>Made in:</b> {details[0].MadeIn}
         </p>
         <p>
-          <strong>Preis:</strong> {details[0].price} €
+          <b>Preis:</b> {details[0].price} €
         </p>
         <p>
-          <strong>Detallierte Beschreibung: </strong>
+          <b>Detallierte Beschreibung: </b>
         </p>
         <p>{details[0].details}</p>
+
+        {details[0].feedback ? (
+          <>
+            <FeedbackButton onClick={() => setToggleFeedback(!toggleFeedback)}>
+              {!toggleFeedback ? "Bewertung ansehen" : "Bewertung verstecken"}
+            </FeedbackButton>
+            <Section toggleFeedback={toggleFeedback}>
+              <p>Username: {details[0].user}</p>
+              <p>Bewertung: {details[0].feedback}</p>
+              <p>Datum: {details[0].date}</p>
+              <DeleteButton onClick={() => deleteFeedback(details[0])}>
+                Bewertung löschen
+              </DeleteButton>
+              <DeleteButton onClick={() => editFeedback(details[0])}>
+                Bewertung bearbeiten
+              </DeleteButton>
+            </Section>
+          </>
+        ) : (
+          <div>Es gibt keine Bewertungen zur Zeit!</div>
+        )}
       </figure>
 
-      <button onClick={() => navigate("/")}>zurück</button>
+      <BackButton toggleFeedback={toggleFeedback} onClick={() => navigate("/")}>
+        Zurück
+      </BackButton>
     </StyledDetails>
   );
 }
@@ -63,9 +92,42 @@ const StyledDetails = styled.main`
   }
   p {
     font-size: 20px;
+    margin-left: 10px;
   }
-  button {
-    width: 60px;
-    margin: auto;
+
+  div {
+    margin: 10px;
+  }
+`;
+const Section = styled.section`
+  display: ${({ toggleFeedback }) => (toggleFeedback ? "block" : "none")};
+`;
+const BackButton = styled.button`
+  min-width: 60px;
+  margin: auto;
+  background-color: #ff6666;
+`;
+const FeedbackButton = styled.button`
+  min-width: 60px;
+  margin: auto;
+  margin-left: 10px;
+  border-radius: 10px;
+  &:hover {
+    background-color: aliceblue;
+    cursor: pointer;
+  }
+  /* background-color: ${({ toggleFeedback }) =>
+    toggleFeedback ? "green" : "red"}; */
+`;
+const DeleteButton = styled.button`
+  min-width: 60px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  border-radius: 10px;
+
+  border: none;
+  &:hover {
+    cursor: pointer;
+    background-color: #ff6666;
   }
 `;

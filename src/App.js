@@ -12,23 +12,27 @@ import useLocalStorage from "./components/hooks/useLocalStorage";
 import PersonalData from "./pages/PersonalData";
 import OrderDetails from "./pages/OrderDetails";
 import ShoppingCard from "./pages/ShoppingCard";
+import Feedback from "./pages/Feedback";
 
 function App() {
   const navigate = useNavigate();
   const { dataItems } = data;
-
+  const [allDataItems, setAllDataItems] = useLocalStorage(
+    "Data Items",
+    dataItems
+  );
   const [filteredData, setFilteredData] = useState([]);
-
   const [select, setSelect] = useState("");
   const [output, setOutput] = useState([]);
-
   const [shoppingCard, setShoppingCard] = useLocalStorage("Saved data: ", []);
   const [inputData, setInputData] = useState({});
   const [totalPrice, setTotalPrice] = useState(0);
   const [historyItems, setHistoryItems] = useLocalStorage("History items", []);
+  const [elementForFeedback, setElementforFeedback] = useState([]);
+  const [editFeedbackInput, setEditFeedbackInput] = useState({});
 
   function inputValue(value) {
-    let filtered = search(value, dataItems, {
+    let filtered = search(value, allDataItems, {
       keySelector: (obj) => obj.title,
     });
     setFilteredData(filtered);
@@ -53,7 +57,6 @@ function App() {
     const date = `${current.getDate()}/${
       current.getMonth() + 1
     }/${current.getFullYear()}`;
-
     let time = current.getHours() + ":" + current.getMinutes();
 
     if (objectExists) {
@@ -98,12 +101,71 @@ function App() {
   function moveToHistory(input) {
     setHistoryItems([...historyItems, ...shoppingCard]);
     setShoppingCard([]);
+
     navigate("/history");
   }
   function clearHistory() {
     setHistoryItems([]);
   }
+  function feedbackSubmit(user, feedback, elementForFeedback) {
+    const foundObject = allDataItems.find(
+      (object) => object.id === elementForFeedback.id
+    );
+    if (foundObject) {
+      setAllDataItems(
+        allDataItems.map((element) =>
+          element.id === elementForFeedback.id
+            ? {
+                ...elementForFeedback,
+                user: user,
+                feedback: feedback,
+              }
+            : element
+        )
+      );
+    } else {
+      return null;
+    }
 
+    let isExecuted = window.confirm(
+      "Danke für Ihre Bewertung! Nach Bestätigung werden Sie zum Artikel Details weitergeleitet!"
+    );
+    if (isExecuted) {
+      navigate(`/${elementForFeedback.id}`);
+    } else {
+      return null;
+    }
+  }
+  function goToFeedbackForm(elem) {
+    setEditFeedbackInput({ user: "", feedback: "" });
+    setElementforFeedback(elem);
+    navigate("/feedback");
+  }
+  function editFeedback(elem) {
+    setElementforFeedback(elem);
+    setEditFeedbackInput({ user: elem.user, feedback: elem.feedback });
+    /*  damit füge ich defaultValue zum Feedback page hinzu, und in einer function oben -leere ich den feld bevor ich dahin von history navigiere */
+    navigate("/feedback");
+  }
+  function deleteFeedback(obj) {
+    let isExecuted = window.confirm(
+      "Sind Sie sicher dass Sie die Bewertung löschen möchten?"
+    );
+    if (isExecuted) {
+      /* menn du yes clickst-führe delete aus, sonst lasse unverändert */
+      if (allDataItems.find((item) => item.id === obj.id)) {
+        setAllDataItems(
+          allDataItems.map((elem) =>
+            elem.id === obj.id ? { ...obj, user: "", feedback: "" } : elem
+          )
+        );
+      } else {
+        return null;
+      }
+    } else {
+      return null;
+    }
+  }
   return (
     <>
       <AppHeader />
@@ -119,7 +181,16 @@ function App() {
             />
           }
         ></Route>
-        <Route path="/:id" element={<Details output={output} />}></Route>
+        <Route
+          path="/:id"
+          element={
+            <Details
+              allDataItems={allDataItems}
+              deleteFeedback={deleteFeedback}
+              editFeedback={editFeedback}
+            />
+          }
+        ></Route>
         <Route
           path="/warenkorb"
           element={
@@ -135,7 +206,11 @@ function App() {
         <Route
           path="/history"
           element={
-            <History historyItems={historyItems} clearHistory={clearHistory} />
+            <History
+              historyItems={historyItems}
+              clearHistory={clearHistory}
+              goToFeedbackForm={goToFeedbackForm}
+            />
           }
         ></Route>
 
@@ -153,6 +228,16 @@ function App() {
               shoppingCard={shoppingCard}
               totalPrice={totalPrice}
               moveToHistory={moveToHistory}
+            />
+          }
+        ></Route>
+        <Route
+          path="/feedback"
+          element={
+            <Feedback
+              feedbackSubmit={feedbackSubmit}
+              elementForFeedback={elementForFeedback}
+              editFeedbackInput={editFeedbackInput}
             />
           }
         ></Route>
