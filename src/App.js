@@ -129,7 +129,7 @@ function App() {
     }
 
     let isExecuted = window.confirm(
-      "Danke für Ihre Bewertung! Nach Bestätigung wird die Seite neu laden und Sie werden zu  dem Artikel Details weitergeleitet! Falls sich Ihre Meinung zu den Artikel ändern sollte, können Sie den Artikel über History neu bewerten!"
+      "Danke für Ihre Bewertung! Nach Bestätigung werden Sie zum Artikel Details weitergeleitet!"
     );
     if (isExecuted) {
       navigate(`/${elementForFeedback.id}`);

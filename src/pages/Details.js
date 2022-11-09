@@ -119,9 +119,10 @@ const FeedbackButton = styled.button`
 `;
 const DeleteButton = styled.button`
   min-width: 60px;
-  margin: auto;
+  margin-bottom: 20px;
   margin-left: 10px;
   border-radius: 10px;
+
   border: none;
   &:hover {
     cursor: pointer;
