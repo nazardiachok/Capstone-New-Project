@@ -33,6 +33,7 @@ export default function Feedback({
             defaultValue={editFeedbackInput.user}
             placeholder="username"
             required
+            pattern=".*[^\s]{1,}.*"
           ></input>
           <label htmlFor="feedback">Bewertung</label>
           <textarea
@@ -42,6 +43,7 @@ export default function Feedback({
             rows="9"
             maxLength="250"
             required
+            pattern=".*[^\s]{1,}.*"
           ></textarea>
           <button type="submit">Submit</button>
         </fieldset>

@@ -144,7 +144,7 @@ function App() {
   function editFeedback(elem) {
     setElementforFeedback(elem);
     setEditFeedbackInput({ user: elem.user, feedback: elem.feedback });
-    /*  damit füge ich defaultValue zum Feedback page hinzu, und in einer function oben -leere ich den feld bevor ich dahin von woanders navigiere */
+    /*  damit füge ich defaultValue zum Feedback page hinzu, und in einer function oben -leere ich den feld bevor ich dahin von history navigiere */
     navigate("/feedback");
   }
   function deleteFeedback(obj) {
