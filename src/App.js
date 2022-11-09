@@ -29,6 +29,7 @@ function App() {
   const [totalPrice, setTotalPrice] = useState(0);
   const [historyItems, setHistoryItems] = useLocalStorage("History items", []);
   const [elementForFeedback, setElementforFeedback] = useState([]);
+  const [editFeedbackInput, setEditFeedbackInput] = useState({});
 
   function inputValue(value) {
     let filtered = search(value, allDataItems, {
@@ -136,11 +137,14 @@ function App() {
     }
   }
   function goToFeedbackForm(elem) {
+    setEditFeedbackInput({ user: "", feedback: "" });
     setElementforFeedback(elem);
     navigate("/feedback");
   }
   function editFeedback(elem) {
     setElementforFeedback(elem);
+    setEditFeedbackInput({ user: elem.user, feedback: elem.feedback });
+    /*  damit füge ich defaultValue zum Feedback page hinzu, und in einer function oben -leere ich den feld bevor ich dahin von woanders navigiere */
     navigate("/feedback");
   }
   function deleteFeedback(obj) {
@@ -233,6 +237,7 @@ function App() {
             <Feedback
               feedbackSubmit={feedbackSubmit}
               elementForFeedback={elementForFeedback}
+              editFeedbackInput={editFeedbackInput}
             />
           }
         ></Route>

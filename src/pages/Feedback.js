@@ -1,6 +1,11 @@
 import styled from "styled-components";
 
-export default function Feedback({ feedbackSubmit, elementForFeedback }) {
+export default function Feedback({
+  feedbackSubmit,
+  elementForFeedback,
+  editFeedbackInput,
+}) {
+  console.log(editFeedbackInput);
   function submitFeedback(event) {
     event.preventDefault();
     const form = event.target;
@@ -25,6 +30,7 @@ export default function Feedback({ feedbackSubmit, elementForFeedback }) {
             type="text"
             name="name"
             id="name"
+            defaultValue={editFeedbackInput.user}
             placeholder="username"
             required
           ></input>
@@ -32,6 +38,7 @@ export default function Feedback({ feedbackSubmit, elementForFeedback }) {
           <textarea
             name="feedback"
             id="feedback"
+            defaultValue={editFeedbackInput.feedback}
             rows="9"
             maxLength="250"
             required

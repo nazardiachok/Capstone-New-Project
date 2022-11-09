@@ -13,7 +13,7 @@ export default function Details({
 
   const { id } = useParams();
 
-  if (id > 12) {
+  if (id > 13) {
     navigate("/");
     return;
   }
