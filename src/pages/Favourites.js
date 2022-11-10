@@ -41,7 +41,11 @@ export default function Favourites({
               <BookmarkButton onClick={() => bookmarkToggle(obj)}>
                 <img
                   className="bookmark"
-                  src="https://img.icons8.com/ios-glyphs/30/null/bookmark-ribbon.png"
+                  src={`${
+                    obj.bookmarked
+                      ? "https://img.icons8.com/ios-glyphs/30/null/bookmark-ribbon.png"
+                      : "https://img.icons8.com/material-outlined/24/null/bookmark-ribbon--v1.png"
+                  }`}
                   alt="bookmark"
                 />
               </BookmarkButton>

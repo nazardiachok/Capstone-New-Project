@@ -24,7 +24,10 @@ function App() {
   );
   const [select, setSelect] = useState("");
   const [output, setOutput] = useState([]);
-  const [shoppingCard, setShoppingCard] = useLocalStorage("Saved data: ", []);
+  const [shoppingCard, setShoppingCard] = useLocalStorage(
+    "Shopping Cards: ",
+    []
+  );
   const [inputData, setInputData] = useState({});
   const [totalPrice, setTotalPrice] = useState(0);
   const [historyItems, setHistoryItems] = useLocalStorage("History items", []);
@@ -123,6 +126,7 @@ function App() {
                 ...elementForFeedback,
                 user: user,
                 feedback: feedback,
+                bookmarked: false,
               }
             : element
         )
@@ -130,6 +134,7 @@ function App() {
     } else {
       return null;
     }
+    console.log(elementForFeedback.bookmarked);
 
     let isExecuted = window.confirm(
       "Danke für Ihre Bewertung! Nach Bestätigung werden Sie zum Artikel Details weitergeleitet!"
@@ -177,6 +182,7 @@ function App() {
         bookmarked: obj.id === item.id ? !item.bookmarked : item.bookmarked,
       }))
     );
+    console.log(obj.bookmarked);
   }
   return (
     <>
