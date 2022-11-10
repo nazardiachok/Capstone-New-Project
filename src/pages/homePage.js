@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 export default function HomePage({
-  inputValue,
+  setValue,
   selectValue,
   output,
   addToShoppingCard,
+  bookmarkToggle,
 }) {
   const navigate = useNavigate();
 
@@ -14,7 +15,7 @@ export default function HomePage({
         <input
           type="text"
           placeholder="Nike React..."
-          onChange={(event) => inputValue(event.target.value)}
+          onChange={(event) => setValue(event.target.value)}
         />
         <form action="">
           <select onChange={(event) => selectValue(event.target.value)}>
@@ -30,8 +31,10 @@ export default function HomePage({
           {output.map((obj) => (
             <figure key={obj.id}>
               <img src={obj.image} alt="schuh"></img>
+
               <div>
                 <figcaption>{obj.title} </figcaption>
+
                 <p>{obj.category}</p>
                 <p> Preis: {obj.price} €</p>
 
@@ -47,6 +50,17 @@ export default function HomePage({
                   Add to Card
                 </AddCardButton>
               </div>
+              <BookmarkButton onClick={() => bookmarkToggle(obj)}>
+                <img
+                  className="bookmark"
+                  src={`${
+                    obj.bookmarked
+                      ? "https://img.icons8.com/ios-glyphs/30/null/bookmark-ribbon.png"
+                      : "https://img.icons8.com/material-outlined/24/null/bookmark-ribbon--v1.png"
+                  }`}
+                  alt="bookmark"
+                />
+              </BookmarkButton>
             </figure>
           ))}
         </ul>
@@ -70,13 +84,20 @@ const SectionInput = styled.section`
   }
 `;
 export const SectionOutput = styled.section`
-  margin-top: 50px;
+  margin-top: 70px;
   margin-bottom: 70px;
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-
+  .bookmark {
+    width: 25px;
+    height: 25px;
+    &:hover {
+      cursor: pointer;
+      background-color: aliceblue;
+    }
+  }
   ul {
     display: flex;
     flex-direction: column;
@@ -97,11 +118,14 @@ export const SectionOutput = styled.section`
     cursor: pointer;
   }
   figcaption {
-    padding: 4px;
+    padding: 0px 0px 0px 4px;
     display: flex;
+    width: 170px;
   }
   p {
-    padding: 4px;
+    padding: 0 4px;
+    width: 100px;
+    margin-right: 0px;
   }
   img {
     height: 110px;
@@ -116,16 +140,27 @@ export const SectionOutput = styled.section`
     margin: 50px auto;
   }
 `;
-const AddCardButton = styled.button`
+export const AddCardButton = styled.button`
   height: 40px;
   width: 55px;
   position: relative;
-  top: -95px;
+  top: -90px;
   right: -95px;
+  margin-top: 20px;
 `;
-const DetailsButton = styled.button`
+export const DetailsButton = styled.button`
   height: 20px;
   position: relative;
   top: -40px;
   right: -150px;
+`;
+export const BookmarkButton = styled.button`
+  position: relative;
+  top: -70px;
+  right: 13px;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  margin: auto;
 `;

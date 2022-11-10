@@ -17,6 +17,9 @@ function FooterNavigation({ shoppingCard }) {
         <li>
           <StyledNavlink to="/history">History</StyledNavlink>
         </li>
+        <li>
+          <StyledNavlink to="/favourites">Favourites</StyledNavlink>
+        </li>
       </ul>
     </Nav>
   );

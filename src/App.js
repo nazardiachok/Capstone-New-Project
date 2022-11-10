@@ -4,7 +4,7 @@ import HomePage from "./pages/homePage";
 import { Routes, Route } from "react-router-dom";
 import History from "./pages/History";
 import data from "./components/Data";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { search } from "fast-fuzzy";
 import Details from "./pages/Details";
 import { useNavigate } from "react-router-dom";
@@ -13,6 +13,7 @@ import PersonalData from "./pages/PersonalData";
 import OrderDetails from "./pages/OrderDetails";
 import ShoppingCard from "./pages/ShoppingCard";
 import Feedback from "./pages/Feedback";
+import Favourites from "./pages/Favourites";
 
 function App() {
   const navigate = useNavigate();
@@ -21,30 +22,36 @@ function App() {
     "Data Items",
     dataItems
   );
-  const [filteredData, setFilteredData] = useState([]);
   const [select, setSelect] = useState("");
   const [output, setOutput] = useState([]);
-  const [shoppingCard, setShoppingCard] = useLocalStorage("Saved data: ", []);
+  const [shoppingCard, setShoppingCard] = useLocalStorage(
+    "Shopping Cards: ",
+    []
+  );
   const [inputData, setInputData] = useState({});
   const [totalPrice, setTotalPrice] = useState(0);
   const [historyItems, setHistoryItems] = useLocalStorage("History items", []);
   const [elementForFeedback, setElementforFeedback] = useState([]);
   const [editFeedbackInput, setEditFeedbackInput] = useState({});
+  const [value, setValue] = useState("");
 
-  function inputValue(value) {
-    let filtered = search(value, allDataItems, {
-      keySelector: (obj) => obj.title,
-    });
-    setFilteredData(filtered);
+  useEffect(() => {
+    function fuzzySearchValue() {
+      let filtered = search(value, allDataItems, {
+        keySelector: (obj) => obj.title,
+      });
 
-    let filterResult =
-      select === ""
-        ? filtered
-        : filteredData.filter((obj) => {
-            return obj.category === select;
-          });
-    setOutput(filterResult);
-  }
+      let filterResult =
+        select === ""
+          ? filtered
+          : filtered.filter((obj) => {
+              return obj.category === select;
+            });
+
+      setOutput(filterResult);
+    }
+    fuzzySearchValue();
+  }, [value, select, allDataItems]);
 
   function selectValue(event) {
     setSelect(event);
@@ -119,6 +126,7 @@ function App() {
                 ...elementForFeedback,
                 user: user,
                 feedback: feedback,
+                bookmarked: false,
               }
             : element
         )
@@ -126,6 +134,7 @@ function App() {
     } else {
       return null;
     }
+    console.log(elementForFeedback.bookmarked);
 
     let isExecuted = window.confirm(
       "Danke für Ihre Bewertung! Nach Bestätigung werden Sie zum Artikel Details weitergeleitet!"
@@ -166,6 +175,15 @@ function App() {
       return null;
     }
   }
+  function bookmarkToggle(obj) {
+    setAllDataItems(
+      allDataItems.map((item) => ({
+        ...item,
+        bookmarked: obj.id === item.id ? !item.bookmarked : item.bookmarked,
+      }))
+    );
+    console.log(obj.bookmarked);
+  }
   return (
     <>
       <AppHeader />
@@ -174,10 +192,21 @@ function App() {
           path="/"
           element={
             <HomePage
-              inputValue={inputValue}
+              setValue={setValue}
               selectValue={selectValue}
               output={output}
               addToShoppingCard={addToShoppingCard}
+              bookmarkToggle={bookmarkToggle}
+            />
+          }
+        ></Route>
+        <Route
+          path="/favourites"
+          element={
+            <Favourites
+              favourite={allDataItems.filter((item) => item.bookmarked)}
+              addToShoppingCard={addToShoppingCard}
+              bookmarkToggle={bookmarkToggle}
             />
           }
         ></Route>

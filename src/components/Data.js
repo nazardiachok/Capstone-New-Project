@@ -50,7 +50,7 @@ const data = {
     },
     {
       id: 5,
-      title: "Nike Air Zoom Alphafly NEXT",
+      title: "Nike Air Zoom Alphafly",
       category: "Herrenschuh",
       MadeIn: "China",
       price: 299,
@@ -62,7 +62,7 @@ const data = {
     },
     {
       id: 6,
-      title: "Nike Air Force 1 '07 LX",
+      title: "Nike Air Force 1 '07",
       category: "Damenschuh",
       MadeIn: "Vietnam",
       price: 119,
@@ -74,7 +74,7 @@ const data = {
     },
     {
       id: 7,
-      title: "Nike React Infinity Run Flyknit 3",
+      title: "Nike React Infinity",
       category: "Herrenschuh",
       MadeIn: "Vietnam",
       price: 107,
@@ -86,7 +86,7 @@ const data = {
     },
     {
       id: 8,
-      title: "Nike Air Huarache By You",
+      title: "Nike Air Huarache By",
       category: "Damenschuh",
       MadeIn: "Vietnam",
       price: 159,
@@ -122,7 +122,7 @@ const data = {
     },
     {
       id: 11,
-      title: "Nike Air Force 1 PLT.AF.ORM",
+      title: "Nike Air Force 1",
       category: "Damenschuh",
       MadeIn: "Vietnam",
       price: 149,
@@ -146,7 +146,7 @@ const data = {
     },
     {
       id: 13,
-      title: "Nike Air Zoom Pegasus 39 Shield",
+      title: "Nike Air Zoom Pegasus",
       category: "Damenschuh",
       MadeIn: "Vietnam",
       price: 134,
