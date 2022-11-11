@@ -6,6 +6,7 @@ export default function HomePage({
   output,
   addToShoppingCard,
   bookmarkToggle,
+  allDataItems,
 }) {
   const navigate = useNavigate();
 
@@ -28,7 +29,7 @@ export default function HomePage({
       <SectionOutput>
         {output.length === 0 && <h3>Starte Deine Suche!</h3>}
         <ul>
-          {output.map((obj) => (
+          {(output.length === 0 ? allDataItems : output).map((obj) => (
             <figure key={obj.id}>
               <img src={obj.image} alt="schuh"></img>
 
@@ -90,6 +91,7 @@ export const SectionOutput = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
   .bookmark {
     width: 25px;
     height: 25px;
@@ -137,7 +139,7 @@ export const SectionOutput = styled.section`
     width: 100%;
     display: flex;
     justify-content: center;
-    margin: 50px auto;
+    margin: 10px auto 30px auto;
   }
 `;
 export const AddCardButton = styled.button`

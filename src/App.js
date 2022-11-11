@@ -197,6 +197,7 @@ function App() {
               output={output}
               addToShoppingCard={addToShoppingCard}
               bookmarkToggle={bookmarkToggle}
+              allDataItems={allDataItems}
             />
           }
         ></Route>
