@@ -30,5 +30,5 @@ test("Tests the render of the array", () => {
   render(<Cards shoppingCard={dataItems} />);
 
   const cardHeadings = screen.getAllByRole("heading", { level: 5 });
-  expect(cardHeadings.length).not.toBe(dataItems.length);
+  expect(cardHeadings.length).toBe(dataItems.length);
 });

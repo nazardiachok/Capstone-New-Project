@@ -9,9 +9,9 @@ export default function Cards({ shoppingCard }) {
               {" "}
               Artikel: <span> {element.title} </span>
             </h5>{" "}
-            <h5>
+            <div>
               <span>{element.amount} </span> x <span>{element.price} </span> €
-            </h5>
+            </div>
           </li>
         </ul>
       ))}
