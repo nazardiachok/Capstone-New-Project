@@ -9,11 +9,12 @@ export default function PersonalData({ saveTheData }) {
   }
   return (
     <Section>
-      <form onSubmit={savedInput}>
+      <form onSubmit={savedInput} data-testid="form">
         <fieldset>
           <legend>Gib deine Persönlichen Daten ein: </legend>
-          <label>Name: </label>
+          <label htmlFor="name">Name: </label>
           <input
+            data-testid="name"
             type="text"
             name="name"
             id="name"
@@ -21,8 +22,9 @@ export default function PersonalData({ saveTheData }) {
             placeholder="Nazar Diachok"
             required
           ></input>
-          <label>Email: </label>
+          <label htmlFor="email">Email: </label>
           <input
+            data-testid="email"
             type="email"
             name="email"
             id="email"
@@ -30,8 +32,9 @@ export default function PersonalData({ saveTheData }) {
             placeholder="email@111.com"
             required
           ></input>
-          <label>Adresse: </label>
+          <label htmlFor="address">Adresse: </label>
           <input
+            data-testid="address"
             placeholder="Schwarze Strasse 1, Hamburg 20537"
             type="text"
             name="address"

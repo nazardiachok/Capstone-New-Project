@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Cards from "../components/Cards";
 export default function OrderDetails({
   shoppingCard,
   inputData,
@@ -24,21 +25,7 @@ export default function OrderDetails({
           </div>
           <Artikel>
             <h4>Deine ausgewählte Artikel:</h4>
-            {shoppingCard.map((element) => (
-              <ul key={element.id}>
-                <li>
-                  {" "}
-                  <h5>
-                    {" "}
-                    Artikel: <span> {element.title} </span>
-                  </h5>{" "}
-                  <h5>
-                    <span>{element.amount} </span> x{" "}
-                    <span>{element.price} </span> €
-                  </h5>
-                </li>
-              </ul>
-            ))}
+            <Cards shoppingCard={shoppingCard}></Cards>
           </Artikel>
           <div>
             Total Price: <br /> <span> {totalPrice} </span> €
