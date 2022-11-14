@@ -10,21 +10,18 @@ describe("PersonalData", () => {
 
     const form = screen.getByTestId("form");
     const submitbtn = screen.getByRole("button", { name: "Submit" });
-    const getNameInputfield = screen.getByTestId("name");
-    const getEmailInputfield = screen.getByTestId("email");
-    const getAddressInputfield = screen.getByTestId("address");
+
+    const getNameInputfield = screen.getByRole("textbox", { name: /email/i });
+    const getEmailInputfield = screen.getByRole("textbox", { name: /name/i });
 
     await userEvent.type(getNameInputfield, "Nazar");
     await userEvent.type(getEmailInputfield, "jjj@sd.sd");
-    await userEvent.type(getAddressInputfield, "Strasse 1");
 
     expect(form).toBeInTheDocument();
     expect(submitbtn).toBeInTheDocument();
+
     expect(getNameInputfield).toBeInTheDocument();
     expect(getEmailInputfield).toBeInTheDocument();
-    expect(getAddressInputfield).toBeInTheDocument();
-
-    expect(form).toBeValid();
   });
 
   test("requires the input", async () => {

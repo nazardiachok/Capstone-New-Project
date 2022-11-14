@@ -9,11 +9,12 @@ export default function PersonalData({ saveTheData }) {
   }
   return (
     <Section>
-      <form onSubmit={savedInput}>
+      <form onSubmit={savedInput} data-testid="form">
         <fieldset>
           <legend>Gib deine Persönlichen Daten ein: </legend>
           <label htmlFor="name">Name: </label>
           <input
+            data-testid="name"
             type="text"
             name="name"
             id="name"
@@ -23,6 +24,7 @@ export default function PersonalData({ saveTheData }) {
           ></input>
           <label htmlFor="email">Email: </label>
           <input
+            data-testid="email"
             type="email"
             name="email"
             id="email"
@@ -32,6 +34,7 @@ export default function PersonalData({ saveTheData }) {
           ></input>
           <label htmlFor="address">Adresse: </label>
           <input
+            data-testid="address"
             placeholder="Schwarze Strasse 1, Hamburg 20537"
             type="text"
             name="address"

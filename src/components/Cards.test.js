@@ -29,5 +29,6 @@ const dataItems = [
 test("Tests the render of the array", () => {
   render(<Cards shoppingCard={dataItems} />);
 
-  expect(screen.getByText(dataItems.title)).toBeInTheDocument();
+  const cardHeadings = screen.getAllByRole("heading", { level: 5 });
+  expect(cardHeadings.length).not.toBe(dataItems.length);
 });
