@@ -6,29 +6,32 @@ const dataItems = [
   {
     id: 1,
     title: "Schuhe 1",
-    category: "Herrenschue",
     price: 123,
     amount: 2,
   },
   {
     id: 2,
     title: "Schuhe 2",
-    category: "Damenschuh",
     price: 134,
-    amount: 2,
-  },
-  {
-    id: 3,
-    title: "Schuhe 3",
-    category: "Herrenschue",
-    price: 163,
-    amount: 2,
+    amount: 3,
   },
 ];
 
-test("Tests the render of the array", () => {
+test("renders the prop array correctly", () => {
   render(<Cards shoppingCard={dataItems} />);
 
-  const cardHeadings = screen.getAllByRole("heading", { level: 5 });
-  expect(cardHeadings.length).toBe(dataItems.length);
+  const firstTitle = screen.getByText(/schuhe 1/i);
+  const secondTitle = screen.getByText(/schuhe 2/i);
+  expect(firstTitle).toBeInTheDocument();
+  expect(secondTitle).toBeInTheDocument();
+
+  const firstPrice = screen.getByText(/123/i);
+  const secondPrice = screen.getByText(/134/i);
+  expect(firstPrice).toBeInTheDocument();
+  expect(secondPrice).toBeInTheDocument();
+
+  const firstAmount = screen.getByText("2");
+  const secondAmount = screen.getByText("3");
+  expect(firstAmount).toBeInTheDocument();
+  expect(secondAmount).toBeInTheDocument();
 });

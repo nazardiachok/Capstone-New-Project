@@ -1,9 +1,9 @@
 export default function Cards({ shoppingCard }) {
   return (
     <>
-      {shoppingCard.map((element) => (
-        <ul key={element.id}>
-          <li>
+      <ul>
+        {shoppingCard.map((element) => (
+          <li key={element.id}>
             {" "}
             <h5>
               {" "}
@@ -13,8 +13,8 @@ export default function Cards({ shoppingCard }) {
               <span>{element.amount} </span> x <span>{element.price} </span> €
             </div>
           </li>
-        </ul>
-      ))}
+        ))}
+      </ul>
     </>
   );
 }
