@@ -26,21 +26,6 @@ export default function OrderDetails({
           <Artikel>
             <h4>Deine ausgewählte Artikel:</h4>
             <Cards shoppingCard={shoppingCard}></Cards>
-            {/* {shoppingCard.map((element) => (
-              <ul key={element.id}>
-                <li>
-                  {" "}
-                  <h5>
-                    {" "}
-                    Artikel: <span> {element.title} </span>
-                  </h5>{" "}
-                  <h5>
-                    <span>{element.amount} </span> x{" "}
-                    <span>{element.price} </span> €
-                  </h5>
-                </li>
-              </ul>
-            ))} */}
           </Artikel>
           <div>
             Total Price: <br /> <span> {totalPrice} </span> €

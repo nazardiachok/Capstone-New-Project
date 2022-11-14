@@ -27,7 +27,9 @@ export default function HomePage({
         </form>
       </SectionInput>
       <SectionOutput>
-        {output.length === 0 && <h3>Starte Deine Suche!</h3>}
+        {output.length === 0 && (
+          <h3>Schaue Dir unten alle Artikel an, oder starte Deine Suche!</h3>
+        )}
         <ul>
           {(output.length === 0 ? allDataItems : output).map((obj) => (
             <figure key={obj.id}>
