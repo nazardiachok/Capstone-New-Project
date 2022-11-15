@@ -134,7 +134,6 @@ function App() {
     } else {
       return null;
     }
-    console.log(elementForFeedback.bookmarked);
 
     let isExecuted = window.confirm(
       "Danke für Ihre Bewertung! Nach Bestätigung werden Sie zum Artikel Details weitergeleitet!"
@@ -182,7 +181,6 @@ function App() {
         bookmarked: obj.id === item.id ? !item.bookmarked : item.bookmarked,
       }))
     );
-    console.log(obj.bookmarked);
   }
   return (
     <>

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { NextButton } from "./ShoppingCard";
 export default function History({
   historyItems,
   clearHistory,
@@ -24,10 +25,10 @@ export default function History({
                   {" "}
                   Artikel: <span>{element.title}</span>
                 </h5>{" "}
-                <button onClick={() => goToFeedbackForm(element)}>
+                <NextButton onClick={() => goToFeedbackForm(element)}>
                   Bewerten
                   {/* {toggleHistory ? "Neu bewerten" : "Bewerten"} */}
-                </button>
+                </NextButton>
               </div>
               <h5>
                 {" "}
@@ -95,4 +96,9 @@ const Artikel = styled.div`
 const Button = styled.button`
   width: 60px;
   margin: 30px auto;
+  background-color: #ff6666;
+  border-radius: 10px;
+  &:hover {
+    cursor: pointer;
+  }
 `;

@@ -52,7 +52,9 @@ export default function ShoppingCard({
             <h3>
               Gesamtpreis: <span>{totalPrice}</span> €
             </h3>
-            <button onClick={() => navigate("/personalData")}>Weiter </button>
+            <NextButton onClick={() => navigate("/personalData")}>
+              Weiter{" "}
+            </NextButton>
           </Gesamtpreis>
         )}
       </div>
@@ -133,5 +135,33 @@ const Gesamtpreis = styled.div`
   }
   span {
     color: red;
+  }
+`;
+export const NextButton = styled.button`
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 10px;
+
+  &:hover {
+    background-color: aliceblue;
+    cursor: pointer;
+    animation: none;
+  }
+  color: #ffffff;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: animate_gradient 5s ease infinite;
+  @keyframes animate_gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
   }
 `;

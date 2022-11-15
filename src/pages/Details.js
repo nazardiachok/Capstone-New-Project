@@ -106,6 +106,7 @@ const BackButton = styled.button`
   min-width: 60px;
   margin: auto;
   background-color: #ff6666;
+  border-radius: 10px;
 `;
 const FeedbackButton = styled.button`
   min-width: 60px;

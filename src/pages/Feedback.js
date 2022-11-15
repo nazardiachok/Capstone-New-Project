@@ -5,7 +5,6 @@ export default function Feedback({
   elementForFeedback,
   editFeedbackInput,
 }) {
-  console.log(editFeedbackInput);
   function submitFeedback(event) {
     event.preventDefault();
     const form = event.target;

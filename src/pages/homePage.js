@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useRef } from "react";
 export default function HomePage({
   setValue,
   selectValue,
@@ -9,11 +10,14 @@ export default function HomePage({
   allDataItems,
 }) {
   const navigate = useNavigate();
+  const ref = useRef(null);
+  const handleClick = () => ref.current.focus();
 
   return (
     <>
       <SectionInput>
         <input
+          ref={ref}
           type="text"
           placeholder="Nike React..."
           onChange={(event) => setValue(event.target.value)}
@@ -28,7 +32,13 @@ export default function HomePage({
       </SectionInput>
       <SectionOutput>
         {output.length === 0 && (
-          <h3>Schaue Dir unten alle Artikel an, oder starte Deine Suche!</h3>
+          <h3>
+            Schaue Dir alles an, oder
+            <span class="animate-motion" onClick={handleClick}>
+              {" "}
+              starte Deine Suche!
+            </span>
+          </h3>
         )}
         <ul>
           {(output.length === 0 ? allDataItems : output).map((obj) => (
@@ -102,6 +112,43 @@ export const SectionOutput = styled.section`
       background-color: aliceblue;
     }
   }
+  .animate-motion {
+    height: 20px;
+    line-height: 20px;
+    background: #e41931;
+    border-radius: 20px;
+    max-width: 500px;
+    font-size: 15px;
+    padding: 2px;
+    margin-left: 5px;
+    text-align: center;
+    color: #ffffff;
+    animation: animate_motion 5s 0s both infinite;
+  }
+  .animate-motion:hover {
+    animation: none;
+    cursor: pointer;
+  }
+
+  @keyframes animate_motion {
+    0%,
+    20% {
+      transform: translate3d(0, 0, 0);
+    }
+    10%,
+    14%,
+    18%,
+    2%,
+    6% {
+      transform: translate3d(-7px, 0, 0);
+    }
+    12%,
+    16%,
+    4%,
+    8% {
+      transform: translate3d(7px, 0, 0);
+    }
+  }
   ul {
     display: flex;
     flex-direction: column;
@@ -140,6 +187,7 @@ export const SectionOutput = styled.section`
   h3 {
     width: 100%;
     display: flex;
+    text-align: center;
     justify-content: center;
     margin: 10px auto 30px auto;
   }
@@ -151,12 +199,38 @@ export const AddCardButton = styled.button`
   top: -90px;
   right: -95px;
   margin-top: 20px;
+  border-radius: 10px;
+  &:hover {
+    background-color: aliceblue;
+    cursor: pointer;
+    animation: none;
+  }
+  color: #ffffff;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: animate_gradient 5s ease infinite;
+  @keyframes animate_gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
 `;
 export const DetailsButton = styled.button`
   height: 20px;
   position: relative;
   top: -40px;
   right: -150px;
+  border-radius: 5px;
+  &:hover {
+    background-color: aliceblue;
+    cursor: pointer;
+  }
 `;
 export const BookmarkButton = styled.button`
   position: relative;
