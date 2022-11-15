@@ -56,6 +56,7 @@ const StyledNavLink = styled(NavLink)`
   align-items: center;
   justify-content: center;
   text-decoration: none;
+  border-radius: 5px;
 
   img {
     width: 25px;
@@ -64,11 +65,17 @@ const StyledNavLink = styled(NavLink)`
 
   &.active {
     background-color: #fc6b03;
+    b {
+      color: black;
+    }
   }
   p {
     font-size: 15px;
     color: black;
     margin: 0px;
+  }
+  b {
+    color: red;
   }
 `;
 

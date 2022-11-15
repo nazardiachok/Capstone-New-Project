@@ -121,8 +121,6 @@ const FeedbackButton = styled.button`
     background-color: aliceblue;
     cursor: pointer;
   }
-  /* background-color: ${({ toggleFeedback }) =>
-    toggleFeedback ? "green" : "red"}; */
 `;
 const DeleteButton = styled.button`
   min-width: 60px;

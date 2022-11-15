@@ -98,7 +98,5 @@ const Button = styled.button`
   margin: 30px auto;
   background-color: #ff6666;
   border-radius: 10px;
-  &:hover {
-    cursor: pointer;
-  }
+  cursor: pointer;
 `;

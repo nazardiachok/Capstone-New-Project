@@ -18,8 +18,6 @@ export default function ShoppingCard({
   return (
     <WarenkorbStyle>
       <div>
-        <h2>Warenkorb </h2>
-
         <SectionWarenkorb>
           <>
             {shoppingCard.length === 0 && (
@@ -122,7 +120,6 @@ export const SectionWarenkorb = styled.section`
   }
   h3 {
     text-align: center;
-    color: red;
   }
 `;
 const Gesamtpreis = styled.div`

@@ -34,7 +34,7 @@ export default function HomePage({
         {output.length === 0 && (
           <h3>
             Schaue Dir alles an oder
-            <span class="animate-motion" onClick={handleClick}>
+            <span className="animate-motion" onClick={handleClick}>
               {" "}
               starte Deine Suche!
             </span>
@@ -94,6 +94,10 @@ const SectionInput = styled.section`
   select {
     border-radius: 10px;
     height: 20px;
+    position: relative;
+  }
+  option {
+    position: absolute;
   }
 `;
 export const SectionOutput = styled.section`
