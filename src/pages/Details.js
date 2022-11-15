@@ -43,8 +43,12 @@ export default function Details({
               {!toggleFeedback ? "Bewertung ansehen" : "Bewertung verstecken"}
             </FeedbackButton>
             <Section toggleFeedback={toggleFeedback}>
-              <p>Username: {details[0].user}</p>
-              <p>Bewertung: {details[0].feedback}</p>
+              <p>
+                <b>Username: </b> {details[0].user}
+              </p>
+              <p>
+                <b>Bewertung: </b> {details[0].feedback}
+              </p>
               <p>Datum: {details[0].date}</p>
               <DeleteButton onClick={() => deleteFeedback(details[0])}>
                 Bewertung löschen

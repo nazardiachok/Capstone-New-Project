@@ -18,7 +18,7 @@ export default function ShoppingCard({
   return (
     <WarenkorbStyle>
       <div>
-        <h1>Warenkorb </h1>
+        <h2>Warenkorb </h2>
 
         <SectionWarenkorb>
           <>
@@ -65,7 +65,7 @@ const WarenkorbStyle = styled.main`
   display: flex;
   justify-content: center;
   margin: 30px auto;
-  h1 {
+  h2 {
     display: flex;
     justify-content: center;
   }
@@ -86,8 +86,8 @@ export const SectionWarenkorb = styled.section`
     padding-left: 0px;
   }
   figure {
-    padding-left: 10px;
-    padding-top: 10px;
+    padding-left: 5px;
+    padding-top: 5px;
     padding-bottom: 0px;
     display: flex;
     border: 1px solid black;

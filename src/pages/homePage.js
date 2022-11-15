@@ -33,7 +33,7 @@ export default function HomePage({
       <SectionOutput>
         {output.length === 0 && (
           <h3>
-            Schaue Dir alles an, oder
+            Schaue Dir alles an oder
             <span class="animate-motion" onClick={handleClick}>
               {" "}
               starte Deine Suche!
@@ -115,14 +115,14 @@ export const SectionOutput = styled.section`
   .animate-motion {
     height: 20px;
     line-height: 20px;
-    background: #e41931;
+    background: white;
     border-radius: 20px;
     max-width: 500px;
-    font-size: 15px;
-    padding: 2px;
+    font-size: 18px;
+    padding: 0.5px;
     margin-left: 5px;
     text-align: center;
-    color: #ffffff;
+
     animation: animate_motion 5s 0s both infinite;
   }
   .animate-motion:hover {

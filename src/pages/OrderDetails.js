@@ -32,7 +32,7 @@ export default function OrderDetails({
             <Cards shoppingCard={shoppingCard}></Cards>
           </Artikel>
           <div className="totalPrice">
-            Total Price: <br /> <span> {totalPrice} </span> €
+            Gesamtpreis: <br /> <span> {totalPrice} </span> €
           </div>
           <p className="warning">
             Wenn Du keine Bestellung innerhalb von den nächsten 6 Stunden

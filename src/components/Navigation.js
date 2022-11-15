@@ -1,61 +1,75 @@
 import { NavLink } from "react-router-dom";
+import homeIcon from "../components/images/home-outline.png";
+import shoppingBag from "../components/images/shopping-bag.png";
+import history from "../components/images/documents.png";
+import favourites from "../components/images/favourites.png";
 
 import styled from "styled-components";
 
 function FooterNavigation({ shoppingCard }) {
   return (
-    <Nav>
-      <ul>
-        <li>
-          <StyledNavlink to="/warenkorb">Warenkorb</StyledNavlink>
-          <b>{shoppingCard.length}</b>
-        </li>
+    <>
+      <StyledNavBar>
+        <StyledNavLink to="/" end>
+          <img src={homeIcon} alt="home"></img>
+          <p>Home </p>
+        </StyledNavLink>
 
-        <li>
-          <StyledNavlink to="/">Home</StyledNavlink>
-        </li>
-        <li>
-          <StyledNavlink to="/history">History</StyledNavlink>
-        </li>
-        <li>
-          <StyledNavlink to="/favourites">Favourites</StyledNavlink>
-        </li>
-      </ul>
-    </Nav>
+        <StyledNavLink to="/warenkorb">
+          <img src={shoppingBag} alt="shopping Bag"></img>
+          <p>
+            Cards <b>{shoppingCard.length}</b>{" "}
+          </p>
+        </StyledNavLink>
+
+        <StyledNavLink to="/history">
+          <img src={history} alt="history"></img>
+          <p>History </p>
+        </StyledNavLink>
+
+        <StyledNavLink to="/favourites">
+          <img src={favourites} alt="favourites"></img>
+          <p>Favourites </p>
+        </StyledNavLink>
+      </StyledNavBar>
+    </>
   );
 }
 
-const StyledNavlink = styled(NavLink)`
-  background: transparent;
-  border: none;
-  font-size: 1em;
-  padding: 1.5em 0.5em;
+const StyledNavBar = styled.nav`
+  position: relative;
+  background-color: aliceblue;
   width: 100%;
-  height: 100%;
-
-  &:hover {
-    opacity: 0.5;
-    cursor: pointer;
-  }
-`;
-
-const Nav = styled.nav`
+  left: 0;
+  min-width: 350px;
+  display: flex;
+  justify-content: space-around;
   position: fixed;
   bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
-  border-top: 1px solid black;
-  background-color: aliceblue;
-  height: 40px;
-  ul {
-    padding: 0;
-    display: flex;
-    justify-content: space-around;
+`;
 
-    li {
-      list-style: none;
-    }
+const StyledNavLink = styled(NavLink)`
+  height: 45px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+
+  img {
+    width: 25px;
+    height: 25px;
+  }
+
+  &.active {
+    background-color: #fc6b03;
+  }
+  p {
+    font-size: 15px;
+    color: black;
+    margin: 0px;
   }
 `;
+
 export default FooterNavigation;

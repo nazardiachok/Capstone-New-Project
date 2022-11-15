@@ -2,7 +2,7 @@ import styled from "styled-components";
 function AppHeader() {
   return (
     <Header>
-      <h4> NIKE STORE</h4>
+      <h3> NIKE STORE</h3>
     </Header>
   );
 }
