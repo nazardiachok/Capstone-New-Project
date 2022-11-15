@@ -60,7 +60,7 @@ export default function HomePage({
                 </DetailsButton>
 
                 <AddCardButton onClick={() => addToShoppingCard(obj)}>
-                  Add to Card
+                  Add to Cards
                 </AddCardButton>
               </div>
               <BookmarkButton onClick={() => bookmarkToggle(obj)}>
