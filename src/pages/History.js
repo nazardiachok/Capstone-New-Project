@@ -9,11 +9,13 @@ export default function History({
     <Section>
       <h1>Kaufübersicht</h1>
 
-      {historyItems.length >= 1 && (
+      {historyItems.length >= 1 ? (
         <div>
           <h3>Lieber Kunde, danke für Dein Vertrauen!!</h3>
           <h4>Die von Dir früher bestellte Artikel:</h4>
         </div>
+      ) : (
+        <h3>Es befinden sich derzeit keine Artikel im Kaufübersicht!</h3>
       )}
       {historyItems.map((element) => (
         <Artikel>

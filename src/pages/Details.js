@@ -111,15 +111,16 @@ const BackButton = styled.button`
   margin: auto;
   background-color: #ff6666;
   border-radius: 10px;
+  cursor: pointer;
 `;
 const FeedbackButton = styled.button`
   min-width: 60px;
   margin: auto;
   margin-left: 10px;
   border-radius: 10px;
+  cursor: pointer;
   &:hover {
     background-color: aliceblue;
-    cursor: pointer;
   }
 `;
 const DeleteButton = styled.button`
