@@ -46,6 +46,7 @@ const StyledNavBar = styled.nav`
   justify-content: space-around;
   position: fixed;
   bottom: 0;
+  right: 0;
 `;
 
 const StyledNavLink = styled(NavLink)`

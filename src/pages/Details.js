@@ -128,10 +128,10 @@ const DeleteButton = styled.button`
   margin-bottom: 20px;
   margin-left: 10px;
   border-radius: 10px;
+  cursor: pointer;
 
   border: none;
   &:hover {
-    cursor: pointer;
     background-color: #ff6666;
   }
 `;

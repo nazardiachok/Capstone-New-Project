@@ -112,7 +112,6 @@ export const SectionOutput = styled.section`
     width: 25px;
     height: 25px;
     &:hover {
-      cursor: pointer;
       background-color: aliceblue;
     }
   }
@@ -126,12 +125,12 @@ export const SectionOutput = styled.section`
     padding: 0.5px;
     margin-left: 5px;
     text-align: center;
+    cursor: pointer;
 
     animation: animate_motion 5s 0s both infinite;
   }
   .animate-motion:hover {
     animation: none;
-    cursor: pointer;
   }
 
   @keyframes animate_motion {
@@ -170,7 +169,6 @@ export const SectionOutput = styled.section`
     min-width: 340px;
     height: 120px;
     margin: 0 auto;
-    cursor: pointer;
   }
   figcaption {
     padding: 0px 0px 0px 4px;
@@ -204,9 +202,9 @@ export const AddCardButton = styled.button`
   right: -95px;
   margin-top: 20px;
   border-radius: 10px;
+  cursor: pointer;
   &:hover {
     background-color: aliceblue;
-    cursor: pointer;
     animation: none;
   }
   color: #ffffff;
@@ -231,9 +229,9 @@ export const DetailsButton = styled.button`
   top: -40px;
   right: -150px;
   border-radius: 5px;
+  cursor: pointer;
   &:hover {
     background-color: aliceblue;
-    cursor: pointer;
   }
 `;
 export const BookmarkButton = styled.button`

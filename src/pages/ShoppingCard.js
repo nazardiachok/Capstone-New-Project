@@ -93,7 +93,6 @@ export const SectionWarenkorb = styled.section`
     min-width: 340px;
     height: 160px;
     margin: 0 auto;
-    cursor: pointer;
   }
   figcaption {
     padding: 4px;
@@ -140,10 +139,10 @@ export const NextButton = styled.button`
   margin-top: 5px;
   margin-bottom: 5px;
   border-radius: 10px;
+  cursor: pointer;
 
   &:hover {
     background-color: aliceblue;
-    cursor: pointer;
     animation: none;
   }
   color: #ffffff;
