@@ -135,14 +135,7 @@ function App() {
       return null;
     }
 
-    let isExecuted = window.confirm(
-      "Danke für Ihre Bewertung! Nach Bestätigung werden Sie zum Artikel Details weitergeleitet!"
-    );
-    if (isExecuted) {
-      navigate(`/${elementForFeedback.id}`);
-    } else {
-      return null;
-    }
+    navigate(`/${elementForFeedback.id}`);
   }
   function goToFeedbackForm(elem) {
     setEditFeedbackInput({ user: "", feedback: "" });
@@ -156,20 +149,13 @@ function App() {
     navigate("/feedback");
   }
   function deleteFeedback(obj) {
-    let isExecuted = window.confirm(
-      "Sind Sie sicher dass Sie die Bewertung löschen möchten?"
-    );
-    if (isExecuted) {
-      /* menn du yes clickst-führe delete aus, sonst lasse unverändert */
-      if (allDataItems.find((item) => item.id === obj.id)) {
-        setAllDataItems(
-          allDataItems.map((elem) =>
-            elem.id === obj.id ? { ...obj, user: "", feedback: "" } : elem
-          )
-        );
-      } else {
-        return null;
-      }
+    /* menn du yes clickst-führe delete aus, sonst lasse unverändert */
+    if (allDataItems.find((item) => item.id === obj.id)) {
+      setAllDataItems(
+        allDataItems.map((elem) =>
+          elem.id === obj.id ? { ...obj, user: "", feedback: "" } : elem
+        )
+      );
     } else {
       return null;
     }
