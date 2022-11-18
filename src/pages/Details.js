@@ -2,11 +2,16 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { useState } from "react";
+import Modal from "../components/ModalWindow";
 
 export default function Details({
   deleteFeedback,
   allDataItems,
   editFeedback,
+  setModalActive,
+  modalActive,
+  openModalWindow,
+  objForModalWindow,
 }) {
   const [toggleFeedback, setToggleFeedback] = useState(false);
   const navigate = useNavigate();
@@ -50,7 +55,7 @@ export default function Details({
                 <b>Bewertung: </b> {details[0].feedback}
               </p>
               <p>Datum: {details[0].date}</p>
-              <DeleteButton onClick={() => deleteFeedback(details[0])}>
+              <DeleteButton onClick={() => openModalWindow(details[0])}>
                 Bewertung löschen
               </DeleteButton>
               <DeleteButton onClick={() => editFeedback(details[0])}>
@@ -59,9 +64,16 @@ export default function Details({
             </Section>
           </>
         ) : (
-          <div>Es gibt keine Bewertungen zur Zeit!</div>
+          <Message>Es gibt keine Bewertungen zur Zeit!</Message>
         )}
       </figure>
+
+      <Modal
+        modalActive={modalActive}
+        objForModalWindow={objForModalWindow}
+        setModalActive={setModalActive}
+        deleteFeedback={deleteFeedback}
+      ></Modal>
 
       <BackButton toggleFeedback={toggleFeedback} onClick={() => navigate("/")}>
         Zurück
@@ -98,10 +110,6 @@ const StyledDetails = styled.main`
     font-size: 20px;
     margin-left: 10px;
   }
-
-  div {
-    margin: 10px;
-  }
 `;
 const Section = styled.section`
   display: ${({ toggleFeedback }) => (toggleFeedback ? "block" : "none")};
@@ -117,6 +125,7 @@ const FeedbackButton = styled.button`
   min-width: 60px;
   margin: auto;
   margin-left: 10px;
+  margin-bottom: 10px;
   border-radius: 10px;
   cursor: pointer;
   &:hover {
@@ -134,4 +143,7 @@ const DeleteButton = styled.button`
   &:hover {
     background-color: #ff6666;
   }
+`;
+const Message = styled.div`
+  margin: 20px 10px;
 `;

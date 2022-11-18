@@ -22,7 +22,7 @@ export default function ShoppingCard({
           <>
             {shoppingCard.length === 0 && (
               <h3>
-                Es befinden sich zur Zeit keine Artikel in Ihrem Warenkorb!
+                Es befinden sich zurzeit keine Artikel in Deinem Warenkorb!
               </h3>
             )}
           </>
@@ -93,6 +93,9 @@ export const SectionWarenkorb = styled.section`
     min-width: 340px;
     height: 160px;
     margin: 0 auto;
+    border: none;
+    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+      0 0 0 2px rgb(255, 255, 255), 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
   }
   figcaption {
     padding: 4px;
@@ -108,14 +111,17 @@ export const SectionWarenkorb = styled.section`
     border-radius: 5px;
   }
   div {
-    background-color: aliceblue;
+    background-color: #dcdcdc;
     border-radius: 5px;
+    width: 137px;
   }
   button {
     margin-left: 10px;
     margin-right: 10px;
     margin-top: 5px;
     margin-bottom: 5px;
+    border-radius: 5px;
+    cursor: pointer;
   }
   h3 {
     text-align: center;

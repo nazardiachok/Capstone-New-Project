@@ -87,6 +87,10 @@ const SectionInput = styled.section`
   justify-content: center;
   align-items: center;
   z-index: -1;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 20px;
   input {
     border-radius: 10px;
     margin: 0 10px;
@@ -99,6 +103,9 @@ const SectionInput = styled.section`
   option {
     position: absolute;
   }
+  padding: 10px;
+  box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(255, 255, 255),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
 `;
 export const SectionOutput = styled.section`
   margin-top: 70px;
@@ -169,6 +176,10 @@ export const SectionOutput = styled.section`
     min-width: 340px;
     height: 120px;
     margin: 0 auto;
+    border: none;
+
+    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+      0 0 0 2px rgb(255, 255, 255), 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
   }
   figcaption {
     padding: 0px 0px 0px 4px;
@@ -243,4 +254,7 @@ export const BookmarkButton = styled.button`
   display: flex;
   justify-content: center;
   margin: auto;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
 `;

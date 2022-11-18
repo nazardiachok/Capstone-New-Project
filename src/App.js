@@ -34,6 +34,8 @@ function App() {
   const [elementForFeedback, setElementforFeedback] = useState([]);
   const [editFeedbackInput, setEditFeedbackInput] = useState({});
   const [value, setValue] = useState("");
+  const [modalActive, setModalActive] = useState(false);
+  const [objForModalWindow, setObjForModalWindow] = useState({});
 
   useEffect(() => {
     function fuzzySearchValue() {
@@ -100,20 +102,24 @@ function App() {
   function deleteCard(obj) {
     setShoppingCard(shoppingCard.filter((ware) => ware.id !== obj.id));
   }
+
   function saveTheData(name, email, address) {
     setInputData({ name: name, email: email, address: address });
 
     navigate("/bestellung");
   }
+
   function moveToHistory(input) {
     setHistoryItems([...historyItems, ...shoppingCard]);
     setShoppingCard([]);
 
     navigate("/history");
   }
+
   function clearHistory() {
     setHistoryItems([]);
   }
+
   function feedbackSubmit(user, feedback, elementForFeedback) {
     const foundObject = allDataItems.find(
       (object) => object.id === elementForFeedback.id
@@ -137,19 +143,28 @@ function App() {
 
     navigate(`/${elementForFeedback.id}`);
   }
+
   function goToFeedbackForm(elem) {
     setEditFeedbackInput({ user: "", feedback: "" });
     setElementforFeedback(elem);
     navigate("/feedback");
   }
+
   function editFeedback(elem) {
     setElementforFeedback(elem);
     setEditFeedbackInput({ user: elem.user, feedback: elem.feedback });
     /*  damit füge ich defaultValue zum Feedback page hinzu, und in einer function oben -leere ich den feld bevor ich dahin von history navigiere */
     navigate("/feedback");
   }
+
+  function openModalWindow(obj) {
+    setObjForModalWindow(obj);
+
+    setModalActive(true);
+    //übergabe erst an Details, dann in Details an Modal(unten neben Zurück button) weiter
+  }
+
   function deleteFeedback(obj) {
-    /* menn du yes clickst-führe delete aus, sonst lasse unverändert */
     if (allDataItems.find((item) => item.id === obj.id)) {
       setAllDataItems(
         allDataItems.map((elem) =>
@@ -159,7 +174,9 @@ function App() {
     } else {
       return null;
     }
+    setModalActive(false);
   }
+
   function bookmarkToggle(obj) {
     setAllDataItems(
       allDataItems.map((item) => ({
@@ -202,6 +219,10 @@ function App() {
               allDataItems={allDataItems}
               deleteFeedback={deleteFeedback}
               editFeedback={editFeedback}
+              modalActive={modalActive}
+              setModalActive={setModalActive}
+              openModalWindow={openModalWindow}
+              objForModalWindow={objForModalWindow}
             />
           }
         ></Route>

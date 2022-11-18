@@ -11,7 +11,7 @@ export default function History({
 
       {historyItems.length >= 1 ? (
         <div>
-          <h3>Lieber Kunde, danke für Dein Vertrauen!!</h3>
+          <h3>Lieber Kunde, danke für Dein Vertrauen!</h3>
           <h4>Die von Dir früher bestellte Artikel:</h4>
         </div>
       ) : (

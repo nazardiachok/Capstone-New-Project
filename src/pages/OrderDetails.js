@@ -13,31 +13,30 @@ export default function OrderDetails({
         <h3>Prüfe Deine Daten und bestätige bitte den Kauf:</h3>
         <main>
           {" "}
-          <div className="allInputs">
-            <h4>
-              <p className="inputs">Name: </p>{" "}
-              <p className="inputs dataInputs">{inputData.name} </p>
-            </h4>
-            <h4>
-              <p className="inputs">Email: </p>{" "}
-              <p className="inputs dataInputs">{inputData.email} </p>
-            </h4>
-            <h4>
-              <p className="inputs">Adresse: </p>{" "}
-              <p className="inputs dataInputs address"> {inputData.address}</p>
-            </h4>
-          </div>
+          <AllInputs>
+            <ArtikleHeading>
+              <InputsName>Name: </InputsName> <Inputs>{inputData.name} </Inputs>
+            </ArtikleHeading>
+            <ArtikleHeading>
+              <InputsName>Email: </InputsName>{" "}
+              <Inputs>{inputData.email} </Inputs>
+            </ArtikleHeading>
+            <ArtikleHeading>
+              <InputsAddress>Adresse:</InputsAddress>
+              <InputsAddresse>{inputData.address}</InputsAddresse>
+            </ArtikleHeading>
+          </AllInputs>
           <Artikel>
-            <h4 className="chosenArticle">Deine ausgewählte Artikel:</h4>
+            <ChosenArticle>Deine ausgewählte Artikel:</ChosenArticle>
             <Cards shoppingCard={shoppingCard}></Cards>
           </Artikel>
-          <div className="totalPrice">
+          <TotalPrice>
             Gesamtpreis: <br /> <span> {totalPrice} </span> €
-          </div>
-          <p className="warning">
+          </TotalPrice>
+          <Warning>
             Wenn Du keine Bestellung innerhalb von den nächsten 6 Stunden
             machst, werden deine Daten im Warenkorb nicht gespeichert!!!
-          </p>
+          </Warning>
           <NextButton onClick={() => moveToHistory(inputData)}>
             Bestellen
           </NextButton>
@@ -69,53 +68,65 @@ const Section = styled.section`
     justify-content: flex-start;
     align-items: center;
   }
-  h4 {
-    margin: auto;
-    display: flex;
-    justify-content: flex-start;
-    width: 250px;
-    gap: 40px;
-  }
-  .warning {
-    color: red;
-    margin: 40px;
-    font-size: 17px;
-  }
-  .allInputs {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    margin: auto;
-  }
-  .inputs {
-    color: black;
-    font-size: 15px;
-    margin: 5px 10px;
-    display: flex;
-    text-align: start;
-  }
-  .address {
-    margin-left: 0;
-  }
-  .dataInputs {
-    color: #993366;
-  }
-  .chosenArticle {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 30px auto;
-  }
-  .totalPrice {
-    margin-top: 40px;
-    font-weight: bold;
-  }
+
   span {
-    color: #993366;
+    color: #e67300;
     font-size: 14px;
     margin-left: 5px;
   }
 `;
+const AllInputs = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+`;
+const Inputs = styled.p`
+  color: black;
+  font-size: 15px;
+  margin: 5px 15px;
+  display: flex;
+  text-align: start;
+  color: #e67300;
+`;
+const InputsName = styled.p`
+  color: black;
+  font-size: 15px;
+  margin: 5px 10px;
+  display: flex;
+  text-align: start;
+`;
+const InputsAddress = styled.p`
+  color: black;
+  font-size: 15px;
+  margin: 5px 0px 5px 0px;
+  display: flex;
+  text-align: start;
+`;
+const InputsAddresse = styled.p`
+  color: black;
+  font-size: 15px;
+  margin: 5px 0px 5px 25px;
+  display: flex;
+  text-align: start;
+  color: #e67300;
+`;
+const ChosenArticle = styled.h4`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px auto;
+`;
+const TotalPrice = styled.div`
+  margin-top: 40px;
+  font-weight: bold;
+`;
+const Warning = styled.p`
+  margin-top: 40px;
+  font-weight: bold;
+  color: red;
+`;
+
 const Artikel = styled.div`
   display: flex;
   flex-direction: column;
@@ -126,4 +137,11 @@ const Artikel = styled.div`
     text-align: center;
     font-weight: bold;
   }
+`;
+const ArtikleHeading = styled.h4`
+  margin: auto;
+  display: flex;
+  justify-content: flex-start;
+  width: 250px;
+  gap: 40px;
 `;

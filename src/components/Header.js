@@ -11,15 +11,15 @@ const Header = styled.header`
   top: 0;
   left: 0;
   right: 0;
-  border-bottom: 1px solid black;
+
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1;
-  background-color: aliceblue;
+  background-color: #e8e8e8;
   margin-bottom: 200px;
   max-height: 40px;
-  background-color: aliceblue;
+
   border-bottom: none;
 `;
 export default AppHeader;

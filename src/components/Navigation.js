@@ -38,7 +38,7 @@ function FooterNavigation({ shoppingCard }) {
 
 const StyledNavBar = styled.nav`
   position: relative;
-  background-color: aliceblue;
+  background-color: #e8e8e8;
   width: 100%;
   left: 0;
   min-width: 350px;

@@ -11,7 +11,7 @@ export default function PersonalData({ saveTheData }) {
     <Section>
       <form onSubmit={savedInput} data-testid="form">
         <fieldset>
-          <legend>Gib deine Persönlichen Daten ein: </legend>
+          <legend>Gib bitte Deine persönlichen Daten ein: </legend>
           <label htmlFor="name">Name: </label>
           <input
             data-testid="name"

@@ -13,7 +13,7 @@ export default function Favourites({
     <>
       <SectionOutput>
         {favourite.length === 0 ? (
-          <h3>Du hast keine beliebteste Artikel zur Zeit!</h3>
+          <h3>Du hast keine beliebtesten Artikel zurzeit!!</h3>
         ) : (
           <h3>Deine beliebtesten Artikel!</h3>
         )}
