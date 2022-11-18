@@ -35,7 +35,7 @@ export default function OrderDetails({
           </TotalPrice>
           <Warning>
             Wenn Du keine Bestellung innerhalb von den nächsten 6 Stunden
-            machst, werden deine Daten im Warenkorb nicht gespeichert!!!
+            machst, werden Deine Daten im Warenkorb nicht gespeichert!!!
           </Warning>
           <NextButton onClick={() => moveToHistory(inputData)}>
             Bestellen

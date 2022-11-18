@@ -65,7 +65,10 @@ const StyledNavLink = styled(NavLink)`
   }
 
   &.active {
-    background-color: #fc6b03;
+    /* background-color:  #fc6b03 ; */
+    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+      0 0 0 1px rgb(255, 255, 255), 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+
     b {
       color: black;
     }

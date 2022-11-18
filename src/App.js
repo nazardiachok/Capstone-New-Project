@@ -112,8 +112,8 @@ function App() {
   function moveToHistory(input) {
     setHistoryItems([...historyItems, ...shoppingCard]);
     setShoppingCard([]);
-
     navigate("/history");
+    window.location.reload();
   }
 
   function clearHistory() {
