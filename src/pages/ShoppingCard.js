@@ -18,13 +18,11 @@ export default function ShoppingCard({
   return (
     <WarenkorbStyle>
       <div>
-        <h1>Warenkorb </h1>
-
         <SectionWarenkorb>
           <>
             {shoppingCard.length === 0 && (
               <h3>
-                Es befinden sich zur Zeit keine Artikel in Ihrem Warenkorb!
+                Es befinden sich zurzeit keine Artikel in Deinem Warenkorb!
               </h3>
             )}
           </>
@@ -52,7 +50,9 @@ export default function ShoppingCard({
             <h3>
               Gesamtpreis: <span>{totalPrice}</span> €
             </h3>
-            <button onClick={() => navigate("/personalData")}>Weiter </button>
+            <NextButton onClick={() => navigate("/personalData")}>
+              Weiter{" "}
+            </NextButton>
           </Gesamtpreis>
         )}
       </div>
@@ -63,7 +63,7 @@ const WarenkorbStyle = styled.main`
   display: flex;
   justify-content: center;
   margin: 30px auto;
-  h1 {
+  h2 {
     display: flex;
     justify-content: center;
   }
@@ -84,8 +84,8 @@ export const SectionWarenkorb = styled.section`
     padding-left: 0px;
   }
   figure {
-    padding-left: 10px;
-    padding-top: 10px;
+    padding-left: 5px;
+    padding-top: 5px;
     padding-bottom: 0px;
     display: flex;
     border: 1px solid black;
@@ -93,7 +93,9 @@ export const SectionWarenkorb = styled.section`
     min-width: 340px;
     height: 160px;
     margin: 0 auto;
-    cursor: pointer;
+    border: none;
+    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+      0 0 0 2px rgb(255, 255, 255), 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
   }
   figcaption {
     padding: 4px;
@@ -109,18 +111,20 @@ export const SectionWarenkorb = styled.section`
     border-radius: 5px;
   }
   div {
-    background-color: aliceblue;
+    background-color: #dcdcdc;
     border-radius: 5px;
+    width: 137px;
   }
   button {
     margin-left: 10px;
     margin-right: 10px;
     margin-top: 5px;
     margin-bottom: 5px;
+    border-radius: 5px;
+    cursor: pointer;
   }
   h3 {
     text-align: center;
-    color: red;
   }
 `;
 const Gesamtpreis = styled.div`
@@ -133,5 +137,33 @@ const Gesamtpreis = styled.div`
   }
   span {
     color: red;
+  }
+`;
+export const NextButton = styled.button`
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 10px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: aliceblue;
+    animation: none;
+  }
+  color: #ffffff;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: animate_gradient 5s ease infinite;
+  @keyframes animate_gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
   }
 `;

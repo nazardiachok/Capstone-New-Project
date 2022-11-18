@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import { useRef } from "react";
 export default function HomePage({
   setValue,
   selectValue,
@@ -9,11 +10,14 @@ export default function HomePage({
   allDataItems,
 }) {
   const navigate = useNavigate();
+  const ref = useRef(null);
+  const handleClick = () => ref.current.focus();
 
   return (
     <>
       <SectionInput>
         <input
+          ref={ref}
           type="text"
           placeholder="Nike React..."
           onChange={(event) => setValue(event.target.value)}
@@ -28,7 +32,13 @@ export default function HomePage({
       </SectionInput>
       <SectionOutput>
         {output.length === 0 && (
-          <h3>Schaue Dir unten alle Artikel an, oder starte Deine Suche!</h3>
+          <h3>
+            Schaue Dir alles an oder
+            <span className="animate-motion" onClick={handleClick}>
+              {" "}
+              starte Deine Suche!
+            </span>
+          </h3>
         )}
         <ul>
           {(output.length === 0 ? allDataItems : output).map((obj) => (
@@ -50,7 +60,7 @@ export default function HomePage({
                 </DetailsButton>
 
                 <AddCardButton onClick={() => addToShoppingCard(obj)}>
-                  Add to Card
+                  Add to Cards
                 </AddCardButton>
               </div>
               <BookmarkButton onClick={() => bookmarkToggle(obj)}>
@@ -77,6 +87,10 @@ const SectionInput = styled.section`
   justify-content: center;
   align-items: center;
   z-index: -1;
+  max-width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 20px;
   input {
     border-radius: 10px;
     margin: 0 10px;
@@ -84,7 +98,14 @@ const SectionInput = styled.section`
   select {
     border-radius: 10px;
     height: 20px;
+    position: relative;
   }
+  option {
+    position: absolute;
+  }
+  padding: 10px;
+  box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px rgb(255, 255, 255),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
 `;
 export const SectionOutput = styled.section`
   margin-top: 70px;
@@ -98,8 +119,44 @@ export const SectionOutput = styled.section`
     width: 25px;
     height: 25px;
     &:hover {
-      cursor: pointer;
       background-color: aliceblue;
+    }
+  }
+  .animate-motion {
+    height: 20px;
+    line-height: 20px;
+    background: white;
+    border-radius: 20px;
+    max-width: 500px;
+    font-size: 18px;
+    padding: 0.5px;
+    margin-left: 5px;
+    text-align: center;
+    cursor: pointer;
+
+    animation: animate_motion 5s 0s both infinite;
+  }
+  .animate-motion:hover {
+    animation: none;
+  }
+
+  @keyframes animate_motion {
+    0%,
+    20% {
+      transform: translate3d(0, 0, 0);
+    }
+    10%,
+    14%,
+    18%,
+    2%,
+    6% {
+      transform: translate3d(-7px, 0, 0);
+    }
+    12%,
+    16%,
+    4%,
+    8% {
+      transform: translate3d(7px, 0, 0);
     }
   }
   ul {
@@ -119,7 +176,10 @@ export const SectionOutput = styled.section`
     min-width: 340px;
     height: 120px;
     margin: 0 auto;
-    cursor: pointer;
+    border: none;
+
+    box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+      0 0 0 2px rgb(255, 255, 255), 0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
   }
   figcaption {
     padding: 0px 0px 0px 4px;
@@ -140,6 +200,7 @@ export const SectionOutput = styled.section`
   h3 {
     width: 100%;
     display: flex;
+    text-align: center;
     justify-content: center;
     margin: 10px auto 30px auto;
   }
@@ -151,12 +212,38 @@ export const AddCardButton = styled.button`
   top: -90px;
   right: -95px;
   margin-top: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  &:hover {
+    background-color: aliceblue;
+    animation: none;
+  }
+  color: #ffffff;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: animate_gradient 5s ease infinite;
+  @keyframes animate_gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
 `;
 export const DetailsButton = styled.button`
   height: 20px;
   position: relative;
   top: -40px;
   right: -150px;
+  border-radius: 5px;
+  cursor: pointer;
+  &:hover {
+    background-color: aliceblue;
+  }
 `;
 export const BookmarkButton = styled.button`
   position: relative;
@@ -167,4 +254,7 @@ export const BookmarkButton = styled.button`
   display: flex;
   justify-content: center;
   margin: auto;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
 `;

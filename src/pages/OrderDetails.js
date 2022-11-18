@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Cards from "../components/Cards";
+import { NextButton } from "./ShoppingCard";
 export default function OrderDetails({
   shoppingCard,
   inputData,
@@ -12,29 +13,33 @@ export default function OrderDetails({
         <h3>Prüfe Deine Daten und bestätige bitte den Kauf:</h3>
         <main>
           {" "}
-          <div>
-            <h4>
-              Name: <span>{inputData.name} </span>
-            </h4>
-            <h4>
-              Email: <span>{inputData.email} </span>
-            </h4>
-            <h4>
-              Adresse: <span> {inputData.address}</span>
-            </h4>
-          </div>
+          <AllInputs>
+            <ArtikleHeading>
+              <InputsName>Name: </InputsName> <Inputs>{inputData.name} </Inputs>
+            </ArtikleHeading>
+            <ArtikleHeading>
+              <InputsName>Email: </InputsName>{" "}
+              <Inputs>{inputData.email} </Inputs>
+            </ArtikleHeading>
+            <ArtikleHeading>
+              <InputsAddress>Adresse:</InputsAddress>
+              <InputsAddresse>{inputData.address}</InputsAddresse>
+            </ArtikleHeading>
+          </AllInputs>
           <Artikel>
-            <h4>Deine ausgewählte Artikel:</h4>
+            <ChosenArticle>Deine ausgewählte Artikel:</ChosenArticle>
             <Cards shoppingCard={shoppingCard}></Cards>
           </Artikel>
-          <div>
-            Total Price: <br /> <span> {totalPrice} </span> €
-          </div>
-          <p>
+          <TotalPrice>
+            Gesamtpreis: <br /> <span> {totalPrice} </span> €
+          </TotalPrice>
+          <Warning>
             Wenn Du keine Bestellung innerhalb von den nächsten 6 Stunden
-            machst, werden deine Daten im Warenkorb nicht gespeichert!!!
-          </p>
-          <button onClick={() => moveToHistory(inputData)}>Bestellen</button>
+            machst, werden Deine Daten im Warenkorb nicht gespeichert!!!
+          </Warning>
+          <NextButton onClick={() => moveToHistory(inputData)}>
+            Bestellen
+          </NextButton>
         </main>
       </Section>
     </>
@@ -54,29 +59,74 @@ const Section = styled.section`
     display: flex;
     justify-content: space-around;
     text-align: start;
-    gap: 40px;
+    gap: 30px;
   }
   h5 {
-    margin: 10px 0 0 40px;
+    margin: 5px 0 5px 5px;
     width: 250px;
     display: flex;
     justify-content: flex-start;
+    align-items: center;
   }
-  h4 {
-    margin: 10px;
-    display: flex;
-    justify-content: center;
-  }
-  p {
-    color: red;
-    margin: 40px;
-    font-size: 17px;
-  }
+
   span {
-    color: #993366;
+    color: #e67300;
     font-size: 14px;
+    margin-left: 5px;
   }
 `;
+const AllInputs = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: auto;
+`;
+const Inputs = styled.p`
+  color: black;
+  font-size: 15px;
+  margin: 5px 15px;
+  display: flex;
+  text-align: start;
+  color: #e67300;
+`;
+const InputsName = styled.p`
+  color: black;
+  font-size: 15px;
+  margin: 5px 10px;
+  display: flex;
+  text-align: start;
+`;
+const InputsAddress = styled.p`
+  color: black;
+  font-size: 15px;
+  margin: 5px 0px 5px 0px;
+  display: flex;
+  text-align: start;
+`;
+const InputsAddresse = styled.p`
+  color: black;
+  font-size: 15px;
+  margin: 5px 0px 5px 25px;
+  display: flex;
+  text-align: start;
+  color: #e67300;
+`;
+const ChosenArticle = styled.h4`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 30px auto;
+`;
+const TotalPrice = styled.div`
+  margin-top: 40px;
+  font-weight: bold;
+`;
+const Warning = styled.p`
+  margin-top: 40px;
+  font-weight: bold;
+  color: red;
+`;
+
 const Artikel = styled.div`
   display: flex;
   flex-direction: column;
@@ -87,4 +137,11 @@ const Artikel = styled.div`
     text-align: center;
     font-weight: bold;
   }
+`;
+const ArtikleHeading = styled.h4`
+  margin: auto;
+  display: flex;
+  justify-content: flex-start;
+  width: 250px;
+  gap: 40px;
 `;
